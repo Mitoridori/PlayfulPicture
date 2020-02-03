@@ -79,7 +79,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\SDL\SDL2_image-2.0.4\include;D:\SDL\SDL2-2.0.10\include;D:\SDL\SDL2_ttf-2.0.15\include;D:\SDL\SDL2_mixer-2.0.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SDL\SDL2_image-2.0.4\include;C:\SDL\SDL2-2.0.10\include;C:\SDL\SDL2_ttf-2.0.15\include;C:\SDL\SDL2_mixer-2.0.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -110,7 +110,7 @@ xcopy "$(ProjectDir)..\Assets\*" "$(OutDir)Assets\" /y /s</Command>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\SDL\SDL2_image-2.0.4\include;D:\SDL\SDL2-2.0.10\include;D:\SDL\SDL2_ttf-2.0.15\include;D:\SDL\SDL2_mixer-2.0.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SDL\SDL2_image-2.0.4\include;C:\SDL\SDL2-2.0.10\include;C:\SDL\SDL2_ttf-2.0.15\include;C:\SDL\SDL2_mixer-2.0.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
