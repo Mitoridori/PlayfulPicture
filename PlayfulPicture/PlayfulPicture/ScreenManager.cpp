@@ -8,9 +8,9 @@
 ScreenManager* ScreenManager::instance = nullptr;
 
 //Function: ScreenManager
-	//DESCRIPTION: constructor for the screen manager
-	//PARAMETERS: None
-	//RETURNS: None
+//DESCRIPTION: constructor for the screen manager
+//PARAMETERS: None
+//RETURNS: None
 ScreenManager::ScreenManager()
 {
 	/*input = InputManager::Instance();
@@ -21,9 +21,9 @@ ScreenManager::ScreenManager()
 }
 
 //Function:~ScreenManager
-	//DESCRIPTION: deconstructor for the screen manager
-	//PARAMETERS: None
-	//RETURNS: None
+//DESCRIPTION: deconstructor for the screen manager
+//PARAMETERS: None
+//RETURNS: None
 ScreenManager::~ScreenManager()
 {
 	//input = nullptr;
@@ -33,9 +33,9 @@ ScreenManager::~ScreenManager()
 }
 
 //Function: Instance
-	//DESCRIPTION: singleton function for the screen manager
-	//PARAMETERS: None
-	//RETURNS: instance
+//DESCRIPTION: singleton function for the screen manager
+//PARAMETERS: None
+//RETURNS: instance
 ScreenManager* ScreenManager::Instance()
 {
 	if (instance == nullptr) {
@@ -45,9 +45,9 @@ ScreenManager* ScreenManager::Instance()
 }
 
 //Function: Release
-	//DESCRIPTION: funtion used to remove the instance
-	//PARAMETERS: None
-	//RETURNS: None
+//DESCRIPTION: funtion used to remove the instance
+//PARAMETERS: None
+//RETURNS: None
 void ScreenManager::Release()
 {
 	delete instance;
@@ -55,9 +55,9 @@ void ScreenManager::Release()
 }
 
 //Function: Update
-	//DESCRIPTION: function used to update the screen manager
-	//PARAMETERS: None
-	//RETURNS: None
+//DESCRIPTION: function used to update the screen manager
+//PARAMETERS: None
+//RETURNS: None
 void ScreenManager::Update()
 {
 
@@ -84,9 +84,9 @@ void ScreenManager::Update()
 }
 
 //Function: Render
-	//DESCRIPTION: function used to call the relevant screen to render
-	//PARAMETERS: None
-	//RETURNS: None
+//DESCRIPTION: function used to call the relevant screen to render
+//PARAMETERS: None
+//RETURNS: None
 void ScreenManager::Render()
 {
 
