@@ -1,3 +1,7 @@
+//FILE: GameManager.cpp
+//PROJECT: PlayfulPictures
+//PROGRAMMER: John Gotts
+//FIRST VERSION: 02/03/2020
 #include "GameManager.h"
 
 
@@ -12,6 +16,7 @@ namespace SDLFramework {
 	GameManager::GameManager() : quit(false)
 	{
 		timer = Timer::Instance();
+		screenManager = ScreenManager::Instance();
 	}
 
 	//Function: ~GameManager
@@ -22,6 +27,9 @@ namespace SDLFramework {
 	{
 		Timer::Release();
 		timer = nullptr;
+
+		ScreenManager::Release();
+		screenManager = nullptr;
 
 		SDL_Quit();
 	}
@@ -78,6 +86,7 @@ namespace SDLFramework {
 	//RETURNS: None
 	void GameManager::Update()
 	{
+		screenManager->Update();
 	}
 
 	//Function: LateUpdate
@@ -94,6 +103,7 @@ namespace SDLFramework {
 	//RETURNS: None
 	void GameManager::RenderObjects()
 	{
+		screenManager->Render();
 	}
 
 }

@@ -6,6 +6,7 @@
 
 #include <SDL.h>
 #include "Timer.h"
+#include "ScreenManager.h"
 
 namespace SDLFramework {
 
@@ -15,6 +16,7 @@ namespace SDLFramework {
 		static GameManager* instance;
 
 		Timer* timer;
+		ScreenManager* screenManager;
 
 		bool quit;
 		const int FRAME_RATE = 60;
