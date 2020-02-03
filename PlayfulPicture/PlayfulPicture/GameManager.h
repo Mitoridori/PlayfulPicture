@@ -5,6 +5,7 @@
 #pragma once
 
 #include <SDL.h>
+#include "Timer.h"
 
 namespace SDLFramework {
 
@@ -12,6 +13,8 @@ namespace SDLFramework {
 
 	private:
 		static GameManager* instance;
+
+		Timer* timer;
 
 		bool quit;
 		const int FRAME_RATE = 60;
