@@ -1,3 +1,7 @@
+//FILE: DifficultyScreen.cpp
+//PROJECT: PlayfulPictures
+//PROGRAMMER: John Gotts
+//FIRST VERSION: 02/05/2020
 #include "DifficultyScreen.h"
 
 DifficultyScreen::DifficultyScreen()

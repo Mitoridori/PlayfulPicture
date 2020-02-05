@@ -1,3 +1,7 @@
+//FILE: DifficultyScreen.h
+//PROJECT: PlayfulPictures
+//PROGRAMMER: John Gotts
+//FIRST VERSION: 02/05/2020
 #pragma once
 #include "GameEntity.h"
 #include "Timer.h"
