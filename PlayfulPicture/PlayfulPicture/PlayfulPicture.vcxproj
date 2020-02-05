@@ -28,6 +28,7 @@
     <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DifficultyScreen.h" />
     <ClInclude Include="GameEntity.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="InputManager.h" />

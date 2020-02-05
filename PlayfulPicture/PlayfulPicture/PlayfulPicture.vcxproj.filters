@@ -25,6 +25,12 @@
     <Filter Include="Source Files\Entity">
       <UniqueIdentifier>{c7010356-fa21-423a-b657-3d7163b80e9c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Screens">
+      <UniqueIdentifier>{3f73a6f2-b693-4a28-887b-9ec89db4dfda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Screens">
+      <UniqueIdentifier>{b7700c40-4401-4978-9cac-38b87f342695}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -70,6 +76,9 @@
     </ClInclude>
     <ClInclude Include="GameEntity.h">
       <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="DifficultyScreen.h">
+      <Filter>Header Files\Screens</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
