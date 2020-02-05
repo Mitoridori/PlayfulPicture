@@ -103,7 +103,9 @@ namespace SDLFramework {
 	//RETURNS: None
 	void GameManager::RenderObjects()
 	{
+		//graphics->ClearRenderer();
 		screenManager->Render();
+		//graphics->Render();
 	}
 
 }
