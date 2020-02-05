@@ -21,12 +21,14 @@
   <ItemGroup>
     <ClCompile Include="AnimatedTexture.cpp" />
     <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="DifficultyScreen.cpp" />
     <ClCompile Include="GameEntity.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MenuScreen.cpp" />
     <ClCompile Include="RandomNumber.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="Texture.cpp" />
@@ -35,6 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimatedTexture.h" />
+    <ClInclude Include="AudioManager.h" />
     <ClInclude Include="DifficultyScreen.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="GameEntity.h" />
@@ -42,6 +45,7 @@
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="MathHelper.h" />
+    <ClInclude Include="MenuScreen.h" />
     <ClInclude Include="RandomNumber.h" />
     <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="Texture.h" />
