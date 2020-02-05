@@ -7,6 +7,7 @@
 #include <SDL.h>
 #include "Timer.h"
 #include "ScreenManager.h"
+#include "TitleScreen.h"
 
 namespace SDLFramework {
 
@@ -23,6 +24,8 @@ namespace SDLFramework {
 
 		SDL_Event events;
 
+		TitleScreen* mTitleScreen;
+
 	public:
 		GameManager();
 		~GameManager();
@@ -34,6 +37,8 @@ namespace SDLFramework {
 		void Update();
 		void LateUpdate();
 		void RenderObjects();
+
+
 	};
 
 }

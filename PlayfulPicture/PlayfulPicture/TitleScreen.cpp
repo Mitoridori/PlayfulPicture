@@ -8,10 +8,6 @@ namespace SDLFramework
 		mTimer = Timer::Instance();
 		mInput = InputManager::Instance();
 
-		//castle
-		mCheckered = new Texture("Checkered.png", 0, 0, 216, 216);
-		mCheckered->SetParent(this);
-
 		// logo entities
 		mLogo = new Texture("TitleSheet.png", 255, 0, 207, 65);
 		mLogo->SetParent(this);
@@ -35,7 +31,7 @@ namespace SDLFramework
 		mPushAnimated->SetParent(mPushStart);
 
 		//background 
-		mBackground = new Texture("TitleSheet.png", 0, 0, 255, 240);
+		mBackground = new Texture("Background.png", 0, 0, 255, 240);
 		mBackground->SetParent(this);
 		mBackground->SetPosition(Graphics::SCREEN_WIDTH * 0.174f, Graphics::SCREEN_HEIGHT * 0.174f);
 		mBackground->SetScale(Vector2(2.9648f, 2.9648f));
@@ -54,9 +50,6 @@ namespace SDLFramework
 	{
 		mTimer = nullptr;
 		mInput = nullptr;
-
-		delete mCastle;
-		mCastle = nullptr;
 
 		delete mLogo;
 		mLogo = nullptr;

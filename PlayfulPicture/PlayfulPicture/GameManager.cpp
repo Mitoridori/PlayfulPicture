@@ -17,6 +17,8 @@ namespace SDLFramework {
 	{
 		timer = Timer::Instance();
 		screenManager = ScreenManager::Instance();
+
+		mTitleScreen = new TitleScreen;
 	}
 
 	//Function: ~GameManager
@@ -30,6 +32,9 @@ namespace SDLFramework {
 
 		ScreenManager::Release();
 		screenManager = nullptr;
+
+		delete mTitleScreen;
+		mTitleScreen = NULL;
 
 		SDL_Quit();
 	}
@@ -87,6 +92,8 @@ namespace SDLFramework {
 	void GameManager::Update()
 	{
 		screenManager->Update();
+
+		mTitleScreen->Update();
 	}
 
 	//Function: LateUpdate
@@ -104,6 +111,9 @@ namespace SDLFramework {
 	void GameManager::RenderObjects()
 	{
 		screenManager->Render();
+
+		mTitleScreen->Render();
+		
 	}
 
 }

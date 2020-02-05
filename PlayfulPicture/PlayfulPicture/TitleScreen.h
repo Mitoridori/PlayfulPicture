@@ -13,9 +13,6 @@ namespace SDLFramework
 		Timer* mTimer;
 		InputManager* mInput;
 
-		//castle
-		Texture* mCastle;
-
 		//logo
 		Texture* mLogo;
 		AnimatedTexture* mAnimatedLogo;
