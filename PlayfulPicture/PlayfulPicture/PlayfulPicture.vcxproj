@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="AnimatedTexture.cpp" />
     <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="DifficultyScreen.cpp" />
     <ClCompile Include="GameEntity.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -35,6 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AnimatedTexture.h" />
+    <ClInclude Include="AudioManager.h" />
     <ClInclude Include="DifficultyScreen.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="GameEntity.h" />
