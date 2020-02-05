@@ -76,7 +76,7 @@ namespace SDLFramework
 		mAnimationTimer = 0.0f;
 		mAnimationDone = false;
 
-		SetPosition(mAnimationStartPos);
+		Position(mAnimationStartPos);
 	}
 
 	void TitleScreen::ChangeSelectedMode(int change)
@@ -99,23 +99,23 @@ namespace SDLFramework
 	void TitleScreen::Update()
 	{
 		if (!mAnimationDone) {
-			mAnimationTimer += mTimer->DeltaTime();
-			SetPosition(Lerp(mAnimationStartPos, mAnimationEndPos, mAnimationTimer / mAnimationTotalTime));
+			mAnimationTimer += mTimer->GetDeltaTime();
+			Position(Lerp(mAnimationStartPos, mAnimationEndPos, mAnimationTimer / mAnimationTotalTime));
 
 			if (mAnimationTimer >= mAnimationTotalTime) {
 				mAnimationDone = true;
 			}
 
-			if (mInput->KeyPressed(SDL_SCANCODE_SPACE)) {
-				mAnimationTimer = mAnimationTotalTime;
-			}
+			//if (mInput->KeyPressed(SDL_SCANCODE_SPACE)) {
+			//	mAnimationTimer = mAnimationTotalTime;
+			//}
 		}
 		else {
 			mAnimatedLogo->Update();
-			if (mInput->KeyPressed(SDL_SCANCODE_RETURN))
-			{
-				ChangeSelectedMode(1);
-			}
+			//if (mInput->KeyPressed(SDL_SCANCODE_RETURN))
+			//{
+			//	ChangeSelectedMode(1);
+			//}
 
 		}
 

@@ -17,7 +17,7 @@ namespace SDLFramework {
 		gameEntity = nullptr;
 	}
 
-	void GameEntity::Position(float x, float y)
+	void GameEntity::SetPosition(float x, float y)
 	{
 		vPosition = Vector2(x, y);
 	}
@@ -56,7 +56,7 @@ namespace SDLFramework {
 		return gameEntity->Rotation(World) + rotation;
 	}
 
-	void GameEntity::Scale(Vector2 scale) {
+	void GameEntity::SetScale(Vector2 scale) {
 		scale = scale;
 	}
 
@@ -80,7 +80,7 @@ namespace SDLFramework {
 		return isActive;
 	}
 
-	void GameEntity::Parent(GameEntity* parent) {
+	void GameEntity::SetParent(GameEntity* parent) {
 		if (parent == nullptr) {
 			vPosition = Position(World);
 			rotation = Rotation(World);
@@ -88,7 +88,7 @@ namespace SDLFramework {
 		}
 		else {
 			if (gameEntity != nullptr) {
-				Parent(nullptr);
+				SetParent(nullptr);
 			}
 			Vector2 parentScale = parent->Scale(World);
 
