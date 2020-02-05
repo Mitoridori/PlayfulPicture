@@ -9,16 +9,25 @@ DifficultyScreen::DifficultyScreen()
 	timer = Timer::Instance();
 	input = InputManager::Instance();
 
-	iconHolder = new GameEntity(Graphics::SCREEN_WIDTH, Graphics::SCREEN_HEIGHT * 0.8f);
+	topBar = new GameEntity(Graphics::SCREEN_WIDTH, 50.0f);
+	screenLabel = new Texture("Difficulty Selection", "emulogic.ttf", 32, {255, 0, 111});
+	topBar->SetParent(this);
+	screenLabel->SetParent(topBar);
+	screenLabel->SetPosition(-Graphics::SCREEN_WIDTH * 0.5f, 0.0f);
 
-	easyButton = new Texture("3x3.png", 0, 0, 400, 400);
+	iconHolder = new GameEntity(Graphics::SCREEN_WIDTH, Graphics::SCREEN_HEIGHT);
+	easyButton = new Texture("3x3.png", 0, 0, 238, 200);
+	mediumButton = new Texture("4x4.png", 0, 0, 238, 200);
+	hardButton = new Texture("5x5.png", 0, 0, 238, 200);
+
+	iconHolder->SetParent(this);
 	easyButton->SetParent(iconHolder);
-
-	mediumButton = new Texture("4x4.png", 0, 0, 400, 400);
 	mediumButton->SetParent(iconHolder);
-
-	hardButton = new Texture("5x5.png", 0, 0, 400, 400);
 	hardButton->SetParent(iconHolder);
+
+	easyButton->SetPosition(-Graphics::SCREEN_WIDTH * 0.8f, -Graphics::SCREEN_HEIGHT * 0.75f);
+	mediumButton->SetPosition(-Graphics::SCREEN_WIDTH * 0.8f, -Graphics::SCREEN_HEIGHT * 0.50f);
+	hardButton->SetPosition(-Graphics::SCREEN_WIDTH * 0.8f, -Graphics::SCREEN_HEIGHT * 0.25f);
 }
 
 DifficultyScreen::~DifficultyScreen()
@@ -36,6 +45,7 @@ DifficultyScreen::~DifficultyScreen()
 
 void DifficultyScreen::Render()
 {
+	screenLabel->Render();
 	easyButton->Render();
 	mediumButton->Render();
 	hardButton->Render();

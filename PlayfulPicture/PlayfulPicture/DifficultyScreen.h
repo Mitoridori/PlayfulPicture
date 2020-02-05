@@ -18,6 +18,9 @@ private:
 
 	InputManager* input;
 
+	GameEntity* topBar;
+	Texture* screenLabel;
+
 	GameEntity* iconHolder;
 	Texture* easyButton;
 	Texture* mediumButton;
