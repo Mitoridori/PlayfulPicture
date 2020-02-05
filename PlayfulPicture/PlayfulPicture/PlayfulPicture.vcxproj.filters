@@ -19,6 +19,12 @@
     <Filter Include="Header Files\Managers">
       <UniqueIdentifier>{846d2613-7f2b-479f-8b27-5b6814af3261}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Entity">
+      <UniqueIdentifier>{491f568a-5e7b-4317-b6bb-50d49b7f2ccd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Entity">
+      <UniqueIdentifier>{c7010356-fa21-423a-b657-3d7163b80e9c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -39,6 +45,9 @@
     <ClCompile Include="RandomNumber.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GameEntity.cpp">
+      <Filter>Source Files\Entity</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -58,6 +67,9 @@
     </ClInclude>
     <ClInclude Include="RandomNumber.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEntity.h">
+      <Filter>Header Files\Entity</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

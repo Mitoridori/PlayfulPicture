@@ -2,7 +2,7 @@
 #define __TEXTURE_H
 #include "Graphics.h"
 #include "GameEntity.h"
-#include "AssetManager.h"
+//#include "AssetManager.h"
 
 namespace SDLFramework {
 
