@@ -5,13 +5,13 @@
 
 using namespace SDLFramework;
 
-class MenuScreen{
+class WinScreen {
 
 private:
 	Timer* timer;
 	InputManager* input;
 
 public:
-	MenuScreen();
-	~MenuScreen();
+	WinScreen();
+	~WinScreen();
 };

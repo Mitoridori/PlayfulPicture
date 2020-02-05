@@ -5,13 +5,13 @@
 
 using namespace SDLFramework;
 
-class MenuScreen{
+class MusicScreen {
 
 private:
 	Timer* timer;
 	InputManager* input;
 
 public:
-	MenuScreen();
-	~MenuScreen();
+	MusicScreen();
+	~MusicScreen();
 };

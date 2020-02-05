@@ -102,21 +102,17 @@ namespace SDLFramework
 
     void InputManager::UpdatePrevInput()
     {
-        memcpy(mPrevKeyboardState, mKeyboardState, mKeyLength);
         mPrevMouseState = mMouseState;
     }
 
     InputManager::InputManager()
     {
-        mKeyboardState = SDL_GetKeyboardState(&mKeyLength);
-        mPrevKeyboardState = new Uint8[mKeyLength];
-        memcpy(mPrevKeyboardState, mKeyboardState, mKeyLength);
+       
     }
 
     InputManager::~InputManager()
     {
-        delete[] mPrevKeyboardState;
-        mPrevKeyboardState = nullptr;
+
     }
 
 
