@@ -11,18 +11,27 @@ DifficultyScreen::DifficultyScreen()
 
 	iconHolder = new GameEntity(Graphics::SCREEN_WIDTH, Graphics::SCREEN_HEIGHT * 0.8f);
 
-	easyButton = new Texture("3x3.png", 0, 0, 644, 541);
+	easyButton = new Texture("3x3.png", 0, 0, 400, 400);
 	easyButton->SetParent(iconHolder);
 
-	mediumButton = new Texture("4x4.png", 0, 0, 542, 543);
-	mediumButton->SetParent(easyButton);
+	mediumButton = new Texture("4x4.png", 0, 0, 400, 400);
+	mediumButton->SetParent(iconHolder);
 
-	hardButton = new Texture("5x5.png", 0, 0, 604, 542);
-	hardButton->SetParent(mediumButton);
+	hardButton = new Texture("5x5.png", 0, 0, 400, 400);
+	hardButton->SetParent(iconHolder);
 }
 
 DifficultyScreen::~DifficultyScreen()
 {
+	delete iconHolder;
+	iconHolder = nullptr;
+
+	delete easyButton;
+	easyButton = nullptr;
+	delete mediumButton;
+	mediumButton = nullptr;
+	delete hardButton;
+	hardButton = nullptr;
 }
 
 void DifficultyScreen::Render()

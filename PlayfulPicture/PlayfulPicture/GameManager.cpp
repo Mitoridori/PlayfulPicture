@@ -67,6 +67,7 @@ namespace SDLFramework {
 	void GameManager::Run()
 	{
 		while (!quit) {
+			timer->Update();
 			while (SDL_PollEvent(&events)) {
 				switch (events.type) {
 				case SDL_QUIT:

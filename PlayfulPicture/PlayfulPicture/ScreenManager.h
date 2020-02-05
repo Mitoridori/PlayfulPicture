@@ -5,6 +5,7 @@
 #pragma once
 
 #include "TitleScreen.h"
+#include "DifficultyScreen.h"
 #include "InputManager.h"
 
 using namespace SDLFramework;
@@ -18,6 +19,7 @@ private:
 	Screens currentScreen;
 	InputManager* input;
 	TitleScreen* mTitleScreen;
+	DifficultyScreen* selectScreen;
 
 
 public:

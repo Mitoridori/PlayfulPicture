@@ -15,6 +15,7 @@ ScreenManager::ScreenManager()
 {
 	input = InputManager::Instance();
 	mTitleScreen = new TitleScreen();
+	selectScreen = new DifficultyScreen();
 
 	currentScreen = start;
 }
@@ -30,6 +31,9 @@ ScreenManager::~ScreenManager()
 
 	delete mTitleScreen;
 	mTitleScreen = NULL;
+
+	delete selectScreen;
+	selectScreen = nullptr;
 }
 
 //Function: Instance
@@ -67,6 +71,7 @@ void ScreenManager::Update()
 		mTitleScreen->Update();
 		break;
 	case difficulty:
+		selectScreen->Update();
 		break;
 	case play:
 		/*playScreen->Update();
@@ -91,6 +96,7 @@ void ScreenManager::Render()
 		mTitleScreen->Render();
 		break;
 	case difficulty:
+		selectScreen->Render();
 		break;
 	case play:
 		//playScreen->Render();
