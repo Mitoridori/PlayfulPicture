@@ -4,49 +4,49 @@ namespace SDLFramework
 {
 
 	RandomNumber* RandomNumber::sInstance = nullptr;
-	int Random::mRandomPieceCurrent = 0;
-	int Random::mRandomPieceNext = 0;
+	int RandomNumber::mRandomPieceCurrent = 0;
+	int RandomNumber::mRandomPieceNext = 0;
 
-	Random* Random::Instance()
+	RandomNumber* RandomNumber::Instance()
 	{
-		sInstance = new Random();
+		sInstance = new RandomNumber();
 		return sInstance;
 	}
 
-	void Random::Release()
+	void RandomNumber::Release()
 	{
 		delete sInstance;
 		sInstance = nullptr;
 	}
 
-	int Random::GetNextPiece()
+	int RandomNumber::GetNextPiece()
 	{
 		//SetNextPiece();
 		return mRandomPieceNext;
 	}
 
-	void Random::SetNextPiece()
+	void RandomNumber::SetNextPiece()
 	{
 		mRandomPieceNext = ((rand() * 100) % 7);
 	}
 
-	int Random::GetCurrentPiece()
+	int RandomNumber::GetCurrentPiece()
 	{
 		//SetCurrentPiece();
 		return mRandomPieceCurrent;
 	}
 
-	void Random::SetCurrentPiece()
+	void RandomNumber::SetCurrentPiece()
 	{
 		mRandomPieceCurrent = mRandomPieceNext;
 	}
 
-	Random::Random()
+	RandomNumber::RandomNumber()
 	{
 		srand((unsigned)time(0));
 	}
 
-	Random::~Random()
+	RandomNumber::~RandomNumber()
 	{
 		Release();
 	}

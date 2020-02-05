@@ -88,5 +88,14 @@ namespace SDLFramework
 		float mag = (end - start).Magnitude();
 		return start + dir * mag * time;
 	}	
+
+	inline Vector2 RotateVector(const Vector2& vec, float angle) {
+		// convert degrees to radians
+		float radAngle = (float)(angle * DEG_TO_RAD);
+		return Vector2(
+			(float)(vec.x * cos(radAngle) - vec.y * sin(radAngle)), // rotated x position
+			(float)(vec.x * sin(radAngle) + vec.y * cos(radAngle)) // rotated y position
+		);
+	}
 }
 #endif
