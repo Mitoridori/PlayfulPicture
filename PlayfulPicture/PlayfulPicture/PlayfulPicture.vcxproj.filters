@@ -19,12 +19,6 @@
     <Filter Include="Header Files\Managers">
       <UniqueIdentifier>{846d2613-7f2b-479f-8b27-5b6814af3261}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Entities">
-      <UniqueIdentifier>{c15ca285-1095-4dbc-956a-66e282fc089b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Entities">
-      <UniqueIdentifier>{402e69dd-e7ac-4c2f-b1f6-a603b7c6ff1c}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -39,13 +33,10 @@
     <ClCompile Include="ScreenManager.cpp">
       <Filter>Source Files\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="AnimatedTexture.cpp">
-      <Filter>Source Files\Entities</Filter>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>Source Files\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="Graphics.cpp">
+    <ClCompile Include="RandomNumber.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,13 +50,13 @@
     <ClInclude Include="ScreenManager.h">
       <Filter>Header Files\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="AnimatedTexture.h">
-      <Filter>Header Files\Entities</Filter>
+    <ClInclude Include="InputManager.h">
+      <Filter>Header Files\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>Header Files\Entities</Filter>
+    <ClInclude Include="MathHelper.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Graphics.h">
+    <ClInclude Include="RandomNumber.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
