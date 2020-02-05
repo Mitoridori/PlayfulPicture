@@ -31,7 +31,6 @@ namespace SDLFramework {
 		Vector2 ScaledDimensions();
 
 		void Render() override;
-		void RenderMap(int x, int y, SDL_Rect* clip = nullptr, double angle = 0.0, SDL_RendererFlip renderFlip = SDL_FLIP_NONE, SDL_Point* center = nullptr);
 	};
 }
 #endif

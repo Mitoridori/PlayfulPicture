@@ -106,17 +106,4 @@ namespace SDLFramework {
 
 		graphics->DrawTexture(tex, clipped ? &sourceRect : nullptr, &destinationRect, Rotation(World));
 	}
-
-
-	void Texture::RenderMap(int x, int y, SDL_Rect* clip, double angle, SDL_RendererFlip renderFlip, SDL_Point* center)
-	{
-		SDL_Rect renderQuad = { x, y, destinationRect.w, destinationRect.h };
-
-		if (clip != NULL) {
-			renderQuad.w = clip->w;
-			renderQuad.h = clip->h;
-		}
-
-		SDL_RenderCopyEx(Graphics::Instance()->GetRenderer(), tex, clip, &renderQuad, angle, center, renderFlip);
-	}
 }
