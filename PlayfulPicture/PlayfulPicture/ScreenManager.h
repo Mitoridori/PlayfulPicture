@@ -4,6 +4,11 @@
 //FIRST VERSION: 02/03/2020
 #pragma once
 
+#include "TitleScreen.h"
+#include "InputManager.h"
+
+using namespace SDLFramework;
+
 class ScreenManager {
 
 private:
@@ -11,12 +16,8 @@ private:
 
 	enum Screens { start, difficulty, play, congratulations };
 	Screens currentScreen;
-
-	/*InputManager* input;
-
-	StartScreen* startScreen;
-
-	PlayScreen* playScreen;*/
+	InputManager* input;
+	TitleScreen* mTitleScreen;
 
 
 public:

@@ -13,9 +13,8 @@ ScreenManager* ScreenManager::instance = nullptr;
 //RETURNS: None
 ScreenManager::ScreenManager()
 {
-	/*input = InputManager::Instance();
-	startScreen = new StartScreen();
-	playScreen = new PlayScreen();*/
+	input = InputManager::Instance();
+	mTitleScreen = new TitleScreen();
 
 	currentScreen = start;
 }
@@ -26,10 +25,11 @@ ScreenManager::ScreenManager()
 //RETURNS: None
 ScreenManager::~ScreenManager()
 {
-	//input = nullptr;
+	InputManager::Release();
+	input = nullptr;
 
-	/*delete startScreen;
-	startScreen = nullptr;*/
+	delete mTitleScreen;
+	mTitleScreen = NULL;
 }
 
 //Function: Instance
@@ -64,11 +64,7 @@ void ScreenManager::Update()
 	switch (currentScreen) {
 
 	case start:
-		/*startScreen->Update();
-		if (input->GetKeyPressed(SDL_SCANCODE_RETURN)) {
-			currentScreen = play;
-			startScreen->ResetAnimations();
-		}*/
+		mTitleScreen->Update();
 		break;
 	case difficulty:
 		break;
@@ -92,7 +88,7 @@ void ScreenManager::Render()
 
 	switch (currentScreen) {
 	case start:
-		//startScreen->Render();
+		mTitleScreen->Render();
 		break;
 	case difficulty:
 		break;

@@ -7,7 +7,6 @@
 #include <SDL.h>
 #include "Timer.h"
 #include "ScreenManager.h"
-#include "TitleScreen.h"
 
 namespace SDLFramework {
 
@@ -18,13 +17,12 @@ namespace SDLFramework {
 
 		Timer* timer;
 		ScreenManager* screenManager;
+		Graphics* graphics;
 
 		bool quit;
 		const int FRAME_RATE = 60;
 
 		SDL_Event events;
-
-		TitleScreen* mTitleScreen;
 
 	public:
 		GameManager();
