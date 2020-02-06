@@ -17,7 +17,7 @@ ScreenManager::ScreenManager()
 	mTitleScreen = new TitleScreen();
 	selectScreen = new DifficultyScreen();
 
-	currentScreen = start;
+	currentScreen = difficulty;
 }
 
 //Function:~ScreenManager

@@ -55,9 +55,9 @@ void DifficultyScreen::Update()
 {
 	if (input->MouseButtonPressed(input->Left)) {
 		std::cout << "left pressed\n";
-		/*if ()) {
-			printf("position works");
-		}*/
+		if (ContainsPoint(easyButton, input->MousePosition().x, input->MousePosition().y)) {
+			std::cout << "clicked easy button\n";
+		}
 	}
 }
 
@@ -65,20 +65,11 @@ void DifficultyScreen::SetGameMode()
 {
 }
 
-void DifficultyScreen::SetTextureBounds(Texture* texture, int x, int y, int w, int h)
-{
-	if (texture) {
-		x = texture->Position().x;
-		y = texture->Position().y;
-		w = texture->GetWidth();
-		h = texture->GetHeight();
-	}
-}
-
 bool DifficultyScreen::ContainsPoint(Texture* texture, int x, int y)
 {
 	if (texture) {
-		if ((x > texture->Position().x) && (x < texture->Position().x + texture->GetWidth()) && (y > texture->Position().y) && (y < texture->Position().y + texture->GetHeight())) {
+		if ((x > texture->Position().x - texture->GetWidth() * 0.5f) && (x < texture->Position().x + texture->GetWidth() * 0.5f)
+			&& (y > texture->Position().y - texture->GetHeight() * 0.5f) && (y < texture->Position().y + texture->GetHeight() * 0.5f)) {
 			return true;
 		}
 	}
