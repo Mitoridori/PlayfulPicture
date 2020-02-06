@@ -35,12 +35,21 @@ namespace SDLFramework {
 		tileHeight = boardSize;
 		tileWidth = boardSize;
 
-		// create a black square
+		// create a square
 		SDL_Rect outlineRect = { 0, 0, 700, 700 };
 		SDL_SetRenderDrawColor(graphics->GetRenderer(), 0xFF, 0x00, 0x00, 0xFF);
 		SDL_RenderFillRect(graphics->GetRenderer(), &outlineRect);
 		SDL_RenderDrawRect(graphics->GetRenderer(), &outlineRect);
 
+		//Create a tiled grid
+
+
+
+	}
+
+	void Board::SetChallange(Challange difficulty)
+	{
+		challange = difficulty;
 	}
 
 

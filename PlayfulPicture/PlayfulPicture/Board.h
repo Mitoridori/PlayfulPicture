@@ -11,7 +11,7 @@ namespace SDLFramework {
 
 		enum Challange {beginner, intermediate, hard};
 		Challange challange;
-		//make setter
+		
 
 		float boardSize;
 		float tileWidth;
@@ -23,7 +23,7 @@ namespace SDLFramework {
 		~Board();
 
 		void CreateBoard();
-
+		void SetChallange(Challange difficulty);
 
 	};
 
