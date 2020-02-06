@@ -8,6 +8,7 @@
 #include "Texture.h"
 #include "InputManager.h"
 #include "Board.h"
+#include "Buttons.h"
 
 using namespace SDLFramework;
 class DifficultyScreen : public GameEntity {
@@ -21,15 +22,17 @@ private:
 	Texture* screenLabel;
 
 	GameEntity* iconHolder;
-	Texture* easyButton;
-	Texture* mediumButton;
-	Texture* hardButton;
+	Texture* easyButtonTexture;
+	Texture* mediumButtonTexture;
+	Texture* hardButtonTexture;
+
+	Buttons* easyButton;
+	Buttons* mediumButton;
+	Buttons* hardButton;
 
 public:
 	DifficultyScreen();
 	~DifficultyScreen();
 	void Render() override;
 	void Update() override;
-
-	bool ContainsPoint(Texture* texture, int x, int y);
 };

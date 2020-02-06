@@ -31,6 +31,18 @@
     <Filter Include="Source Files\Screens">
       <UniqueIdentifier>{b7700c40-4401-4978-9cac-38b87f342695}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game Elements">
+      <UniqueIdentifier>{03e76682-eeb4-49b5-8756-4254d99d8009}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Elements">
+      <UniqueIdentifier>{f585dc14-0829-4d2e-be9a-b66796e44dec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game Elements\Buttons">
+      <UniqueIdentifier>{fcb4f7dc-6553-4357-a3bf-26254d7ca7db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game Elements\Buttons">
+      <UniqueIdentifier>{779fe914-60aa-4976-b85b-b88a96214fdc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -88,7 +100,10 @@
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
     <ClCompile Include="Board.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Game Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="Buttons.cpp">
+      <Filter>Source Files\Game Elements\Buttons</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -147,7 +162,10 @@
       <Filter>Header Files\Screens</Filter>
     </ClInclude>
     <ClInclude Include="Board.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Game Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="Buttons.h">
+      <Filter>Header Files\Game Elements\Buttons</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

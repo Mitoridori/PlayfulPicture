@@ -23,6 +23,7 @@
     <ClCompile Include="AssetManager.cpp" />
     <ClCompile Include="AudioManager.cpp" />
     <ClCompile Include="Board.cpp" />
+    <ClCompile Include="Buttons.cpp" />
     <ClCompile Include="DifficultyScreen.cpp" />
     <ClCompile Include="GameEntity.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -43,6 +44,7 @@
     <ClInclude Include="AnimatedTexture.h" />
     <ClInclude Include="AudioManager.h" />
     <ClInclude Include="Board.h" />
+    <ClInclude Include="Buttons.h" />
     <ClInclude Include="DifficultyScreen.h" />
     <ClInclude Include="AssetManager.h" />
     <ClInclude Include="GameEntity.h" />
