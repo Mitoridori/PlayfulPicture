@@ -32,4 +32,6 @@ public:
 
 	void SetGameMode();
 	void SetTextureBounds(Texture* texture, int x, int y, int w, int h);
+
+	bool ContainsPoint(Texture* texture, int x, int y);
 };
