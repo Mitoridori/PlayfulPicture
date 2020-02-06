@@ -14,6 +14,9 @@ using namespace SDLFramework;
 class DifficultyScreen : public GameEntity {
 
 private:
+
+	static enum Difficulties {none, easy, medium, hard};
+	static Difficulties selectedDifficulty;
 	Timer* timer;
 
 	InputManager* input;
@@ -35,4 +38,6 @@ public:
 	~DifficultyScreen();
 	void Render() override;
 	void Update() override;
+
+	static Difficulties GetDifficulty();
 };

@@ -16,6 +16,7 @@ ScreenManager::ScreenManager()
 	input = InputManager::Instance();
 	mTitleScreen = new TitleScreen();
 	selectScreen = new DifficultyScreen();
+	test = new Board();
 
 	currentScreen = start;
 }
@@ -76,6 +77,8 @@ void ScreenManager::Update()
 		break;
 	case difficulty:
 		selectScreen->Update();
+		break;
+	case picture:
 		break;
 	case play:
 		/*playScreen->Update();

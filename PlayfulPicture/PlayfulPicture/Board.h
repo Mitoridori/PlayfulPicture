@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL.h>
 #include "Graphics.h"
+#include "DifficultyScreen.h"
 
 namespace SDLFramework {
 	class Board {
@@ -9,9 +10,9 @@ namespace SDLFramework {
 
 		Graphics* graphics;
 
-		enum Challange {beginner, intermediate, hard};
-		Challange challange;
-		
+		/*enum Challange {beginner, intermediate, hard};
+		Challange challange;*/
+		int challenge;
 
 		float boardSize;
 		float tileWidth;
@@ -23,7 +24,7 @@ namespace SDLFramework {
 		~Board();
 
 		void CreateBoard();
-		void SetChallange(Challange difficulty);
+		void SetChallange(int difficulty);
 
 	};
 

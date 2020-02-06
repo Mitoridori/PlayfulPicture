@@ -4,10 +4,14 @@
 //FIRST VERSION: 02/05/2020
 #include "DifficultyScreen.h"
 
+
+DifficultyScreen::Difficulties DifficultyScreen::selectedDifficulty = none;
 DifficultyScreen::DifficultyScreen()
 {
 	timer = Timer::Instance();
 	input = InputManager::Instance();
+
+	selectedDifficulty = none;
 
 	easyButton = new Buttons();
 	mediumButton = new Buttons();
@@ -58,15 +62,23 @@ void DifficultyScreen::Render()
 void DifficultyScreen::Update()
 {
 	if (input->MouseButtonPressed(input->Left)) {
-		std::cout << "left pressed\n";
+
 		if (easyButton->ContainsPoint(easyButtonTexture, input->MousePosition().x, input->MousePosition().y)) {
+			selectedDifficulty = easy;
 			std::cout << "clicked easy button\n";
 		}
 		else if (mediumButton->ContainsPoint(mediumButtonTexture, input->MousePosition().x, input->MousePosition().y)) {
+			selectedDifficulty = medium;
 			std::cout << "clicked medium button\n";
 		}
 		else if (hardButton->ContainsPoint(hardButtonTexture, input->MousePosition().x, input->MousePosition().y)) {
+			selectedDifficulty = hard;
 			std::cout << "clicked hard button\n";
 		}
 	}
+}
+
+DifficultyScreen::Difficulties DifficultyScreen::GetDifficulty()
+{
+	return selectedDifficulty;
 }

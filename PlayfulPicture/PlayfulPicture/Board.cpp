@@ -7,6 +7,7 @@ namespace SDLFramework {
 	Board::Board()
 	{
 		graphics = Graphics::Instance();
+		//SetChallange(DifficultyScreen::GetDifficulty());
 
 	}
 
@@ -19,15 +20,15 @@ namespace SDLFramework {
 	void Board::CreateBoard(/*Take in tile size*/)
 	{
 		//draw board to be 700 by 700
-		switch (challange)
+		switch (challenge)
 		{
-		case beginner:
+		case 1:
 			boardSize = 700 / 3;
 			break;
-		case intermediate:
+		case 2:
 			boardSize = 700 / 4;
 			break;
-		case hard:
+		case 3:
 			boardSize = 700 / 5;
 			break;
 		}
@@ -47,9 +48,9 @@ namespace SDLFramework {
 
 	}
 
-	void Board::SetChallange(Challange difficulty)
+	void Board::SetChallange(int difficulty)
 	{
-		challange = difficulty;
+		challenge = difficulty;
 	}
 
 
