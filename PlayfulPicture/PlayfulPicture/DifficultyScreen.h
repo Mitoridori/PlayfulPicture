@@ -7,7 +7,6 @@
 #include "Timer.h"
 #include "Texture.h"
 #include "InputManager.h"
-#include "Board.h"
 #include "Buttons.h"
 
 using namespace SDLFramework;

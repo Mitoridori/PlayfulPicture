@@ -10,7 +10,6 @@ DifficultyScreen::DifficultyScreen()
 {
 	timer = Timer::Instance();
 	input = InputManager::Instance();
-
 	selectedDifficulty = none;
 
 	easyButton = new Buttons();

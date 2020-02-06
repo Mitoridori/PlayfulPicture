@@ -7,7 +7,6 @@ namespace SDLFramework {
 	Board::Board()
 	{
 		graphics = Graphics::Instance();
-		//SetChallange(DifficultyScreen::GetDifficulty());
 
 	}
 
@@ -19,6 +18,7 @@ namespace SDLFramework {
 
 	void Board::CreateBoard(/*Take in tile size*/)
 	{
+		//SetChallange(DifficultyScreen::GetDifficulty());
 		//draw board to be 700 by 700
 		switch (challenge)
 		{
