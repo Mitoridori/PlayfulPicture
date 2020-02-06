@@ -13,7 +13,7 @@ namespace SDLFramework
 		mLogo->SetParent(this);
 		mLogo->SetScale(Vector2(2, 2));
 
-		mAnimatedLogo = new AnimatedTexture("PlayfulPictures logo.png", 0, 0, 450, 65, 3, 0.9f, AnimatedTexture::Horizontal);
+		mAnimatedLogo = new AnimatedTexture("PlayfulPictures logo.png", 0, 0, 450, 65, 3, 0.9f, AnimatedTexture::Vertical);
 		mAnimatedLogo->SetParent(this);
 
 		mLogo->SetPosition(Graphics::SCREEN_WIDTH * 0.50f, Graphics::SCREEN_HEIGHT * 0.40f);

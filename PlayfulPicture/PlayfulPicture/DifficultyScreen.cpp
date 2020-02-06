@@ -56,7 +56,6 @@ void DifficultyScreen::Update()
 	if (input->MouseButtonPressed(input->Left)) {
 		std::cout << "left pressed\n";
 		if (ContainsPoint(easyButton, input->MousePosition().x, input->MousePosition().y)) {
-			easyButton->Active(false);
 			std::cout << "clicked easy button\n";
 		}
 		else if (ContainsPoint(mediumButton, input->MousePosition().x, input->MousePosition().y)) {
@@ -66,10 +65,6 @@ void DifficultyScreen::Update()
 			std::cout << "clicked hard button\n";
 		}
 	}
-}
-
-void DifficultyScreen::SetGameMode()
-{
 }
 
 bool DifficultyScreen::ContainsPoint(Texture* texture, int x, int y)

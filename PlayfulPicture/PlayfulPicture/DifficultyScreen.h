@@ -7,6 +7,7 @@
 #include "Timer.h"
 #include "Texture.h"
 #include "InputManager.h"
+#include "Board.h"
 
 using namespace SDLFramework;
 class DifficultyScreen : public GameEntity {
@@ -29,8 +30,6 @@ public:
 	~DifficultyScreen();
 	void Render() override;
 	void Update() override;
-
-	void SetGameMode();
 
 	bool ContainsPoint(Texture* texture, int x, int y);
 };
