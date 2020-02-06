@@ -18,6 +18,7 @@ namespace SDLFramework {
 		timer = Timer::Instance();
 		screenManager = ScreenManager::Instance();
 		graphics = Graphics::Instance();
+		inputManager = InputManager::Instance();
 	}
 
 	//Function: ~GameManager
@@ -34,6 +35,9 @@ namespace SDLFramework {
 
 		Graphics::Release();
 		graphics = nullptr;
+
+		InputManager::Release();
+		inputManager = nullptr;
 
 		SDL_Quit();
 	}
@@ -91,7 +95,10 @@ namespace SDLFramework {
 	//RETURNS: None
 	void GameManager::Update()
 	{
+		inputManager->Update();
 		screenManager->Update();
+
+		IsClicked();
 	}
 
 	//Function: LateUpdate
@@ -100,6 +107,7 @@ namespace SDLFramework {
 	//RETURNS: None
 	void GameManager::LateUpdate()
 	{
+		inputManager->UpdatePrevInput();
 	}
 
 	//Function: RenderObjects
@@ -113,6 +121,14 @@ namespace SDLFramework {
 		
 		graphics->Render();
 
+	}
+
+	bool GameManager::IsClicked()
+	{
+		if (inputManager->MouseButtonPressed(InputManager::Left)) {
+			return true;
+		}
+		return false;
 	}
 
 }

@@ -9,8 +9,6 @@
 #include "InputManager.h"
 
 using namespace SDLFramework;
-
-
 class DifficultyScreen : public GameEntity {
 
 private:
@@ -33,4 +31,5 @@ public:
 	void Update() override;
 
 	void SetGameMode();
+	void SetTextureBounds(Texture* texture, int x, int y, int w, int h);
 };

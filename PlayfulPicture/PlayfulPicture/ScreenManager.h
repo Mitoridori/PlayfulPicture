@@ -6,7 +6,6 @@
 
 #include "TitleScreen.h"
 #include "DifficultyScreen.h"
-#include "InputManager.h"
 
 using namespace SDLFramework;
 
@@ -15,7 +14,7 @@ class ScreenManager {
 private:
 	static ScreenManager* instance;
 
-	enum Screens { start, difficulty, play, congratulations };
+	enum Screens { start, mainScreen, musicScreen, difficulty, play, congratulations };
 	Screens currentScreen;
 	InputManager* input;
 	TitleScreen* mTitleScreen;

@@ -17,6 +17,8 @@ namespace SDLFramework {
 
 		Timer* timer;
 		ScreenManager* screenManager;
+		InputManager* inputManager;
+
 		Graphics* graphics;
 
 		bool quit;
@@ -35,6 +37,7 @@ namespace SDLFramework {
 		void Update();
 		void LateUpdate();
 		void RenderObjects();
+		bool IsClicked();
 
 
 	};

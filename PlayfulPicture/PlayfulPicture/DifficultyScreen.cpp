@@ -53,8 +53,24 @@ void DifficultyScreen::Render()
 
 void DifficultyScreen::Update()
 {
+	if (input->MouseButtonPressed(input->Left)) {
+		std::cout << "left pressed\n";
+		if ()) {
+			printf("position works");
+		}
+	}
 }
 
 void DifficultyScreen::SetGameMode()
 {
+}
+
+void DifficultyScreen::SetTextureBounds(Texture* texture, int x, int y, int w, int h)
+{
+	if (texture) {
+		x = texture->Position().x;
+		y = texture->Position().y;
+		w = texture->GetWidth();
+		h = texture->GetHeight();
+	}
 }

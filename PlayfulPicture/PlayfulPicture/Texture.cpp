@@ -96,6 +96,16 @@ namespace SDLFramework {
 		return scaledDimensions;
 	}
 
+	int Texture::GetWidth()
+	{
+		return width;
+	}
+
+	int Texture::GetHeight()
+	{
+		return height;
+	}
+
 	void Texture::Render() {
 		Vector2 pos = Position(World);
 		Vector2 scale = Scale(World);

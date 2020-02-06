@@ -30,6 +30,9 @@ namespace SDLFramework {
 
 		Vector2 ScaledDimensions();
 
+		int GetWidth();
+		int GetHeight();
+
 		void Render() override;
 	};
 }

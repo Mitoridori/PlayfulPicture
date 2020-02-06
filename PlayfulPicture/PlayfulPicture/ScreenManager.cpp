@@ -17,7 +17,7 @@ ScreenManager::ScreenManager()
 	mTitleScreen = new TitleScreen();
 	selectScreen = new DifficultyScreen();
 
-	currentScreen = start;
+	currentScreen = difficulty;
 }
 
 //Function:~ScreenManager
@@ -70,6 +70,10 @@ void ScreenManager::Update()
 	case start:
 		mTitleScreen->Update();
 		break;
+	case mainScreen:
+		break;
+	case musicScreen:
+		break;
 	case difficulty:
 		selectScreen->Update();
 		break;
@@ -94,6 +98,10 @@ void ScreenManager::Render()
 	switch (currentScreen) {
 	case start:
 		mTitleScreen->Render();
+		break;
+	case mainScreen:
+		break;
+	case musicScreen:
 		break;
 	case difficulty:
 		selectScreen->Render();
