@@ -76,17 +76,21 @@ void MusicScreen::Update()
 		if (button->ContainsPoint(music1ButtonTexture, mInput->MousePosition().x, mInput->MousePosition().y)) 
 		{
 			mAudio->PlaySFX("Music/Intoleranzen.mp3", 0, 1);
+			std::cout << "1\n";
 		}
 		else if (button->ContainsPoint(music2ButtonTexture, mInput->MousePosition().x, mInput->MousePosition().y)) 
 		{
 			mAudio->PlaySFX("Music/reCreation.mp3", 0, 1);
+			std::cout << "2\n";
 		}
 		else if (button->ContainsPoint(music3ButtonTexture, mInput->MousePosition().x, mInput->MousePosition().y)) 
 		{
 			mAudio->PlaySFX("Music/The_Mellotron.mp3", 0, 1);
+			std::cout << "3\n";
 		}
 		else if (button->ContainsPoint(backButtonTexture, mInput->MousePosition().x, mInput->MousePosition().y))
 		{
+			std::cout << "4\n";
 			//send back to main screen
 		}
 		else 
