@@ -2,6 +2,7 @@
 #define __TITLESCREEN_H
 #include "AnimatedTexture.h"
 #include "InputManager.h"
+#include "AudioManager.h"
 
 namespace SDLFramework
 {
@@ -12,6 +13,7 @@ namespace SDLFramework
 		//timer and input
 		Timer* mTimer;
 		InputManager* mInput;
+		AudioManager* audioManager;
 
 		//logo
 		Texture* mLogo;

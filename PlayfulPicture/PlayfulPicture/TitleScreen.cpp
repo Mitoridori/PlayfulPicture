@@ -7,6 +7,7 @@ namespace SDLFramework
 		//timer and input
 		mTimer = Timer::Instance();
 		mInput = InputManager::Instance();
+		audioManager = AudioManager::Instance();
 
 		// logo entities
 		mLogo = new Texture("PlayfulPictures logo.png", 0, 0, 440, 150);
@@ -42,6 +43,7 @@ namespace SDLFramework
 		mAnimationTotalTime = 5.0f;
 		mAnimationTimer = 0.0f;
 		mAnimationDone = false;
+		audioManager->PlayMusic("Music/Intoleranzen.mp3", -1);
 
 		ResetAnimation();
 	}

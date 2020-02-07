@@ -23,15 +23,18 @@ DifficultyScreen::DifficultyScreen()
 	easyButtonTexture = new Texture("3x3.png", 0, 0, 238, 200);
 	mediumButtonTexture = new Texture("4x4.png", 0, 0, 238, 200);
 	hardButtonTexture = new Texture("5x5.png", 0, 0, 238, 200);
+	backgroundImage = new Texture("Background.jpg", 0, 0, 1760, 1200);
 
 	iconHolder->SetParent(this);
 	easyButtonTexture->SetParent(iconHolder);
 	mediumButtonTexture->SetParent(iconHolder);
 	hardButtonTexture->SetParent(iconHolder);
+	backgroundImage->SetParent(iconHolder);
 
 	easyButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.8f, -Graphics::SCREEN_HEIGHT * 0.75f);
 	mediumButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.8f, -Graphics::SCREEN_HEIGHT * 0.50f);
 	hardButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.8f, -Graphics::SCREEN_HEIGHT * 0.25f);
+	backgroundImage->SetPosition(-Graphics::SCREEN_WIDTH * 0.5f, -Graphics::SCREEN_HEIGHT * 0.5f);
 }
 
 DifficultyScreen::~DifficultyScreen()
@@ -52,6 +55,8 @@ DifficultyScreen::~DifficultyScreen()
 	mediumButtonTexture = nullptr;
 	delete hardButtonTexture;
 	hardButtonTexture = nullptr;
+	delete backgroundImage;
+	backgroundImage = nullptr;
 
 	delete button;
 	button = nullptr;
@@ -59,6 +64,7 @@ DifficultyScreen::~DifficultyScreen()
 
 void DifficultyScreen::Render()
 {
+	backgroundImage->Render();
 	screenLabel->Render();
 	easyButtonTexture->Render();
 	mediumButtonTexture->Render();
