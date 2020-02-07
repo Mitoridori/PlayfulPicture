@@ -31,7 +31,7 @@ namespace SDLFramework
 		mPushAnimated->SetParent(mPushStart);
 
 		//background 
-		mBackground = new Texture("background2.png", 0, 0, 1100, 900);
+		mBackground = new Texture("Background.png", 0, 0, 1100, 900);
 		mBackground->SetParent(this);
 		mBackground->SetPosition(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 		//mBackground->SetScale(Vector2(2.9648f, 2.9648f));
