@@ -38,14 +38,14 @@ namespace SDLFramework
 		//mBackground->SetScale(Vector2(2.9648f, 2.9648f));
 
 		// screen animation variables
-		mAnimationStartPos = Vector2(0.0f, Graphics::SCREEN_HEIGHT);
+		/*mAnimationStartPos = Vector2(0.0f, Graphics::SCREEN_HEIGHT);
 		mAnimationEndPos = Vec2_Zero;
 		mAnimationTotalTime = 5.0f;
 		mAnimationTimer = 0.0f;
-		mAnimationDone = false;
+		mAnimationDone = false;*/
 		audioManager->PlayMusic("Music/Intoleranzen.mp3", -1);
 
-		ResetAnimation();
+		//ResetAnimation();*/
 	}
 
 	TitleScreen::~TitleScreen()

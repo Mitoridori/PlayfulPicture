@@ -9,9 +9,9 @@ MenuScreen::MenuScreen()
 	QuitGameEntity = new GameEntity(60.0f, 20.0f);
 
 	//Textures inside the Game Entities
-	StartTexture = new Texture("Start Game", "emulogic.ttf", 32, { 230, 230, 230 });
-	MusicTexture = new Texture("Music", "emulogic.ttf", 32, { 230, 230, 230 });
-	QuitTexture = new Texture("Quit", "emulogic.ttf", 32, { 230, 230, 230 });
+	StartTexture = new Texture("Buttons.png", 860, 0, 172, 85);
+	MusicTexture = new Texture("Buttons.png", 1032, 0, 172, 85);
+	QuitTexture = new Texture("Buttons.png", 1204, 0, 172, 85);
 
 	//Place Entities
 	SelectOptions->SetParent(this);
