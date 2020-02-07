@@ -11,6 +11,8 @@ using namespace SDLFramework;
 class MusicScreen {
 
 private:
+	static MusicScreen* sInstance;
+
 	Timer* mTimer;
 	InputManager* mInput;
 	AudioManager* mAudio;
@@ -26,6 +28,8 @@ private:
 public:
 	MusicScreen();
 	~MusicScreen();
+
+	static MusicScreen* Instance();
 
 	void Render();
 	void Update();

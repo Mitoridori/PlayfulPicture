@@ -80,7 +80,7 @@ void ScreenManager::Update()
 	case mainScreen:
 		break;
 	case musicScreen:
-		//mMusicScreen->Update();
+		mMusicScreen->Update();
 		break;
 	case difficulty:
 		selectScreen->Update();
@@ -119,7 +119,7 @@ void ScreenManager::Render()
 	case mainScreen:
 		break;
 	case musicScreen:
-		//mMusicScreen->Render();
+		mMusicScreen->Render();
 		break;
 	case difficulty:
 		selectScreen->Render();
