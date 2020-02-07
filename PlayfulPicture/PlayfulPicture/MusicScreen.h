@@ -35,7 +35,7 @@ public:
 
 	static MusicScreen* Instance();
 
-	bool exit = false;
+	bool back = false;
 
 	void Render();
 	void Update();
