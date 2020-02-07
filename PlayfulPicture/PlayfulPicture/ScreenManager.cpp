@@ -41,6 +41,9 @@ ScreenManager::~ScreenManager()
 
 	delete pictureSelectScreen;
 	pictureSelectScreen = nullptr;
+
+	delete mMusicScreen;
+	mMusicScreen = nullptr;
 }
 
 //Function: Instance
