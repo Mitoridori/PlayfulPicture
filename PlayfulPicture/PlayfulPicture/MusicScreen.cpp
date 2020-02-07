@@ -11,10 +11,10 @@ MusicScreen::MusicScreen()
 	button = new Buttons();
 
 	iconHolder = new GameEntity(Graphics::SCREEN_WIDTH, Graphics::SCREEN_HEIGHT);
-	music1ButtonTexture = new Texture("Buttons.jpg", 0, 0, 238, 200);
-	music2ButtonTexture = new Texture("Buttons.jpg", 0, 0, 238, 200);
-	music3ButtonTexture = new Texture("Buttons.jpg", 0, 0, 238, 200);
-	backButtonTexture = new Texture("Buttons.jpg", 0, 0, 238, 200);
+	music1ButtonTexture = new Texture("Buttons.png", 344, 0, 172, 85);
+	music2ButtonTexture = new Texture("Buttons.png", 516, 0, 172, 85);
+	music3ButtonTexture = new Texture("Buttons.png", 688, 0, 172, 85);
+	backButtonTexture = new Texture("Buttons.png", 172, 0, 172, 85);
 
 	//iconHolder->SetParent(this);
 	music1ButtonTexture->SetParent(iconHolder);
@@ -22,9 +22,9 @@ MusicScreen::MusicScreen()
 	music3ButtonTexture->SetParent(iconHolder);
 	backButtonTexture->SetParent(iconHolder);
 
-	music1ButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.25f, -Graphics::SCREEN_HEIGHT * 0.5f);
+	music1ButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.75f, -Graphics::SCREEN_HEIGHT * 0.5f);
 	music2ButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.5f, -Graphics::SCREEN_HEIGHT * 0.5f);
-	music3ButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.75f, -Graphics::SCREEN_HEIGHT * 0.5f);
+	music3ButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.25f, -Graphics::SCREEN_HEIGHT * 0.5f);
 	backButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.9f, -Graphics::SCREEN_HEIGHT * 0.1f);
 }
 
