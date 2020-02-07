@@ -91,20 +91,20 @@ void ScreenManager::Update()
 		break;
 	case menuScreen:
 		mMenuScreen->Update();
-		/*if (mMenuScreen->game)
+		if (mMenuScreen->game)
 		{
 			mMenuScreen->game = false;
 			currentScreen = difficulty;
 		}
-		if else (mMenuScreen->music)
+		else if (mMenuScreen->music)
 		{
 			mMenuScreen->music = false;
 			currentScreen = musicScreen;
 		}
-		if else (mMenuScreen->quit)
+		else if(mMenuScreen->quit)
 		{
 			gameQuit = true;
-		}*/
+		}
 		break;
 	case musicScreen:
 		mMusicScreen->Update();

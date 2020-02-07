@@ -4,6 +4,7 @@
 #include "Timer.h"
 #include "Texture.h"
 #include "InputManager.h"
+#include "Buttons.h"
 
 using namespace SDLFramework;
 
@@ -12,6 +13,8 @@ class MenuScreen : public GameEntity{
 private:
 	Timer* timer;
 	InputManager* input;
+
+	Buttons* button;
 
 	GameEntity* SelectOptions;
 	GameEntity* StartGameEntity;
@@ -28,5 +31,9 @@ public:
 	~MenuScreen();
 	void Update() override;
 	void Render() override;
+
+	bool game;
+	bool music;
+	bool quit;
 };
 #endif
