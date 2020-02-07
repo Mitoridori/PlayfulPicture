@@ -9,11 +9,11 @@ namespace SDLFramework
 		mInput = InputManager::Instance();
 
 		// logo entities
-		mLogo = new Texture("PlayfulPictures logo.png", 0, 0, 450, 65);
+		mLogo = new Texture("PlayfulPictures logo.png", 0, 0, 440, 150);
 		mLogo->SetParent(this);
 		mLogo->SetScale(Vector2(10, 10));
 
-		mAnimatedLogo = new AnimatedTexture("PlayfulPictures logo.png", 0, 0, 450, 65, 3, 0.9f, AnimatedTexture::Vertical);
+		mAnimatedLogo = new AnimatedTexture("PlayfulPictures logo.png", 0, 0, 440, 150, 3, 0.9f, AnimatedTexture::Horizontal);
 		mAnimatedLogo->SetParent(this);
 
 		mLogo->SetPosition(Graphics::SCREEN_WIDTH * 0.50f, Graphics::SCREEN_HEIGHT * 0.40f);
