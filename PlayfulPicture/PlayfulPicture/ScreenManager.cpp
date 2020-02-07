@@ -79,6 +79,9 @@ void ScreenManager::Update()
 
 	case start:
 		mTitleScreen->Update();
+		if (input->MouseButtonPressed(input->Left)) {
+			currentScreen = mainScreen;
+		}
 		break;
 	case mainScreen:
 		break;
