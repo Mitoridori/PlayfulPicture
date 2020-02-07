@@ -35,5 +35,34 @@ MenuScreen::MenuScreen()
 
 MenuScreen::~MenuScreen()
 {
+	//Delete the Game Entities
+	delete SelectOptions;
+	SelectOptions = nullptr;
 
+	delete StartGameEntity;
+	StartGameEntity = nullptr;
+	delete MusicGameEntity;
+	MusicGameEntity = nullptr;
+	delete QuitGameEntity;
+	QuitGameEntity = nullptr;
+
+	//Delete the Textures
+	delete StartTexture;
+	StartTexture = nullptr;
+	delete MusicTexture;
+	MusicTexture = nullptr;
+	delete QuitTexture;
+	QuitTexture = nullptr;
+}
+
+void MenuScreen::Update()
+{
+}
+
+void MenuScreen::Render()
+{
+	//Render the Textures
+	StartTexture->Render();
+	MusicTexture->Render();
+	QuitTexture->Render();
 }

@@ -24,4 +24,6 @@ private:
 public:
 	MenuScreen();
 	~MenuScreen();
+	void Update() override;
+	void Render() override;
 };
