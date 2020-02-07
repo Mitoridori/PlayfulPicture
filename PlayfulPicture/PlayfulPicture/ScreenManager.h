@@ -5,6 +5,7 @@
 #pragma once
 
 #include "TitleScreen.h"
+#include "MusicScreen.h"
 #include "DifficultyScreen.h"
 #include "PictureSelectScreen.h"
 #include "Board.h"
@@ -19,6 +20,7 @@ private:
 	static enum Screens { start, mainScreen, musicScreen, difficulty, picture, play, congratulations };
 	static Screens currentScreen;
 	InputManager* input;
+	MusicScreen* mMusicScreen;
 	TitleScreen* mTitleScreen;
 	DifficultyScreen* selectScreen;
 	PictureSelectScreen* pictureSelectScreen;

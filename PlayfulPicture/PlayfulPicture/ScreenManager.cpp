@@ -16,6 +16,7 @@ ScreenManager::ScreenManager()
 {
 	input = InputManager::Instance();
 	mTitleScreen = new TitleScreen();
+	mMusicScreen = new MusicScreen();
 	selectScreen = new DifficultyScreen();
 	pictureSelectScreen = new PictureSelectScreen();
 	test = new Board();
@@ -79,6 +80,7 @@ void ScreenManager::Update()
 	case mainScreen:
 		break;
 	case musicScreen:
+		//mMusicScreen->Update();
 		break;
 	case difficulty:
 		selectScreen->Update();
@@ -117,6 +119,7 @@ void ScreenManager::Render()
 	case mainScreen:
 		break;
 	case musicScreen:
+		//mMusicScreen->Render();
 		break;
 	case difficulty:
 		selectScreen->Render();
