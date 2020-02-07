@@ -31,10 +31,10 @@ namespace SDLFramework
 		mPushAnimated->SetParent(mPushStart);
 
 		//background 
-		mBackground = new Texture("Background.png", 0, 0, 255, 240);
+		mBackground = new Texture("Background.png", 0, 0, 1100, 900);
 		mBackground->SetParent(this);
-		mBackground->SetPosition(Graphics::SCREEN_WIDTH * 0.174f, Graphics::SCREEN_HEIGHT * 0.174f);
-		mBackground->SetScale(Vector2(2.9648f, 2.9648f));
+		mBackground->SetPosition(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
+		//mBackground->SetScale(Vector2(2.9648f, 2.9648f));
 
 		// screen animation variables
 		mAnimationStartPos = Vector2(0.0f, Graphics::SCREEN_HEIGHT);
