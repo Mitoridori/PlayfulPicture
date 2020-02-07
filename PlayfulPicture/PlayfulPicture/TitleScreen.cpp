@@ -9,16 +9,16 @@ namespace SDLFramework
 		mInput = InputManager::Instance();
 
 		// logo entities
-		mLogo = new Texture("PlayfulPictures logo.png", 0, 0, 450, 65);
+		mLogo = new Texture("PlayfulPictures logo.png", 0.5, 0.5, 800, 65);
 		mLogo->SetParent(this);
-		mLogo->SetScale(Vector2(10, 10));
+		//mLogo->SetScale(Vector2(2, 2));
 
-		mAnimatedLogo = new AnimatedTexture("PlayfulPictures logo.png", 0, 0, 450, 65, 3, 0.9f, AnimatedTexture::Vertical);
+		mAnimatedLogo = new AnimatedTexture("PlayfulPictures logo.png", 0.5, 0.5, 800, 65, 3, 1.0f, AnimatedTexture::Vertical);
 		mAnimatedLogo->SetParent(this);
 
 		mLogo->SetPosition(Graphics::SCREEN_WIDTH * 0.50f, Graphics::SCREEN_HEIGHT * 0.40f);
 		mAnimatedLogo->SetPosition(Graphics::SCREEN_WIDTH * 0.50f, Graphics::SCREEN_HEIGHT * 0.40f);
-		mAnimatedLogo->SetScale(Vector2(10, 10));
+		//mAnimatedLogo->SetScale(Vector2(2, 2));
 
 		//push start
 		mPushStart = new GameEntity(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.55f);
@@ -31,7 +31,7 @@ namespace SDLFramework
 		mPushAnimated->SetParent(mPushStart);
 
 		//background 
-		mBackground = new Texture("Background.png", 0, 0, 1100, 900);
+		mBackground = new Texture("background2.png", 0, 0, 1100, 900);
 		mBackground->SetParent(this);
 		mBackground->SetPosition(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 		//mBackground->SetScale(Vector2(2.9648f, 2.9648f));
