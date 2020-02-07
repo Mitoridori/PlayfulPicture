@@ -1,4 +1,6 @@
 #pragma once
+#ifndef __MENUSCREEN_H
+#define __MENUSCREEN_H
 #include "Timer.h"
 #include "Texture.h"
 #include "InputManager.h"
@@ -27,3 +29,4 @@ public:
 	void Update() override;
 	void Render() override;
 };
+#endif
