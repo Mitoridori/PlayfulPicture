@@ -10,6 +10,8 @@ namespace SDLFramework {
 
 		Graphics* graphics;
 
+
+
 		/*enum Challange {beginner, intermediate, hard};
 		Challange challange;*/
 		int challenge;
@@ -18,6 +20,13 @@ namespace SDLFramework {
 		float tileWidth;
 		float tileHeight;
 
+		int sliceX;
+		int sliceY;
+		int pieceAmount;
+		int column;
+		int row;
+
+		//Texture* pieceTexture[pieceAmount];
 
 	public:
 		Board();

@@ -24,12 +24,18 @@ namespace SDLFramework {
 		{
 		case 1:
 			boardSize = 700 / 3;
+			pieceAmount = 9;
+			row = 3;
 			break;
 		case 2:
 			boardSize = 700 / 4;
+			pieceAmount = 16;
+			row = 4;
 			break;
 		case 3:
 			boardSize = 700 / 5;
+			pieceAmount = 25;
+			row = 5;
 			break;
 		}
 
@@ -43,7 +49,18 @@ namespace SDLFramework {
 		SDL_RenderDrawRect(graphics->GetRenderer(), &outlineRect);
 
 		//Create a tiled grid
-
+		/*for (int i = 0; i < pieceAmount; i++)
+		{
+			PieceTexture[i] = new Texture(texture, sliceX, sliceY, (sliceX + boardSize) , boardSize);
+			sliceX += boardSize;
+			column += 1;
+			if (column == row)
+			{
+				sliceY += boardSize;
+				sliceX = 0;
+				column = 0;
+			}
+		}*/
 
 
 	}
