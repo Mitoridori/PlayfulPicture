@@ -80,7 +80,7 @@ void MusicScreen::Update()
 
 		if (button->ContainsPoint(music1ButtonTexture, mInput->MousePosition().x, mInput->MousePosition().y))
 		{
-			mAudio->PlaySFX("Music/Intoleranzen.mp3", 0, 1);
+			mAudio->PlayMusic("Music/Intoleranzen.mp3", -1);
 
 			/*ToggleButton(music1ButtonTexture, "Buttons.png", 344, 85, 172, 85, 0.75f, 0.5f);
 			ToggleButton(music2ButtonTexture, "Buttons.png", 516, 0, 172, 85, 0.5f, 0.5f);
@@ -100,7 +100,7 @@ void MusicScreen::Update()
 		}
 		else if (button->ContainsPoint(music2ButtonTexture, mInput->MousePosition().x, mInput->MousePosition().y))
 		{
-			mAudio->PlaySFX("Music/reCreation.mp3", 0, 1);
+			mAudio->PlayMusic("Music/reCreation.mp3",-1);
 
 		/*	ToggleButton(music1ButtonTexture, "Buttons.png", 344, 0, 172, 85, 0.75f, 0.5f);
 			ToggleButton(music2ButtonTexture, "Buttons.png", 516, 85, 172, 85, 0.5f, 0.5f);
@@ -121,7 +121,7 @@ void MusicScreen::Update()
 		}
 		else if (button->ContainsPoint(music3ButtonTexture, mInput->MousePosition().x, mInput->MousePosition().y))
 		{
-			mAudio->PlaySFX("Music/The_Mellotron.mp3", 0, 1);
+			mAudio->PlayMusic("Music/The_Mellotron.mp3", -1);
 
 			music1ButtonTexture = new Texture("Buttons.png", 344, 0, 172, 85);
 			music2ButtonTexture = new Texture("Buttons.png", 516, 0, 172, 85);
@@ -139,6 +139,7 @@ void MusicScreen::Update()
 		{
 			std::cout << "4\n";
 			//send back to main screen
+			exit = true;
 		}
 		else
 		{

@@ -35,6 +35,8 @@ public:
 
 	static MusicScreen* Instance();
 
+	bool exit = false;
+
 	void Render();
 	void Update();
 };

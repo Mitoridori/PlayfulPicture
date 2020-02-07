@@ -15,7 +15,7 @@ ScreenManager::Screens ScreenManager::currentScreen = start;
 ScreenManager::ScreenManager()
 {
 	input = InputManager::Instance();
-	mMainScreen = new MenuScreen();
+	mMenuScreen = new MenuScreen();
 	mTitleScreen = new TitleScreen();
 	mMusicScreen = new MusicScreen();
 	selectScreen = new DifficultyScreen();
@@ -46,8 +46,8 @@ ScreenManager::~ScreenManager()
 	delete mMusicScreen;
 	mMusicScreen = nullptr;
 
-	delete mMainScreen;
-	mMainScreen = nullptr;
+	delete mMenuScreen;
+	mMenuScreen = nullptr;
 }
 
 //Function: Instance
@@ -84,14 +84,22 @@ void ScreenManager::Update()
 	case start:
 		mTitleScreen->Update();
 		if (input->MouseButtonPressed(input->Left)) {
-			currentScreen = mainScreen;
+			currentScreen = menuScreen;
 		}
 		break;
-	case mainScreen:
-		mMainScreen->Update();
+	case menuScreen:
+		mMenuScreen->Update();
+		if (input->MouseButtonPressed(input->Left)) {
+			currentScreen = musicScreen;
+		}
 		break;
 	case musicScreen:
 		mMusicScreen->Update();
+		if (mMusicScreen->exit) 
+		{
+			mMusicScreen->exit = false;
+			currentScreen = menuScreen;
+		}
 		break;
 	case difficulty:
 		selectScreen->Update();
@@ -127,8 +135,8 @@ void ScreenManager::Render()
 	case start:
 		mTitleScreen->Render();
 		break;
-	case mainScreen:
-		mMainScreen->Render();
+	case menuScreen:
+		mMenuScreen->Render();
 		break;
 	case musicScreen:
 		mMusicScreen->Render();

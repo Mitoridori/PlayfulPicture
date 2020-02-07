@@ -18,10 +18,10 @@ class ScreenManager {
 private:
 	static ScreenManager* instance;
 
-	static enum Screens { start, mainScreen, musicScreen, difficulty, picture, play, congratulations };
+	static enum Screens { start, menuScreen, musicScreen, difficulty, picture, play, congratulations };
 	static Screens currentScreen;
 	InputManager* input;
-	MenuScreen* mMainScreen;
+	MenuScreen* mMenuScreen;
 	MusicScreen* mMusicScreen;
 	TitleScreen* mTitleScreen;
 	DifficultyScreen* selectScreen;
