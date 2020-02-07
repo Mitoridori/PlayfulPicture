@@ -36,6 +36,8 @@ public:
 	void Update();
 	void Render();
 
+	bool gameQuit = false;
+
 private:
 	ScreenManager();
 	~ScreenManager();

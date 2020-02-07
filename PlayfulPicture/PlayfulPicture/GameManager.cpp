@@ -70,21 +70,32 @@ namespace SDLFramework {
 	//RETURNS: None
 	void GameManager::Run()
 	{
-		while (!quit) {
-			timer->Update();
-			while (SDL_PollEvent(&events)) {
-				switch (events.type) {
-				case SDL_QUIT:
-					quit = true;
-					break;
+		while (!quit)
+		{
+			if (!screenManager->gameQuit)
+			{
+				timer->Update();
+				while (SDL_PollEvent(&events))
+				{
+					switch (events.type)
+					{
+					case SDL_QUIT:
+						quit = true;
+						break;
+					}
+				}
+
+				if (timer->GetDeltaTime() >= 1.0f / FRAME_RATE)
+				{
+					Update();
+					LateUpdate();
+					RenderObjects();
+					timer->ResetTimer();
 				}
 			}
-
-			if (timer->GetDeltaTime() >= 1.0f / FRAME_RATE) {
-				Update();
-				LateUpdate();
-				RenderObjects();
-				timer->ResetTimer();
+			else
+			{
+				quit = true;
 			}
 		}
 	}

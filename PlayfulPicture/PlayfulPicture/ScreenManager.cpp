@@ -79,47 +79,67 @@ void ScreenManager::Release()
 void ScreenManager::Update()
 {
 
-	switch (currentScreen) {
+	switch (currentScreen) 
+	{
 
 	case start:
 		mTitleScreen->Update();
-		if (input->MouseButtonPressed(input->Left)) {
+		if (input->MouseButtonPressed(input->Left)) 
+		{
 			currentScreen = menuScreen;
 		}
 		break;
 	case menuScreen:
 		mMenuScreen->Update();
-		if (input->MouseButtonPressed(input->Left)) {
+		/*if (mMenuScreen->game)
+		{
+			mMenuScreen->game = false;
+			currentScreen = difficulty;
+		}
+		if else (mMenuScreen->music)
+		{
+			mMenuScreen->music = false;
 			currentScreen = musicScreen;
 		}
+		if else (mMenuScreen->quit)
+		{
+			gameQuit = true;
+		}*/
 		break;
 	case musicScreen:
 		mMusicScreen->Update();
-		if (mMusicScreen->exit) 
+		if (mMusicScreen->back) 
 		{
-			mMusicScreen->exit = false;
+			mMusicScreen->back = false;
 			currentScreen = menuScreen;
 		}
 		break;
 	case difficulty:
 		selectScreen->Update();
-		if (selectScreen->GetDifficulty() != 0) {
+		if (selectScreen->GetDifficulty() != 0) 
+		{
 			currentScreen = picture;
 		}
 		break;
 	case picture:
 		pictureSelectScreen->Update();
-		if (pictureSelectScreen->GetSelectedPicture() != 0) {
+		if (pictureSelectScreen->GetSelectedPicture() != 0) 
+		{
 			currentScreen = play;
 		}
 		break;
 	case play:
 		/*playScreen->Update();
-		if (input->GetKeyPressed(SDL_SCANCODE_ESCAPE)) {
-			currentScreen = start;
+		if (input->GetKeyPressed(SDL_SCANCODE_ESCAPE)) 
+		{
+			currentScreen = menuScreen;
 		}*/
 		break;
 	case congratulations:
+		if (input->MouseButtonPressed(input->Left))
+		{
+			currentScreen = menuScreen;
+		}
 		break;
 	}
 }

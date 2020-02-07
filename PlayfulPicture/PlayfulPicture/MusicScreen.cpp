@@ -40,6 +40,9 @@ MusicScreen::~MusicScreen()
 	delete iconHolder;
 	iconHolder = nullptr;
 
+	delete backgroundTexture;
+	backgroundTexture = nullptr;
+
 	delete music1ButtonTexture;
 	music1ButtonTexture = nullptr;
 
@@ -139,7 +142,7 @@ void MusicScreen::Update()
 		{
 			std::cout << "4\n";
 			//send back to main screen
-			exit = true;
+			back = true;
 		}
 		else
 		{
