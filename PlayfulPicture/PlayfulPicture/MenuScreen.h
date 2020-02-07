@@ -5,11 +5,21 @@
 
 using namespace SDLFramework;
 
-class MenuScreen{
+class MenuScreen : public GameEntity{
 
 private:
 	Timer* timer;
 	InputManager* input;
+
+	GameEntity* SelectOptions;
+	GameEntity* StartGameEntity;
+	GameEntity* MusicGameEntity;
+	GameEntity* QuitGameEntity;
+
+	Texture* StartTexture;
+	Texture* MusicTexture;
+	Texture* QuitTexture;
+
 
 public:
 	MenuScreen();

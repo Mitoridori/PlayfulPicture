@@ -23,7 +23,7 @@ namespace SDLFramework
 		//push start
 		mPushStart = new GameEntity(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.55f);
 		mPushLogo = new Texture("PUSH START","emulogic.ttf", 32, { 230, 230, 230 });
-		mPushAnimated = new Texture("Background.png", 300, 100, 320, 65);
+		mPushAnimated = new Texture("Background.png", 300, 100, 320, /*65*/10000000);
 		mPushStart->SetParent(this);
 		mPushLogo->SetPosition(Graphics::SCREEN_WIDTH * 0.36f, Graphics::SCREEN_HEIGHT * 0.7f);
 		mPushAnimated->SetPosition(Graphics::SCREEN_WIDTH * 0.36f, Graphics::SCREEN_HEIGHT * 0.7f);
