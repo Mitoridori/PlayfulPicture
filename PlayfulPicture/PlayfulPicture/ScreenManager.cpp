@@ -6,6 +6,7 @@
 
 
 ScreenManager* ScreenManager::instance = nullptr;
+ScreenManager::Screens ScreenManager::currentScreen = start;
 
 //Function: ScreenManager
 //DESCRIPTION: constructor for the screen manager
@@ -16,6 +17,7 @@ ScreenManager::ScreenManager()
 	input = InputManager::Instance();
 	mTitleScreen = new TitleScreen();
 	selectScreen = new DifficultyScreen();
+	pictureSelectScreen = new PictureSelectScreen();
 	test = new Board();
 
 	currentScreen = start;
@@ -35,6 +37,9 @@ ScreenManager::~ScreenManager()
 
 	delete selectScreen;
 	selectScreen = nullptr;
+
+	delete pictureSelectScreen;
+	pictureSelectScreen = nullptr;
 }
 
 //Function: Instance
@@ -77,8 +82,15 @@ void ScreenManager::Update()
 		break;
 	case difficulty:
 		selectScreen->Update();
+		if (selectScreen->GetDifficulty() != 0) {
+			currentScreen = picture;
+		}
 		break;
 	case picture:
+		pictureSelectScreen->Update();
+		if (pictureSelectScreen->GetSelectedPicture() != 0) {
+			currentScreen = play;
+		}
 		break;
 	case play:
 		/*playScreen->Update();
@@ -108,6 +120,9 @@ void ScreenManager::Render()
 		break;
 	case difficulty:
 		selectScreen->Render();
+		break;
+	case picture:
+		pictureSelectScreen->Render();
 		break;
 	case play:
 		//playScreen->Render();

@@ -6,6 +6,7 @@
 
 #include "TitleScreen.h"
 #include "DifficultyScreen.h"
+#include "PictureSelectScreen.h"
 #include "Board.h"
 
 using namespace SDLFramework;
@@ -15,11 +16,12 @@ class ScreenManager {
 private:
 	static ScreenManager* instance;
 
-	enum Screens { start, mainScreen, musicScreen, difficulty, picture, play, congratulations };
-	Screens currentScreen;
+	static enum Screens { start, mainScreen, musicScreen, difficulty, picture, play, congratulations };
+	static Screens currentScreen;
 	InputManager* input;
 	TitleScreen* mTitleScreen;
 	DifficultyScreen* selectScreen;
+	PictureSelectScreen* pictureSelectScreen;
 	Board* test;
 
 

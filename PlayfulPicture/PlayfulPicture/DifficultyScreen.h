@@ -28,9 +28,7 @@ private:
 	Texture* mediumButtonTexture;
 	Texture* hardButtonTexture;
 
-	Buttons* easyButton;
-	Buttons* mediumButton;
-	Buttons* hardButton;
+	Buttons* button;
 
 public:
 	DifficultyScreen();

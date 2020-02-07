@@ -10,11 +10,8 @@ DifficultyScreen::DifficultyScreen()
 {
 	timer = Timer::Instance();
 	input = InputManager::Instance();
-	selectedDifficulty = none;
 
-	easyButton = new Buttons();
-	mediumButton = new Buttons();
-	hardButton = new Buttons();
+	button = new Buttons();
 
 	topBar = new GameEntity(Graphics::SCREEN_WIDTH, 50.0f);
 	screenLabel = new Texture("Difficulty Selection", "emulogic.ttf", 32, {255, 0, 111});
@@ -39,6 +36,13 @@ DifficultyScreen::DifficultyScreen()
 
 DifficultyScreen::~DifficultyScreen()
 {
+
+	delete topBar;
+	topBar = nullptr;
+
+	delete screenLabel;
+	screenLabel = nullptr;
+
 	delete iconHolder;
 	iconHolder = nullptr;
 
@@ -48,6 +52,9 @@ DifficultyScreen::~DifficultyScreen()
 	mediumButtonTexture = nullptr;
 	delete hardButtonTexture;
 	hardButtonTexture = nullptr;
+
+	delete button;
+	button = nullptr;
 }
 
 void DifficultyScreen::Render()
@@ -62,17 +69,20 @@ void DifficultyScreen::Update()
 {
 	if (input->MouseButtonPressed(input->Left)) {
 
-		if (easyButton->ContainsPoint(easyButtonTexture, input->MousePosition().x, input->MousePosition().y)) {
+		if (button->ContainsPoint(easyButtonTexture, input->MousePosition().x, input->MousePosition().y)) {
 			selectedDifficulty = easy;
 			std::cout << "clicked easy button\n";
 		}
-		else if (mediumButton->ContainsPoint(mediumButtonTexture, input->MousePosition().x, input->MousePosition().y)) {
+		else if (button->ContainsPoint(mediumButtonTexture, input->MousePosition().x, input->MousePosition().y)) {
 			selectedDifficulty = medium;
 			std::cout << "clicked medium button\n";
 		}
-		else if (hardButton->ContainsPoint(hardButtonTexture, input->MousePosition().x, input->MousePosition().y)) {
+		else if (button->ContainsPoint(hardButtonTexture, input->MousePosition().x, input->MousePosition().y)) {
 			selectedDifficulty = hard;
 			std::cout << "clicked hard button\n";
+		}
+		else {
+			selectedDifficulty = none;
 		}
 	}
 }
