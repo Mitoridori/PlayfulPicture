@@ -23,6 +23,7 @@ PictureSelectScreen::PictureSelectScreen()
 	thumbnail4 = new Texture("pic4.png", 0, 0, 238, 200);
 	thumbnail5 = new Texture("pic5.png", 0, 0, 238, 200);
 	thumbnail6 = new Texture("pic6.png", 0, 0, 238, 200);
+	backgroundImage = new Texture("Background.jpg", 0, 0, 1760, 1200);
 
 	pictureHolder->SetParent(this);
 	thumbnail1->SetParent(pictureHolder);
@@ -31,6 +32,7 @@ PictureSelectScreen::PictureSelectScreen()
 	thumbnail4->SetParent(pictureHolder);
 	thumbnail5->SetParent(pictureHolder);
 	thumbnail6->SetParent(pictureHolder);
+	backgroundImage->SetParent(pictureHolder);
 
 	thumbnail1->SetPosition(-Graphics::SCREEN_WIDTH * 0.8f, -Graphics::SCREEN_HEIGHT * 0.75f);
 	thumbnail2->SetPosition(-Graphics::SCREEN_WIDTH * 0.8f, -Graphics::SCREEN_HEIGHT * 0.50f);
@@ -39,6 +41,8 @@ PictureSelectScreen::PictureSelectScreen()
 	thumbnail4->SetPosition(-Graphics::SCREEN_WIDTH * 0.2f, -Graphics::SCREEN_HEIGHT * 0.75f);
 	thumbnail5->SetPosition(-Graphics::SCREEN_WIDTH * 0.2f, -Graphics::SCREEN_HEIGHT * 0.50f);
 	thumbnail6->SetPosition(-Graphics::SCREEN_WIDTH * 0.2f, -Graphics::SCREEN_HEIGHT * 0.25f);
+
+	backgroundImage->SetPosition(-Graphics::SCREEN_WIDTH * 0.5f, -Graphics::SCREEN_HEIGHT * 0.5f);
 }
 
 PictureSelectScreen::~PictureSelectScreen()
@@ -63,6 +67,8 @@ PictureSelectScreen::~PictureSelectScreen()
 	thumbnail5 = nullptr;
 	delete thumbnail6;
 	thumbnail6 = nullptr;
+	delete backgroundImage;
+	backgroundImage = nullptr;
 
 	delete button;
 	button = nullptr;
@@ -70,6 +76,7 @@ PictureSelectScreen::~PictureSelectScreen()
 
 void PictureSelectScreen::Render()
 {
+	backgroundImage->Render();
 	screenLabel->Render();
 	thumbnail1->Render();
 	thumbnail2->Render();

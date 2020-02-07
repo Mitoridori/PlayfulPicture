@@ -22,6 +22,7 @@ namespace SDLFramework {
 	void AudioManager::PlayMusic(std::string filename, int loops) 
 	{
 		Mix_PlayMusic(mAssetManager->GetMusic(filename, false), loops);
+		Mix_VolumeMusic(5);
 		Playing = true;
 	}
 

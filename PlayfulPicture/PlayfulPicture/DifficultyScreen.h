@@ -28,6 +28,8 @@ private:
 	Texture* mediumButtonTexture;
 	Texture* hardButtonTexture;
 
+	Texture* backgroundImage;
+
 	Buttons* button;
 
 public:

@@ -29,6 +29,7 @@ private:
 	Texture* thumbnail4;
 	Texture* thumbnail5;
 	Texture* thumbnail6;
+	Texture* backgroundImage;
 
 public:
 	PictureSelectScreen();

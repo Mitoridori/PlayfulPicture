@@ -59,6 +59,7 @@ MenuScreen::~MenuScreen()
 
 void MenuScreen::Update()
 {
+	
 }
 
 void MenuScreen::Render()
