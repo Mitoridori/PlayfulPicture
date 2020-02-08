@@ -11,14 +11,12 @@ namespace SDLFramework {
 		Graphics* graphics;
 
 
-
 		/*enum Challange {beginner, intermediate, hard};
 		Challange challange;*/
 		int challenge;
 
 		float boardSize;
-		float tileWidth;
-		float tileHeight;
+		float tileSize;
 
 		int sliceX;
 		int sliceY;
@@ -29,14 +27,25 @@ namespace SDLFramework {
 		Texture* boardBackground;
 		GameEntity* boardHolder;
 		//Texture* pieceTexture[pieceAmount];
+		//Texture* tilePiece;
+
+		std::vector<Texture> Tiles;
+		
 
 	public:
 		Board();
 		~Board();
 
+		
+
+
+
 		void Update() override;
 		void Render() override;
 
+		void loadTiles(std::vector<Texture>& Tiles, const int& gridsize);
+
+		void scrambleTiles(/*std::vector<Tile>& t, std::vector<Tile>& tshadow*/);
 
 		void CreateBoard();
 		void SetChallange(int difficulty);
