@@ -39,7 +39,6 @@ namespace SDLFramework {
 		void RenderObjects();
 		bool IsClicked();
 
-
 	};
 
 }

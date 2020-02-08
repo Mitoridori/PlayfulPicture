@@ -108,6 +108,9 @@
     <ClCompile Include="PictureSelectScreen.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
+    <ClCompile Include="InGameUI.cpp">
+      <Filter>Source Files\Game Elements</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -172,6 +175,9 @@
     </ClInclude>
     <ClInclude Include="PictureSelectScreen.h">
       <Filter>Header Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="InGameUI.h">
+      <Filter>Header Files\Game Elements</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

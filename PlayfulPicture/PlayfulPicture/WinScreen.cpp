@@ -13,7 +13,7 @@ WinScreen::WinScreen()
 	screenLabel->SetParent(topBar);
 	screenLabel->SetPosition(-Graphics::SCREEN_WIDTH * 0.5f, 0.0f);
 
-	movesCounter = new Texture("Total Moves: " /*+ static variable from play*/, "emuloagic.ttf", 32, {255, 0, 111});
+	movesCounter = new Texture("Total Moves: " + PlayScreen::GetTotalMoves(), "emulogic.ttf", 32, {255, 0, 111});
 	movesCounter->SetParent(topBar);
 	movesCounter->SetPosition(-Graphics::SCREEN_WIDTH * 0.5f, -Graphics::SCREEN_HEIGHT * 0.75f);
 

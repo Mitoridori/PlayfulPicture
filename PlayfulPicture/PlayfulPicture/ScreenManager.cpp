@@ -20,6 +20,8 @@ ScreenManager::ScreenManager()
 	mMusicScreen = new MusicScreen();
 	selectScreen = new DifficultyScreen();
 	pictureSelectScreen = new PictureSelectScreen();
+	winScreen = new WinScreen();
+	playScreen = new PlayScreen();
 	test = new Board();
 
 	currentScreen = start;
@@ -48,6 +50,12 @@ ScreenManager::~ScreenManager()
 
 	delete mMenuScreen;
 	mMenuScreen = nullptr;
+
+	delete winScreen;
+	winScreen = nullptr;
+
+	delete playScreen;
+	playScreen = nullptr;
 }
 
 //Function: Instance
@@ -129,17 +137,13 @@ void ScreenManager::Update()
 		}
 		break;
 	case play:
-		/*playScreen->Update();
-		if (input->GetKeyPressed(SDL_SCANCODE_ESCAPE)) 
-		{
-			currentScreen = menuScreen;
-		}*/
+		playScreen->Update();
+		if (playScreen->GetPlayerUI()->GetQuit()) {
+			gameQuit = true;
+		}
 		break;
 	case congratulations:
-		if (input->MouseButtonPressed(input->Left))
-		{
-			currentScreen = menuScreen;
-		}
+		winScreen->Update();
 		break;
 	}
 }
@@ -168,9 +172,10 @@ void ScreenManager::Render()
 		pictureSelectScreen->Render();
 		break;
 	case play:
-		//playScreen->Render();
+		playScreen->Render();
 		break;
 	case congratulations:
+		winScreen->Render();
 		break;
 	}
 }

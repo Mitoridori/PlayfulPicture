@@ -9,6 +9,8 @@
 #include "MenuScreen.h"
 #include "DifficultyScreen.h"
 #include "PictureSelectScreen.h"
+#include "WinScreen.h"
+#include "PlayScreen.h"
 #include "Board.h"
 
 using namespace SDLFramework;
@@ -26,6 +28,8 @@ private:
 	TitleScreen* mTitleScreen;
 	DifficultyScreen* selectScreen;
 	PictureSelectScreen* pictureSelectScreen;
+	WinScreen* winScreen;
+	PlayScreen* playScreen;
 	Board* test;
 
 
