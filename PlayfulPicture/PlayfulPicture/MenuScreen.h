@@ -21,10 +21,11 @@ private:
 	GameEntity* MusicGameEntity;
 	GameEntity* QuitGameEntity;
 
+	Texture* backgroundTexture;
+
 	Texture* StartTexture;
 	Texture* MusicTexture;
 	Texture* QuitTexture;
-
 
 public:
 	MenuScreen();
