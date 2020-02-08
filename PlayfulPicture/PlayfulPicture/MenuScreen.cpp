@@ -77,6 +77,14 @@ void MenuScreen::Update()
 		{
 			game = true;
 		}
+		else if (button->ContainsPoint(MusicTexture, input->MousePosition().x, input->MousePosition().y))
+		{
+			music = true;
+		}
+		else if (button->ContainsPoint(QuitTexture, input->MousePosition().x, input->MousePosition().y))
+		{
+			quit = true;
+		}
 	}
 }
 
