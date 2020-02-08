@@ -5,6 +5,7 @@
 #include "Texture.h"
 #include "InputManager.h"
 #include "Buttons.h"
+#include "AnimatedTexture.h"
 
 using namespace SDLFramework;
 
@@ -16,6 +17,7 @@ private:
 
 	Buttons* button;
 
+	GameEntity* GreaterScreen;
 	GameEntity* SelectOptions;
 	GameEntity* StartGameEntity;
 	GameEntity* MusicGameEntity;
@@ -26,6 +28,8 @@ private:
 	Texture* StartTexture;
 	Texture* MusicTexture;
 	Texture* QuitTexture;
+
+	AnimatedTexture* AnimatedHeader;
 
 public:
 	MenuScreen();

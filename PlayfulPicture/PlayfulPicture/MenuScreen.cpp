@@ -10,8 +10,8 @@ MenuScreen::MenuScreen()
 	quit = false;
 
 	//General Game Entity for the Menu and the Entities ontop of it
-
-	SelectOptions = new GameEntity(Graphics::SCREEN_WIDTH, Graphics::SCREEN_HEIGHT);
+	GreaterScreen = new GameEntity(Graphics::SCREEN_WIDTH, Graphics::SCREEN_HEIGHT);
+	SelectOptions = new GameEntity(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
 	StartGameEntity = new GameEntity(60.0f, 20.0f);
 	MusicGameEntity = new GameEntity(60.0f, 20.0f);
 	QuitGameEntity = new GameEntity(60.0f, 20.0f);
@@ -23,29 +23,39 @@ MenuScreen::MenuScreen()
 	MusicTexture = new Texture("Buttons.png", 1032, 0, 172, 85);
 	QuitTexture = new Texture("Buttons.png", 1204, 0, 172, 85);
 
+	//Animated Textures
+	AnimatedHeader = new AnimatedTexture("PlayfulPictures logo.png", 0, 0, 440, 150, 3, 0.9f, AnimatedTexture::Horizontal);
+
+
 	//Place Entities
-	SelectOptions->SetParent(this);
+	GreaterScreen->SetParent(this);
+
+	backgroundTexture->SetParent(GreaterScreen);
+
+	SelectOptions->SetParent(GreaterScreen);
+
+	AnimatedHeader->SetParent(GreaterScreen);
 
 	StartGameEntity->SetParent(SelectOptions);
 	MusicGameEntity->SetParent(SelectOptions);
 	QuitGameEntity->SetParent(SelectOptions);
 
-	backgroundTexture->SetParent(SelectOptions);
-
 	StartTexture->SetParent(StartGameEntity);
 	MusicTexture->SetParent(MusicGameEntity);
 	QuitTexture->SetParent(QuitGameEntity);
 
-	
-
 	//Set Positions
-	SelectOptions->SetPosition(Graphics::SCREEN_WIDTH * 0.5, Graphics::SCREEN_HEIGHT * 0.5);
+	GreaterScreen->SetPosition(Graphics::SCREEN_WIDTH * 0.5f, Graphics::SCREEN_HEIGHT * 0.5f);
+
+	AnimatedHeader->SetPosition(0.0f, -Graphics::SCREEN_HEIGHT * 0.3f);
+	
+	SelectOptions->SetPosition(0.0f, Graphics::SCREEN_HEIGHT * 0.2f);
 
 	backgroundTexture->SetPosition(0.0f, 0.0f);
 
-	StartGameEntity->SetPosition(0.0f, Graphics::SCREEN_HEIGHT * -0.3f);
+	StartGameEntity->SetPosition(0.0f, Graphics::SCREEN_HEIGHT * -0.2f);
 	MusicGameEntity->SetPosition(0.0f, 0.0f);
-	QuitGameEntity->SetPosition(0.0f, Graphics::SCREEN_HEIGHT * 0.3f);
+	QuitGameEntity->SetPosition(0.0f, Graphics::SCREEN_HEIGHT * 0.2f);
 
 }
 
@@ -55,6 +65,8 @@ MenuScreen::~MenuScreen()
 	input = nullptr;
 
 	//Delete the Game Entities
+	delete GreaterScreen;
+	GreaterScreen = nullptr;
 	delete SelectOptions;
 	SelectOptions = nullptr;
 
@@ -76,6 +88,10 @@ MenuScreen::~MenuScreen()
 	delete backgroundTexture;
 	backgroundTexture = nullptr;
 
+	//Delete Animated Texture
+	delete AnimatedHeader;
+	AnimatedHeader = nullptr;
+
 	//Delete Buttons
 	delete button;
 	button = nullptr;
@@ -83,6 +99,10 @@ MenuScreen::~MenuScreen()
 
 void MenuScreen::Update()
 {
+	//Update Header
+	AnimatedHeader->Update();
+
+	//Button Funtionality
 	if (input->MouseButtonPressed(input->Left))
 	{
 		if (button->ContainsPoint(StartTexture, input->MousePosition().x, input->MousePosition().y))
@@ -104,6 +124,8 @@ void MenuScreen::Render()
 {
 	//Render the Textures
 	backgroundTexture->Render();
+
+	AnimatedHeader->Render();
 
 	StartTexture->Render();
 	MusicTexture->Render();
