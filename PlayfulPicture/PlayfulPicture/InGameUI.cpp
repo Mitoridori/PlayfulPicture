@@ -18,7 +18,7 @@ InGameUI::InGameUI()
 
 	timeCounter = new Texture(minutes + ":" + seconds, "emulogic.ttf", 32, {255, 0, 111});
 	movesCounter = new Texture("Total Moves: " + totalMoves, "emulogic.ttf", 28, {255, 0, 111});
-	backButtonTexture = new Texture("Buttons.png", 344, 85, 172, 85);
+	backButtonTexture = new Texture("Buttons.png", 1204, 0, 172, 85);
 
 	topBar->SetParent(this);
 	timeCounter->SetParent(topBar);

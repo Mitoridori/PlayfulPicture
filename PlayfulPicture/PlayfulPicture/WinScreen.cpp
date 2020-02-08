@@ -13,23 +13,23 @@ WinScreen::WinScreen()
 	screenLabel->SetParent(topBar);
 	screenLabel->SetPosition(-Graphics::SCREEN_WIDTH * 0.5f, 0.0f);
 
-	movesCounter = new Texture("Total Moves: " + PlayScreen::GetTotalMoves(), "emulogic.ttf", 32, {255, 0, 111});
-	movesCounter->SetParent(topBar);
-	movesCounter->SetPosition(-Graphics::SCREEN_WIDTH * 0.5f, -Graphics::SCREEN_HEIGHT * 0.75f);
-
 	buttonHolder = new GameEntity(Graphics::SCREEN_WIDTH, Graphics::SCREEN_HEIGHT);
-	//menuButtonTexture = new Texture("Buttons.jpg", xStart, yStart, xEnd, yEnd);
-	//quitButtonTexture = new Texture("Buttons.jpg", xStart, yStart, xEnd, yEnd);
+	menuButtonTexture = new Texture("Buttons.png", 0, 0, 172, 85);
+	quitButtonTexture = new Texture("Buttons.png", 1204, 0, 172, 85);
+
+	movesCounter = new Texture("Total Moves: " + PlayScreen::GetTotalMoves(), "emulogic.ttf", 32, { 255, 0, 111 });
+	movesCounter->SetParent(buttonHolder);
+	movesCounter->SetPosition(-Graphics::SCREEN_WIDTH * 0.7f, -Graphics::SCREEN_HEIGHT * 0.5f);
 
 	backgroundImage = new Texture("Background.jpg", 0, 0, 1760, 1200);
 
 	buttonHolder->SetParent(this);
-	/*menuButtonTexture->SetParent(buttonHolder);
-	quitButtonTexture->SetParent(buttonHolder);*/
+	menuButtonTexture->SetParent(buttonHolder);
+	quitButtonTexture->SetParent(buttonHolder);
 	backgroundImage->SetParent(buttonHolder);
 
-	/*menuButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.2f, -Graphics::SCREEN_HEIGHT * 0.3f);
-	quitButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.8f, -Graphics::SCREEN_HEIGHT * 0.3f);*/
+	menuButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.2f, -Graphics::SCREEN_HEIGHT * 0.3f);
+	quitButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.8f, -Graphics::SCREEN_HEIGHT * 0.3f);
 	backgroundImage->SetPosition(-Graphics::SCREEN_WIDTH * 0.5f, -Graphics::SCREEN_HEIGHT * 0.5f);
 
 }
@@ -66,8 +66,8 @@ void WinScreen::Render()
 	backgroundImage->Render();
 	screenLabel->Render();
 	movesCounter->Render();
-	/*menuButtonTexture->Render();
-	quitButtonTexture->Render();*/
+	menuButtonTexture->Render();
+	quitButtonTexture->Render();
 }
 
 void WinScreen::Update()
