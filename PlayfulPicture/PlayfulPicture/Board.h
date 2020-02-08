@@ -4,7 +4,7 @@
 #include "DifficultyScreen.h"
 
 namespace SDLFramework {
-	class Board {
+	class Board : public GameEntity{
 
 	private:
 
@@ -26,11 +26,17 @@ namespace SDLFramework {
 		int column;
 		int row;
 
+		Texture* boardBackground;
+		GameEntity* boardHolder;
 		//Texture* pieceTexture[pieceAmount];
 
 	public:
 		Board();
 		~Board();
+
+		void Update() override;
+		void Render() override;
+
 
 		void CreateBoard();
 		void SetChallange(int difficulty);

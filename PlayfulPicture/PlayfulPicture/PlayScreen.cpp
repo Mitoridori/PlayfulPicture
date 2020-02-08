@@ -41,6 +41,7 @@ void SDLFramework::PlayScreen::Update()
 void SDLFramework::PlayScreen::Render()
 {
 	playerUI->Render();
+	board->Render();
 }
 
 int SDLFramework::PlayScreen::GetTotalMoves()
