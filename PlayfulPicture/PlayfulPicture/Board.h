@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include "Graphics.h"
 #include "DifficultyScreen.h"
+#include "Tile.h"
 
 namespace SDLFramework {
 	class Board : public GameEntity{
@@ -31,6 +32,13 @@ namespace SDLFramework {
 
 		std::vector<Texture> Tiles;
 		
+		std::vector<SDL_Rect> RTiles;
+
+		std::vector<Tile> tiles;
+		std::vector<Tile> shadowTiles;
+		std::vector<SDL_Rect> positions;
+		std::vector<SDL_Rect> shadowPositions;
+
 
 	public:
 		Board();
@@ -45,7 +53,15 @@ namespace SDLFramework {
 
 		void loadTiles(std::vector<Texture>& Tiles, const int& gridsize);
 
-		void scrambleTiles(/*std::vector<Tile>& t, std::vector<Tile>& tshadow*/);
+		void drawBoard(const std::vector<Tile>& t);
+
+		void loadPositions(std::vector<SDL_Rect>& positions, const int& gridsize);
+
+		void makeTiles(std::vector<Tile>& tiles, const std::vector<SDL_Rect>& positions, const int& tiletype);
+
+		void scrambleTiles(std::vector<Tile>& t, std::vector<Tile>& tshadow);
+
+		void renderPicture(const std::vector<Tile>& tiles, const std::vector<SDL_Rect>& positions);
 
 		void CreateBoard();
 		void SetChallange(int difficulty);

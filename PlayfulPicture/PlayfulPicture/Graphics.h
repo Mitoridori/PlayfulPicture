@@ -35,6 +35,7 @@ namespace SDLFramework {
 		SDL_Texture* SetTextTexture(TTF_Font* font, std::string text, SDL_Color color);
 		SDL_Texture* SetTexture(std::string path);
 
+
 	private:
 		Graphics();
 		~Graphics();
