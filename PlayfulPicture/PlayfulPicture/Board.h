@@ -27,7 +27,7 @@ namespace SDLFramework {
 		Texture* boardBackground;
 		GameEntity* boardHolder;
 		//Texture* pieceTexture[pieceAmount];
-		//Texture* tilePiece;
+		Texture* tilePiece;
 
 		std::vector<Texture> Tiles;
 		

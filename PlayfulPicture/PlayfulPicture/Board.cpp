@@ -35,11 +35,11 @@ namespace SDLFramework {
 	{
 		boardBackground->Render();
 
-		for (int i = 0; i < Tiles.size(); i++)
-		{
-			//tilePiece->Render();
-		}
-		//tilePiece->Render();
+		//for (int i = 0; i < Tiles.size(); i++)
+		//{
+		//	tilePiece->Render();
+		//}
+		tilePiece->Render();
 	}
 
 	void Board::loadTiles(std::vector<Texture>& Tiles, const int& gridsize)
@@ -58,15 +58,11 @@ namespace SDLFramework {
 			for (int j = 1; j <= gridsize; ++j) {
 				x = startX - (tileSize / 2 * j);
 				b = tileSize * (j - 1);
-				std::string name;
-				name = "titlePiece" + n;
-				//Texture* name;
-
-				Texture* tilePiece;
-
+				
 				tilePiece = new Texture("rose.jpg", a, b, tileSize, tileSize);
 				tilePiece ->SetParent(boardHolder);
 				tilePiece ->SetPosition(x, y);
+				tilePiece ->Render();
 				n++;
 
 			}
