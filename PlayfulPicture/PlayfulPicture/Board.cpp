@@ -38,12 +38,6 @@ namespace SDLFramework {
 		drawBoard(shadowTiles);
 		drawBoard(tiles);
 
-
-		//for (int i = 0; i < Tiles.size(); i++)
-		//{
-		//	tilePiece->Render();
-		//}
-		//tilePiece->Render();
 	}
 
 	void Board::loadTiles(std::vector<Texture>& Tiles, const int& gridsize)
@@ -91,14 +85,16 @@ namespace SDLFramework {
 
 			SDL_RenderFillRect(graphics->GetRenderer(), &temp);
 
-			//if (drawnumber) {
-			//	if (t[i].tileType() != Tile::type::invisible) {
-			//		std::string num = std::to_string(i + 1); // position numbers count from 1
-			//		tilenumber = renderText(num, "assets/Calibrib.ttf", fontcolour, 25);
-			//		SDL_QueryTexture(tilenumber, NULL, NULL, &temp.w, &temp.h);
-			//		renderTexture(tilenumber, temp.x + (TILE_SIZE / 2 - temp.w / 2), temp.y + (TILE_SIZE / 2 - temp.h / 2), nullptr);
-			//	}
-			//}
+				if (t[i].tileType() != Tile::type::invisible) {
+					
+					std::string num = std::to_string(i + 1); // position numbers count from 1
+					screenLabel = new Texture(num, "emulogic.ttf", 24, { 255, 0, 111 });
+					screenLabel->SetPosition(tileSize / 2, tileSize / 2);
+					screenLabel->Render();
+					
+					//SDL_QueryTexture(screenLabel, NULL, NULL, &temp.w, &temp.h);
+					//graphics->renderTexture(screenLabel, temp.x + (tileSize / 2 - temp.w / 2), temp.y + (tileSize / 2 - temp.h / 2), nullptr);
+				}
 		}
 	}
 
@@ -190,7 +186,7 @@ namespace SDLFramework {
 		makeTiles(tiles, positions, Tile::type::button);
 		makeTiles(shadowTiles, shadowPositions, Tile::type::shadow);
 
-		renderPicture(tiles, positions);
+		//renderPicture(tiles, positions);
 
 		scrambleTiles(tiles, shadowTiles);
 

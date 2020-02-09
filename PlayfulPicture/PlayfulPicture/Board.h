@@ -29,11 +29,15 @@ namespace SDLFramework {
 		GameEntity* boardHolder;
 		//Texture* pieceTexture[pieceAmount];
 		Texture* tilePiece;
+		Texture* screenLabel;
+
+		SDL_Texture* tilenumber;
+
+		SDL_Colour fontcolour{ 0, 0, 0, 1 };
+
 
 		std::vector<Texture> Tiles;
 		
-		std::vector<SDL_Rect> RTiles;
-
 		std::vector<Tile> tiles;
 		std::vector<Tile> shadowTiles;
 		std::vector<SDL_Rect> positions;

@@ -168,4 +168,46 @@ namespace SDLFramework {
 		SDL_FreeSurface(surface);
 		return tex;
 	}
+
+	SDL_Texture* Graphics::renderText(const std::string& message, const std::string& filepath, SDL_Color colour, int fontsize) {
+		//Open the font
+		TTF_Font* font = TTF_OpenFont(filepath.c_str(), fontsize);
+		if (font == nullptr) {
+			std::cerr << "TTF_OpenFont" << TTF_GetError;
+			return nullptr;
+		}
+		//render to a surface as that's what TTF_RenderText returns
+		SDL_Surface* surf = TTF_RenderText_Blended(font, message.c_str(), colour);
+		if (surf == nullptr) {
+			TTF_CloseFont(font);
+			std::cout << "TTF_RenderText" << TTF_GetError;
+			return nullptr;
+		}
+		//load that surface into texture
+		SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surf);
+		if (texture == nullptr) {
+			std::cout << "CreateTexture" << SDL_GetError();
+		}
+		//Clean up surface and font
+		SDL_FreeSurface(surf);
+		TTF_CloseFont(font);
+		return texture;
+	}
+
+	void Graphics::renderTexture(SDL_Texture* tex, int x, int y, SDL_Rect* clip = nullptr) {
+		SDL_Rect dst;
+		dst.x = x;
+		dst.y = y;
+		if (clip != nullptr) {
+			dst.w = clip->w;
+			dst.h = clip->h;
+		}
+		else {
+			SDL_QueryTexture(tex, NULL, NULL, &dst.w, &dst.h);
+		}
+		SDL_RenderCopy(renderer, tex, clip, &dst);
+	}
+
+
+
 }
