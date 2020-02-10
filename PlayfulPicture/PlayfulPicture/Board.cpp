@@ -112,7 +112,26 @@ namespace SDLFramework {
 		// for all but the last (invisible) tile
 		for (int i = tiles.size() - 2; i >= 0; --i) {
 			for (int j = tiles.size() - 2; j >= 0; --j) {
-				tilePiece = new Texture("rose.jpg", 0, 0, tileSize, tileSize);
+				switch (PictureSelectScreen::GetSelectedPicture()) {
+				case 1:
+					tilePiece = new Texture("Pic1.jpg", 0, 0, tileSize, tileSize);
+					break;
+				case 2:
+					tilePiece = new Texture("Pic2.jpg", 0, 0, tileSize, tileSize);
+					break;
+				case 3:
+					tilePiece = new Texture("Pic3.jpg", 0, 0, tileSize, tileSize);
+					break;
+				case 4:
+					tilePiece = new Texture("Pic4.jpg", 0, 0, tileSize, tileSize);
+					break;
+				case 5:
+					tilePiece = new Texture("Pic5.jpg", 0, 0, tileSize, tileSize);
+					break;
+				case 6:
+					tilePiece = new Texture("Pic6.jpg", 0, 0, tileSize, tileSize);
+					break;
+				}
 				tilePiece->SetParent(boardHolder);
 				tilePiece->SetPosition(-tiles[j].position().x, -tiles[j].position().y);
 				tilePiece->Render();

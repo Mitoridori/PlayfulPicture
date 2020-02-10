@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include "Graphics.h"
 #include "DifficultyScreen.h"
+#include "PictureSelectScreen.h"
 #include "Tile.h"
 
 namespace SDLFramework {
@@ -12,6 +13,7 @@ namespace SDLFramework {
 		Graphics* graphics;
 
 		bool didCreateBoard = false;
+		bool firstPicture = true;
 
 		/*enum Challange {beginner, intermediate, hard};
 		Challange challange;*/
