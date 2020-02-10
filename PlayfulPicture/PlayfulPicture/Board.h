@@ -27,7 +27,7 @@ namespace SDLFramework {
 
 		Texture* boardBackground;
 		GameEntity* boardHolder;
-		//Texture* pieceTexture[pieceAmount];
+
 		Texture* tilePiece;
 		Texture* screenLabel;
 
@@ -54,8 +54,6 @@ namespace SDLFramework {
 
 		void Update() override;
 		void Render() override;
-
-		void loadTiles(std::vector<Texture>& Tiles, const int& gridsize);
 
 		void drawBoard(const std::vector<Tile>& t);
 

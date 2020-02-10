@@ -40,33 +40,6 @@ namespace SDLFramework {
 
 	}
 
-	void Board::loadTiles(std::vector<Texture>& Tiles, const int& gridsize)
-	{
-		int startY = -98;
-		int startX = -166;
-		int y;
-		int x;
-		int a;
-		int b;
-		int n = 0;
-
-		for (int i = 1; i <= gridsize; ++i) {
-			y = startY - (tileSize/2 * i);
-			a = tileSize * (i - 1);
-			for (int j = 1; j <= gridsize; ++j) {
-				x = startX - (tileSize / 2 * j);
-				b = tileSize * (j - 1);
-				
-				tilePiece = new Texture("rose.jpg", a, b, tileSize, tileSize);
-				tilePiece ->SetParent(boardHolder);
-				tilePiece ->SetPosition(x, y);
-				tilePiece ->Render();
-				n++;
-
-			}
-		}
-	}
-
 	void Board::drawBoard(const std::vector<Tile>& t) {
 		for (int i = 0; i < t.size(); ++i) {
 			SDL_Rect temp = t[i].position();
@@ -173,11 +146,6 @@ namespace SDLFramework {
 		}
 
 		tileSize = boardSize;
-
-		
-		//loadTiles(Tiles, row);
-		
-		
 
 		// Fill vector<SDL_Rect> 'positions' with possible positions of n*n tiles & make shadow positions
 		loadPositions(positions, row);
