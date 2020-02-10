@@ -11,6 +11,7 @@ namespace SDLFramework {
 
 		Graphics* graphics;
 
+		bool didRenderPicture = false;
 
 		/*enum Challange {beginner, intermediate, hard};
 		Challange challange;*/

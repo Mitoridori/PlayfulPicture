@@ -17,6 +17,8 @@ namespace SDLFramework {
 
 		Board* board;
 
+		bool haveCreatedBoard = false;
+
 	public:
 		PlayScreen();
 		~PlayScreen();

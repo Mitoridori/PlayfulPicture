@@ -34,10 +34,9 @@ namespace SDLFramework {
 	void Board::Render()
 	{
 		boardBackground->Render();
-		CreateBoard();
 		drawBoard(shadowTiles);
 		drawBoard(tiles);
-
+		CreateBoard();
 	}
 
 	void Board::drawBoard(const std::vector<Tile>& t) {
@@ -110,14 +109,10 @@ namespace SDLFramework {
 		// for all but the last (invisible) tile
 		for (int i = tiles.size() - 2; i >= 0; --i) {
 			for (int j = tiles.size() - 2; j >= 0; --j) {
-				// 'attach' tile position n to position of cat photo
-				SDL_Rect temp = positions[j];
-				Texture* tilePiece;
-				tilePiece = new Texture("rose.jpg", 0, 0, tileSize, tileSize);
+				tilePiece = new Texture("Pic1.jpg", 0, 0, tileSize, tileSize);
 				tilePiece->SetParent(boardHolder);
-				tilePiece->SetPosition(tiles[j].position().x, tiles[j].position().y);
+				tilePiece->SetPosition(-tiles[j].position().x, -tiles[j].position().y);
 				tilePiece->Render();
-				//render(cat, tiles[j].position().x, tiles[j].position().y, &temp);
 			}
 		}
 	}
@@ -153,11 +148,8 @@ namespace SDLFramework {
 		// Assign these starting positions to n*n tiles in vector<Tile> 'tiles' & make tile shadows
 		makeTiles(tiles, positions, Tile::type::button);
 		makeTiles(shadowTiles, shadowPositions, Tile::type::shadow);
-
-		//renderPicture(tiles, positions);
-
+		renderPicture(tiles, positions);
 		scrambleTiles(tiles, shadowTiles);
-
 	}
 
 	void Board::SetChallange(int difficulty)
