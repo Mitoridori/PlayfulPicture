@@ -36,7 +36,10 @@ namespace SDLFramework {
 		boardBackground->Render();
 		drawBoard(shadowTiles);
 		drawBoard(tiles);
-		CreateBoard();
+		if (didCreateBoard == false) {
+			CreateBoard();
+		}
+		renderPicture(tiles, positions);
 	}
 
 	void Board::drawBoard(const std::vector<Tile>& t) {
@@ -109,7 +112,7 @@ namespace SDLFramework {
 		// for all but the last (invisible) tile
 		for (int i = tiles.size() - 2; i >= 0; --i) {
 			for (int j = tiles.size() - 2; j >= 0; --j) {
-				tilePiece = new Texture("Pic1.jpg", 0, 0, tileSize, tileSize);
+				tilePiece = new Texture("rose.jpg", 0, 0, tileSize, tileSize);
 				tilePiece->SetParent(boardHolder);
 				tilePiece->SetPosition(-tiles[j].position().x, -tiles[j].position().y);
 				tilePiece->Render();
@@ -148,8 +151,8 @@ namespace SDLFramework {
 		// Assign these starting positions to n*n tiles in vector<Tile> 'tiles' & make tile shadows
 		makeTiles(tiles, positions, Tile::type::button);
 		makeTiles(shadowTiles, shadowPositions, Tile::type::shadow);
-		renderPicture(tiles, positions);
 		scrambleTiles(tiles, shadowTiles);
+		didCreateBoard = true;
 	}
 
 	void Board::SetChallange(int difficulty)
