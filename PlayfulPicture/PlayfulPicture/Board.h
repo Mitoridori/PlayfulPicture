@@ -11,9 +11,13 @@ namespace SDLFramework {
 	private:
 
 		Graphics* graphics;
+		InputManager* input;
 
 		bool didCreateBoard = false;
 		bool firstPicture = true;
+		bool gameOver;
+
+		int activeTile = -1;
 
 		/*enum Challange {beginner, intermediate, hard};
 		Challange challange;*/
@@ -28,7 +32,6 @@ namespace SDLFramework {
 		int column;
 		int row;
 
-		Texture* boardBackground;
 		GameEntity* boardHolder;
 
 		Texture* tilePiece;
@@ -60,7 +63,7 @@ namespace SDLFramework {
 
 		void drawBoard(const std::vector<Tile>& t);
 
-		void loadPositions(std::vector<SDL_Rect>& positions, const int& gridsize);
+		void createPositions(std::vector<SDL_Rect>& positions, const int& gridsize);
 
 		void makeTiles(std::vector<Tile>& tiles, const std::vector<SDL_Rect>& positions, const int& tiletype);
 
@@ -70,6 +73,12 @@ namespace SDLFramework {
 
 		void CreateBoard();
 		void SetChallange(int difficulty);
+
+		int getActiveTile(const int& x, const int& y);
+
+		bool isBeside(const Tile& a, const Tile& b);
+
+		bool isSolved();
 
 	};
 

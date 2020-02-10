@@ -7,17 +7,13 @@ namespace SDLFramework {
 	Board::Board()
 	{
 		graphics = Graphics::Instance();
+		input = InputManager::Instance();
 
 		boardHolder = new GameEntity(Graphics::SCREEN_WIDTH, Graphics::SCREEN_HEIGHT);
 
-		//background for tiles
-		boardBackground = new Texture("boardBackground.png", 0, 0, 700, 700);
-		boardBackground->SetParent(boardHolder);
-		boardBackground->SetPosition(-Graphics::SCREEN_WIDTH/2, -Graphics::SCREEN_HEIGHT/2);
-
 		challenge = 1;
 
-		//CreateBoard();
+
 	}
 
 	Board::~Board()
@@ -29,11 +25,31 @@ namespace SDLFramework {
 	void Board::Update()
 	{
 
+		if (input->MouseButtonPressed(input->Left)) {
+
+			int x; int y;
+			SDL_GetMouseState(&x, &y);
+			activeTile = getActiveTile(x, y); // retreives clicked tile number or -1
+
+		}
+
+		if (isSolved()) {
+			gameOver = true;
+		}
+
+		else if (activeTile >= 0) { // if mouse clicked on a tile
+			if (isBeside(tiles[activeTile], tiles[tiles.size() - 1])) {
+				tiles[activeTile].swap(tiles[tiles.size() - 1]);
+				shadowTiles[activeTile].swap(shadowTiles[shadowTiles.size() - 1]);
+				activeTile = -1; // reset to default
+			}
+
+		}
+
 	}
 
 	void Board::Render()
 	{
-		boardBackground->Render();
 		drawBoard(shadowTiles);
 		drawBoard(tiles);
 		if (didCreateBoard == false) {
@@ -59,21 +75,10 @@ namespace SDLFramework {
 				SDL_SetRenderDrawColor(graphics->GetRenderer(), 237, 229, 239, 1); // default colour
 
 			SDL_RenderFillRect(graphics->GetRenderer(), &temp);
-
-				if (t[i].tileType() != Tile::type::invisible) {
-					
-					std::string num = std::to_string(i + 1); // position numbers count from 1
-					screenLabel = new Texture(num, "emulogic.ttf", 24, { 255, 0, 111 });
-					screenLabel->SetPosition(tileSize / 2, tileSize / 2);
-					screenLabel->Render();
-					
-					//SDL_QueryTexture(screenLabel, NULL, NULL, &temp.w, &temp.h);
-					//graphics->renderTexture(screenLabel, temp.x + (tileSize / 2 - temp.w / 2), temp.y + (tileSize / 2 - temp.h / 2), nullptr);
-				}
 		}
 	}
 
-	void Board::loadPositions(std::vector<SDL_Rect>& positions, const int& gridsize) {
+	void Board::createPositions(std::vector<SDL_Rect>& positions, const int& gridsize) {
 		int startY = 98;
 		int startX = 166;
 		int x = startY;
@@ -110,30 +115,38 @@ namespace SDLFramework {
 
 	void Board::renderPicture(const std::vector<Tile>& tiles, const std::vector<SDL_Rect>& positions) {
 		// for all but the last (invisible) tile
-		for (int i = tiles.size() - 2; i >= 0; --i) {
+		int a = 0;
+		int b = 0;
+		int z = 0;
+		int w = 0;
+		for (int i = tiles.size() - 2; i >= 0; --i) {			
+			//a = tileSize * z;
+			//z++;
 			for (int j = tiles.size() - 2; j >= 0; --j) {
+				//b = tileSize * w;
+				//w++;
 				switch (PictureSelectScreen::GetSelectedPicture()) {
 				case 1:
-					tilePiece = new Texture("Pic1.jpg", 0, 0, tileSize, tileSize);
+					tilePiece = new Texture("Rose.jpg", a, b, tileSize, tileSize);
 					break;
 				case 2:
-					tilePiece = new Texture("Pic2.jpg", 0, 0, tileSize, tileSize);
+					tilePiece = new Texture("Pic2.jpg", a, b, tileSize, tileSize);
 					break;
 				case 3:
-					tilePiece = new Texture("Pic3.jpg", 0, 0, tileSize, tileSize);
+					tilePiece = new Texture("Pic3.jpg", a, b, tileSize, tileSize);
 					break;
 				case 4:
-					tilePiece = new Texture("Pic4.jpg", 0, 0, tileSize, tileSize);
+					tilePiece = new Texture("Pic4.jpg", a, b, tileSize, tileSize);
 					break;
 				case 5:
-					tilePiece = new Texture("Pic5.jpg", 0, 0, tileSize, tileSize);
+					tilePiece = new Texture("Pic5.jpg", a, b, tileSize, tileSize);
 					break;
 				case 6:
-					tilePiece = new Texture("Pic6.jpg", 0, 0, tileSize, tileSize);
+					tilePiece = new Texture("Pic6.jpg", a, b, tileSize, tileSize);
 					break;
 				}
 				tilePiece->SetParent(boardHolder);
-				tilePiece->SetPosition(-tiles[j].position().x, -tiles[j].position().y);
+				tilePiece->SetPosition(-tiles[j].position().x - tileSize/2, -tiles[j].position().y - tileSize / 2);
 				tilePiece->Render();
 			}
 		}
@@ -165,8 +178,8 @@ namespace SDLFramework {
 		tileSize = boardSize;
 
 		// Fill vector<SDL_Rect> 'positions' with possible positions of n*n tiles & make shadow positions
-		loadPositions(positions, row);
-		loadPositions(shadowPositions, row);
+		createPositions(positions, row);
+		createPositions(shadowPositions, row);
 		// Assign these starting positions to n*n tiles in vector<Tile> 'tiles' & make tile shadows
 		makeTiles(tiles, positions, Tile::type::button);
 		makeTiles(shadowTiles, shadowPositions, Tile::type::shadow);
@@ -180,5 +193,36 @@ namespace SDLFramework {
 	}
 
 
+	int Board::getActiveTile(const int& x, const int& y) {
+		int tilenum = -1;
+		for (int i = 0; i < tiles.size(); ++i) {
+			if (!(x < tiles[i].position().x || x > tiles[i].position().x + tileSize ||
+				y < tiles[i].position().y || y > tiles[i].position().y + tileSize))
+				tilenum = i;
+		}
+		return tilenum;
+	}
+
+	bool Board::isBeside(const Tile& a, const Tile& b) {
+		if (a.posNumber() == b.posNumber() - 1 ||
+			a.posNumber() == b.posNumber() + 1 ||
+			a.posNumber() == b.posNumber() + row ||
+			a.posNumber() == b.posNumber() - row)
+			return true;
+		return false;
+	}
+
+	bool Board::isSolved() {
+		int correctTilesN = 0;
+
+		for (int i = 0; i < tiles.size(); ++i) {
+			if (tiles[i].position().x == positions[i].x &&
+				tiles[i].position().y == positions[i].y)
+				correctTilesN += 1;
+		}
+		if (correctTilesN == row * row)
+			return true;
+		return false;
+	}
 
 }

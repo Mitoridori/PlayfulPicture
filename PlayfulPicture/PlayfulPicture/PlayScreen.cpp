@@ -36,6 +36,7 @@ InGameUI* SDLFramework::PlayScreen::GetPlayerUI()
 void SDLFramework::PlayScreen::Update()
 {
 	playerUI->Update();
+	board->Update();
 }
 
 void SDLFramework::PlayScreen::Render()
