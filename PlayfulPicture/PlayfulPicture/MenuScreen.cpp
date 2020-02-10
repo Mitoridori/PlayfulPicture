@@ -53,9 +53,9 @@ MenuScreen::MenuScreen()
 
 	backgroundTexture->SetPosition(0.0f, 0.0f);
 
-	StartGameEntity->SetPosition(0.0f, Graphics::SCREEN_HEIGHT * -0.2f);
-	MusicGameEntity->SetPosition(0.0f, 0.0f);
-	QuitGameEntity->SetPosition(0.0f, Graphics::SCREEN_HEIGHT * 0.2f);
+	StartGameEntity->SetPosition(50.0f, Graphics::SCREEN_HEIGHT * -0.2f);
+	MusicGameEntity->SetPosition(50.0f, 0.0f);
+	QuitGameEntity->SetPosition(50.0f, Graphics::SCREEN_HEIGHT * 0.2f);
 
 }
 
