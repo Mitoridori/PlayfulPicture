@@ -115,9 +115,9 @@ namespace SDLFramework {
 	{
 		std::random_device rd;
 		std::mt19937 rng(rd());
-		std::uniform_int_distribution<int> tilerange(0, t.size() - 2); // don't scramble last ('empty') tile
+		std::uniform_int_distribution<int> tilerange(0, t.size() - 1); // don't scramble last ('empty') tile
 
-		for (int i = t.size() - 2; i >= 0; --i) {
+		for (int i = t.size() - 1; i >= 0; --i) {
 			int n = tilerange(rng);
 			t[i].swap(t[n]);
 			tshadow[i].swap(tshadow[n]);
@@ -146,7 +146,7 @@ namespace SDLFramework {
 
 				switch (PictureSelectScreen::GetSelectedPicture()) {
 				case 1:
-					tilePiece = new Texture("number.png", static_cast<int>(a), b, tileSize, tileSize);
+					tilePiece = new Texture("Image1.png", static_cast<int>(a), b, tileSize, tileSize);
 					break;
 				case 2:
 					tilePiece = new Texture("Image2.png", a, b, tileSize, tileSize);
