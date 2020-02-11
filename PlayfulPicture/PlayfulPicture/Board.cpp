@@ -20,6 +20,9 @@ namespace SDLFramework {
 	{
 		graphics = nullptr;
 
+		delete tilePiece;
+		tilePiece = nullptr;
+
 	}
 
 	void Board::Update()
