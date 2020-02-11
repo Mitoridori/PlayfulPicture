@@ -127,22 +127,22 @@ namespace SDLFramework {
 				//w++;
 				switch (PictureSelectScreen::GetSelectedPicture()) {
 				case 1:
-					tilePiece = new Texture("Rose.jpg", a, b, tileSize, tileSize);
+					tilePiece = new Texture("Image1.png", a, b, tileSize, tileSize);
 					break;
 				case 2:
-					tilePiece = new Texture("Pic2.jpg", a, b, tileSize, tileSize);
+					tilePiece = new Texture("Image2.png", a, b, tileSize, tileSize);
 					break;
 				case 3:
-					tilePiece = new Texture("Pic3.jpg", a, b, tileSize, tileSize);
+					tilePiece = new Texture("Image3.png", a, b, tileSize, tileSize);
 					break;
 				case 4:
-					tilePiece = new Texture("Pic4.jpg", a, b, tileSize, tileSize);
+					tilePiece = new Texture("Image4.png", a, b, tileSize, tileSize);
 					break;
 				case 5:
-					tilePiece = new Texture("Pic5.jpg", a, b, tileSize, tileSize);
+					tilePiece = new Texture("Image5.png", a, b, tileSize, tileSize);
 					break;
 				case 6:
-					tilePiece = new Texture("Pic6.jpg", a, b, tileSize, tileSize);
+					tilePiece = new Texture("Image6.png", a, b, tileSize, tileSize);
 					break;
 				}
 				tilePiece->SetParent(boardHolder);
