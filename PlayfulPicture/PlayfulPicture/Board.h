@@ -16,7 +16,7 @@ namespace SDLFramework {
 		bool didCreateBoard = false;
 		bool firstPicture = true;
 		bool gameOver;
-
+		bool tilesSwapped;
 		int activeTile = -1;
 
 		/*enum Challange {beginner, intermediate, hard};

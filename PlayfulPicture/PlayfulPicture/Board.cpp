@@ -50,12 +50,20 @@ namespace SDLFramework {
 
 	void Board::Render()
 	{
+		
 		drawBoard(shadowTiles);
 		drawBoard(tiles);
 		if (didCreateBoard == false) {
 			CreateBoard();
+			tilesSwapped = true;
 		}
 		renderPicture(tiles, positions);
+		if (tilesSwapped)
+		{
+			scrambleTiles(tiles, shadowTiles);
+			tilesSwapped = false;
+		}
+		
 	}
 
 	void Board::drawBoard(const std::vector<Tile>& t) {
@@ -115,19 +123,27 @@ namespace SDLFramework {
 
 	void Board::renderPicture(const std::vector<Tile>& tiles, const std::vector<SDL_Rect>& positions) {
 		// for all but the last (invisible) tile
-		int a = 0;
+		float a = 0;
 		int b = 0;
 		int z = 0;
-		int w = 0;
-		for (int i = tiles.size() - 2; i >= 0; --i) {			
-			//a = tileSize * z;
-			//z++;
-			for (int j = tiles.size() - 2; j >= 0; --j) {
-				//b = tileSize * w;
-				//w++;
+		int w = tiles.size() - 1;
+		int k;
+			for (int j = tiles.size() - 1; j >=1; --j) {
+				//std::cout << j;
+				k = w - j;
+			//for (int j = 0; j <= tiles.size() - 2; ++j) {
+
+				a = k/row * tileSize;
+				b = z * tileSize;
+				if (z > (row-2))
+					z = 0;
+				else
+					z++;
+
+
 				switch (PictureSelectScreen::GetSelectedPicture()) {
 				case 1:
-					tilePiece = new Texture("Rose.jpg", a, b, tileSize, tileSize);
+					tilePiece = new Texture("number.png", static_cast<int>(a), b, tileSize, tileSize);
 					break;
 				case 2:
 					tilePiece = new Texture("Pic2.jpg", a, b, tileSize, tileSize);
@@ -146,10 +162,9 @@ namespace SDLFramework {
 					break;
 				}
 				tilePiece->SetParent(boardHolder);
-				tilePiece->SetPosition(-tiles[j].position().x - tileSize/2, -tiles[j].position().y - tileSize / 2);
+				tilePiece->SetPosition((-tiles[j].position().y - tileSize/2)-47, (-tiles[j].position().x - tileSize / 2)+80);
 				tilePiece->Render();
 			}
-		}
 	}
 
 	void Board::CreateBoard(/*Take in tile size*/)
@@ -183,7 +198,7 @@ namespace SDLFramework {
 		// Assign these starting positions to n*n tiles in vector<Tile> 'tiles' & make tile shadows
 		makeTiles(tiles, positions, Tile::type::button);
 		makeTiles(shadowTiles, shadowPositions, Tile::type::shadow);
-		scrambleTiles(tiles, shadowTiles);
+		//scrambleTiles(tiles, shadowTiles);
 		didCreateBoard = true;
 	}
 
