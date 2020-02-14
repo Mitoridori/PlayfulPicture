@@ -4,6 +4,7 @@
 #include "InputManager.h"
 #include "Board.h"
 #include "InGameUI.h"
+#include <vector>
 
 namespace SDLFramework {
 	class PlayScreen : public GameEntity {
@@ -18,6 +19,8 @@ namespace SDLFramework {
 		Board* board;
 
 		bool haveCreatedBoard = false;
+
+		std::vector<GameEntity*> gameEntityList;
 
 	public:
 		PlayScreen();
