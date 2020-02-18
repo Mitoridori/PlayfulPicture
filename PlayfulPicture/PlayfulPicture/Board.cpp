@@ -205,7 +205,17 @@ namespace SDLFramework {
 		challenge = difficulty;
 	}
 
+	/* Steven
 
+	 If we were to have a game with 100,000 tiles how long would it take this function to execute?
+	 Searching each tile isn't the best idea. perhaps we could have a multi-dimensional array for x and y - this would allow us to visit the exact spot in the array
+	 then check our neighbors e.g up, right, down and left.
+
+	 This function executes from update, perhaps we could also hold that information per click? so every time we click we can just store the neighboring tiles until 
+	 a new tile is selected
+	
+	I know Rebecca made this function, however if she isn't planning on editing this guy you can john.
+	*/
 	int Board::getActiveTile(const int& x, const int& y) {
 		int tilenum = -1;
 		for (int i = 0; i < tiles.size(); ++i) {

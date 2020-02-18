@@ -97,6 +97,19 @@ void PictureSelectScreen::Render()
 
 void PictureSelectScreen::Update()
 {
+
+	/* Steven
+
+		Here we are calling MousePosition a lot, each call is a new invoke which costs time. perhaps re-organizing our check would be more optimal. we know our game is
+		divided into a grid, perhaps we can store the mouse Position and depending on which section or spatial coordinate we could activate a specific button on click. this
+		would remove the long if/else statement. which is also not modular. what happens if I wanted 1000 thumbnails...
+
+		Another method you can choose to implement is to have an multi-dimensional array, which would house each button in their correct position, depending
+		where the player clicks we could activate that button in the array.
+	
+		however the best approach would be to use a binary search, which could search for the closest position to our mouse x and y position, which would be a super amazing optimization especially if we added
+		a 1,000,000 thumbnails, current implementation would stall if I selected the last one. you'll need to add these to a vector or array that is organized.
+	*/
 	if (input->MouseButtonPressed(input->Left)) {
 		if (button->ContainsPoint(thumbnail1, input->MousePosition().x, input->MousePosition().y)) {
 			selectedPicture = one;
