@@ -11,7 +11,6 @@
 #include "PictureSelectScreen.h"
 #include "WinScreen.h"
 #include "PlayScreen.h"
-#include "Board.h"
 
 using namespace SDLFramework;
 
@@ -30,7 +29,8 @@ private:
 	PictureSelectScreen* pictureSelectScreen;
 	WinScreen* winScreen;
 	PlayScreen* playScreen;
-	Board* test;
+
+	bool gameQuit = false;
 
 
 public:
@@ -40,7 +40,7 @@ public:
 	void Update();
 	void Render();
 
-	bool gameQuit = false;
+	bool GetGameQuit();
 
 private:
 	ScreenManager();

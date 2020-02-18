@@ -81,23 +81,6 @@ namespace SDLFramework
 		Position(mAnimationStartPos);
 	}
 
-	void TitleScreen::ChangeSelectedMode(int change)
-	{
-
-		mSelectedMode += change;
-
-		if (mSelectedMode < 0) 
-		{
-			mSelectedMode = 1;
-		}
-
-		else if (mSelectedMode > 1)
-		{
-			mSelectedMode = 0;
-		}
-
-	}
-
 	void TitleScreen::Update()
 	{
 		if (!mAnimationDone) {

@@ -72,7 +72,7 @@ namespace SDLFramework {
 	{
 		while (!quit)
 		{
-			if (!screenManager->gameQuit)
+			if (!screenManager->GetGameQuit())
 			{
 				timer->Update();
 				while (SDL_PollEvent(&events))

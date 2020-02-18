@@ -41,7 +41,6 @@ namespace SDLFramework
 		TitleScreen();
 		~TitleScreen();
 
-		void ChangeSelectedMode(int change);
 		void ResetAnimation();
 
 		void Update() override;

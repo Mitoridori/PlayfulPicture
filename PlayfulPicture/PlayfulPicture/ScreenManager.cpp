@@ -22,7 +22,6 @@ ScreenManager::ScreenManager()
 	pictureSelectScreen = new PictureSelectScreen();
 	winScreen = new WinScreen();
 	playScreen = new PlayScreen();
-	test = new Board();
 
 	currentScreen = start;
 }
@@ -178,4 +177,9 @@ void ScreenManager::Render()
 		winScreen->Render();
 		break;
 	}
+}
+
+bool ScreenManager::GetGameQuit()
+{
+	return gameQuit;
 }
