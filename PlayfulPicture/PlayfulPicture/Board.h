@@ -34,6 +34,8 @@ namespace SDLFramework {
 		int pieceAmount;
 		int column;
 		int row;
+		int startY = 98;
+		int startX = 166;
 
 		GameEntity* boardHolder;
 
