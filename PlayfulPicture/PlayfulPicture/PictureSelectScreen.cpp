@@ -5,7 +5,11 @@
 #include "PictureSelectScreen.h"
 
 PictureSelectScreen::Pictures PictureSelectScreen::selectedPicture = none;
+/* Steven
+	This is considered along the lines of code cleanup, the reason being accessing a variable would also have a bigO of O(1). 
 
+	The performance doesnt actually change here, however I like the cleanup. +0.5
+*/
 /*John Gotts optimization changes:
 	- stored all local textures to a vector in the parent class, this follows the O(1) as accessing the array is a constant time for compile time
 	- the render and update were changed to follow the O(n) format as they now access the elements of the individual array index to render them*/
@@ -63,7 +67,19 @@ PictureSelectScreen::~PictureSelectScreen()
 	topBar = nullptr;
 	delete pictureHolder;
 	pictureHolder = nullptr;
+	/* Steven 
+		When deleting an array always cycle from the back to the front i.e i-- instead of i++ 
+		The reason for this is due to the potential of removing an element at an index, by adjusting the array you'd run into a "Out of Access" error
 
+		Another thing to note, you keep positions in the memory for each element, 
+		so however big GameEntity is you're keeping that * the number of elements,
+		Say it was an array of Integers which takes up 4 bytes, if there were 10 elements 
+		that would give you 40 bytes of memory used for this empty array until you shutdown your PC at least.
+
+		Should pop_back to remove each elements footprint in memory, otherwise in this very specific case you can call
+		"delete[] &gameEntityList;" to remove the entire array at the end of the function.
+	
+	*/
 	for (int i = 0; i < gameEntityList.size(); i++)
 	{
 		delete gameEntityList[i];
