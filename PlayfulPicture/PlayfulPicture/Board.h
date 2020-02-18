@@ -20,6 +20,7 @@ namespace SDLFramework {
 		bool gameOver;
 		bool tilesSwapped;
 		int activeTile = -1;
+		std::string ImageName;
 
 		/*enum Challange {beginner, intermediate, hard};
 		Challange challange;*/
@@ -70,6 +71,8 @@ namespace SDLFramework {
 		void makeTiles(std::vector<Tile>& tiles, const std::vector<SDL_Rect>& positions, const int& tiletype);
 
 		void scrambleTiles(std::vector<Tile>& t, std::vector<Tile>& tshadow);
+
+		void GetPicture();
 
 		void renderPicture(const std::vector<Tile>& tiles, const std::vector<SDL_Rect>& positions);
 

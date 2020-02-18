@@ -124,6 +124,34 @@ namespace SDLFramework {
 		}
 	}
 
+	void Board::GetPicture()
+	{
+		switch (PictureSelectScreen::GetSelectedPicture())
+		{
+		case 1:
+			ImageName = "Image1.png";
+			break;
+		case 2:
+			ImageName = "Image2.png";
+			break;
+		case 3:
+			ImageName = "Image3.png";
+			break;
+		case 4:
+			ImageName = "Image4.png";
+			break;
+		case 5:
+			ImageName = "Image5.png";
+			break;
+		case 6:
+			ImageName = "Image6.png";
+			break;
+		}
+	}
+
+	//Rebecca
+	//By removing the switch in the for loop to be always picking the picture into its own function, the picture is
+	//then only needed to be found once, instead of each time through the loop.
 	void Board::renderPicture(const std::vector<Tile>& tiles, const std::vector<SDL_Rect>& positions) {
 		// for all but the last (invisible) tile
 		float a = 0;
@@ -131,6 +159,7 @@ namespace SDLFramework {
 		int z = 0;
 		int w = tiles.size() - 1;
 		int k;
+		GetPicture();
 			for (int j = tiles.size() - 1; j >=1; --j) {
 				k = w - j;
 
@@ -141,27 +170,7 @@ namespace SDLFramework {
 				else
 					z++;
 
-				switch (PictureSelectScreen::GetSelectedPicture()) 
-				{
-					case 1:
-						tilePiece = new Texture("Image1.png", static_cast<int>(a), b, tileSize, tileSize);
-						break;
-					case 2:
-						tilePiece = new Texture("Image2.png", static_cast<int>(a), b, tileSize, tileSize);
-						break;
-					case 3:
-						tilePiece = new Texture("Image3.png", static_cast<int>(a), b, tileSize, tileSize);
-						break;
-					case 4:
-						tilePiece = new Texture("Image4.png", static_cast<int>(a), b, tileSize, tileSize);
-						break;
-					case 5:
-						tilePiece = new Texture("Image5.png", static_cast<int>(a), b, tileSize, tileSize);
-						break;
-					case 6:
-						tilePiece = new Texture("Image6.png", static_cast<int>(a), b, tileSize, tileSize);
-						break;
-				}
+				tilePiece = new Texture(ImageName, static_cast<int>(a), b, tileSize, tileSize);
 				tilePiece->SetParent(boardHolder);
 				tilePiece->SetPosition((-tiles[j].position().y - tileSize/2)-47, (-tiles[j].position().x - tileSize / 2)+80);
 				tilePiece->Render();
