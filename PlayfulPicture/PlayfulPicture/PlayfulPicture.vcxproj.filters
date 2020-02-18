@@ -114,6 +114,9 @@
     <ClCompile Include="Tile.cpp">
       <Filter>Source Files\Game Elements</Filter>
     </ClCompile>
+    <ClCompile Include="Screens.cpp">
+      <Filter>Source Files\Screens</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -184,6 +187,9 @@
     </ClInclude>
     <ClInclude Include="Tile.h">
       <Filter>Header Files\Game Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="Screens.h">
+      <Filter>Header Files\Screens</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

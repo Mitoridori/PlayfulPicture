@@ -1,13 +1,13 @@
 #pragma once
-#include "Timer.h"
 #include "Texture.h"
-#include "InputManager.h"
 #include "Board.h"
 #include "InGameUI.h"
+#include "Screens.h"
 #include <vector>
 
 namespace SDLFramework {
-	class PlayScreen : public GameEntity {
+
+	class PlayScreen : public Screens {
 
 	private:
 		static int totalMoves;
@@ -20,7 +20,7 @@ namespace SDLFramework {
 
 		bool haveCreatedBoard = false;
 
-		std::vector<GameEntity*> gameEntityList;
+		//std::vector<GameEntity*> gameEntityList;
 
 	public:
 		PlayScreen();

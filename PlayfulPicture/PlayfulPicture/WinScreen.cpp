@@ -1,12 +1,12 @@
 #include "WinScreen.h"
 
-WinScreen::WinScreen()
+/*John Gotts optimization changes:
+	- stored all local textures to a vector in the parent class, this follows the O(1) as accessing the array is a constant time for compile time
+	- the render and update were changed to follow the O(n) format as they now access the elements of the individual array index to render them
+	- the menu and quit bools were made private and then functions were made to access them from outside of this class to avoid global variables*/
+
+WinScreen::WinScreen() : Screens()
 {
-	timer = Timer::Instance();
-	input = InputManager::Instance();
-
-	button = new Buttons();
-
 	topBar = new GameEntity(Graphics::SCREEN_WIDTH, 50.0f);
 	screenLabel = new Texture("You Win!!", "emulogic.ttf", 32, { 255, 0, 111 });
 	topBar->SetParent(this);
@@ -32,6 +32,11 @@ WinScreen::WinScreen()
 	quitButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.8f, -Graphics::SCREEN_HEIGHT * 0.3f);
 	backgroundImage->SetPosition(-Graphics::SCREEN_WIDTH * 0.5f, -Graphics::SCREEN_HEIGHT * 0.5f);
 
+	gameEntityList.push_back(backgroundImage);
+	gameEntityList.push_back(screenLabel);
+	gameEntityList.push_back(menuButtonTexture);
+	gameEntityList.push_back(quitButtonTexture);
+	gameEntityList.push_back(movesCounter);
 }
 
 WinScreen::~WinScreen()
@@ -39,35 +44,25 @@ WinScreen::~WinScreen()
 	delete topBar;
 	topBar = nullptr;
 
-	delete screenLabel;
-	screenLabel = nullptr;
-
-	delete movesCounter;
-	movesCounter = nullptr;
-
 	delete buttonHolder;
 	buttonHolder = nullptr;
 
-	delete menuButtonTexture;
-	menuButtonTexture = nullptr;
-
-	delete quitButtonTexture;
-	quitButtonTexture = nullptr;
-
-	delete backgroundImage;
-	backgroundImage = nullptr;
-
 	delete button;
 	button = nullptr;
+
+	for (int i = 0; i < gameEntityList.size(); i++)
+	{
+		delete gameEntityList[i];
+		gameEntityList[i] = nullptr;
+	}
 }
 
 void WinScreen::Render()
 {
-	backgroundImage->Render();
-	screenLabel->Render();
-	movesCounter->Render();
-	menuButtonTexture->Render();
-	quitButtonTexture->Render();
+	for (int i = 0; i < gameEntityList.size(); i++)
+	{
+		gameEntityList[i]->Render();
+	}
 }
 
 void WinScreen::Update()
@@ -81,4 +76,14 @@ void WinScreen::Update()
 		}
 
 	}
+}
+
+bool WinScreen::GetMenu()
+{
+	return menu;
+}
+
+bool WinScreen::GetQuit()
+{
+	return quit;
 }

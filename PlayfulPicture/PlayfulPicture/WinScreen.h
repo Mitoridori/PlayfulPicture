@@ -1,21 +1,13 @@
 #pragma once
-#include "Timer.h"
 #include "Texture.h"
-#include "InputManager.h"
-#include "Buttons.h"
 #include "PlayScreen.h"
+#include "Screens.h"
 
 using namespace SDLFramework;
 
-class WinScreen : public GameEntity {
-
-public:
-	bool menu = false;
-	bool quit = false;
+class WinScreen : public Screens {
 
 private:
-	Timer* timer;
-	InputManager* input;
 
 	Texture* backgroundImage;
 
@@ -27,11 +19,15 @@ private:
 	Texture* menuButtonTexture;
 	Texture* quitButtonTexture;
 
-	Buttons* button;
+	bool menu = false;
+	bool quit = false;
 
 public:
 	WinScreen();
 	~WinScreen();
 	void Render() override;
 	void Update() override;
+
+	bool GetMenu();
+	bool GetQuit();
 };

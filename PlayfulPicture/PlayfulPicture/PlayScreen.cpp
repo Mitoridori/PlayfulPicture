@@ -8,7 +8,7 @@
 
 int SDLFramework::PlayScreen::totalMoves = 0;
 
-SDLFramework::PlayScreen::PlayScreen()
+SDLFramework::PlayScreen::PlayScreen() : Screens()
 {
 	timer = Timer::Instance();
 	input = InputManager::Instance();

@@ -14,6 +14,7 @@ ScreenManager::Screens ScreenManager::currentScreen = start;
 //RETURNS: None
 ScreenManager::ScreenManager()
 {
+
 	input = InputManager::Instance();
 	mMenuScreen = new MenuScreen();
 	mTitleScreen = new TitleScreen();
@@ -143,6 +144,12 @@ void ScreenManager::Update()
 		break;
 	case congratulations:
 		winScreen->Update();
+		if (winScreen->GetMenu()) {
+			currentScreen = start;
+		}
+		else if (winScreen->GetQuit()) {
+			gameQuit = true;
+		}
 		break;
 	}
 }
