@@ -134,6 +134,11 @@ namespace SDLFramework {
 			break;
 		}
 	}
+	/* Steven
+
+		More so a good code cleanup.
+		however for optimization you defiantly improved your Invoke calls +1.
+	*/
 
 	//Rebecca
 	//By removing the switch in the for loop to be always picking the picture into its own function, the picture is
