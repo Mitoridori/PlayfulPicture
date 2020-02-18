@@ -50,4 +50,15 @@ namespace SDLFramework
 	{
 		Release();
 	}
+
+
+	int RandomNumber::RandomTiles(int NumTiles)
+	{
+
+		std::random_device rd;
+		std::mt19937 rng(rd());
+		std::uniform_int_distribution<int> tilerange(0, NumTiles - 1); // don't scramble last ('empty') tile
+		int n = tilerange(rng);
+		return n;
+	}
 }

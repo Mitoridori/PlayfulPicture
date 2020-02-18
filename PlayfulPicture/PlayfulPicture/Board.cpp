@@ -1,5 +1,4 @@
 #include "Board.h"
-#include <random>
 
 
 
@@ -8,6 +7,7 @@ namespace SDLFramework {
 	{
 		graphics = Graphics::Instance();
 		input = InputManager::Instance();
+		random = RandomNumber::Instance();
 
 		boardHolder = new GameEntity(Graphics::SCREEN_WIDTH, Graphics::SCREEN_HEIGHT);
 
@@ -19,6 +19,8 @@ namespace SDLFramework {
 	Board::~Board()
 	{
 		graphics = nullptr;
+		input = nullptr;
+		random = nullptr;
 
 		delete tilePiece;
 		tilePiece = nullptr;
@@ -76,9 +78,6 @@ namespace SDLFramework {
 			if (t[i].tileType() == Tile::type::invisible)
 				SDL_SetRenderDrawColor(graphics->GetRenderer(), 163, 118, 172, 1); // bg colour
 
-			else if (t[i].tileType() == Tile::type::rollover || t[i].tileType() == Tile::type::buttonpressed)
-				SDL_SetRenderDrawColor(graphics->GetRenderer(), 255, 255, 255, 1); // highlight colour
-
 			else if (t[i].tileType() == Tile::type::shadow)
 				SDL_SetRenderDrawColor(graphics->GetRenderer(), 100, 65, 107, 1); // shadow colour
 
@@ -110,15 +109,16 @@ namespace SDLFramework {
 		}
 		tiles[tiles.size() - 1].setTileType(Tile::type::invisible); // last tile should be invisible
 	}
+	
+	//Rebecca:
+	//When this function had the random select information it was having to run it each time it ran the function O(n)
+	//now by removing it and putting it in its own function in the RandomNumber it is only run when called. 
 
 	void Board::scrambleTiles(std::vector<Tile>& t, std::vector<Tile>& tshadow)
 	{
-		std::random_device rd;
-		std::mt19937 rng(rd());
-		std::uniform_int_distribution<int> tilerange(0, t.size() - 1); // don't scramble last ('empty') tile
-
 		for (int i = t.size() - 1; i >= 0; --i) {
-			int n = tilerange(rng);
+			int n = random->RandomTiles(pieceAmount);
+			std::cout << n;
 			t[i].swap(t[n]);
 			tshadow[i].swap(tshadow[n]);
 		}
@@ -132,9 +132,7 @@ namespace SDLFramework {
 		int w = tiles.size() - 1;
 		int k;
 			for (int j = tiles.size() - 1; j >=1; --j) {
-				//std::cout << j;
 				k = w - j;
-			//for (int j = 0; j <= tiles.size() - 2; ++j) {
 
 				a = k/row * tileSize;
 				b = z * tileSize;
@@ -143,26 +141,26 @@ namespace SDLFramework {
 				else
 					z++;
 
-
-				switch (PictureSelectScreen::GetSelectedPicture()) {
-				case 1:
-					tilePiece = new Texture("Image1.png", static_cast<int>(a), b, tileSize, tileSize);
-					break;
-				case 2:
-					tilePiece = new Texture("Image2.png", a, b, tileSize, tileSize);
-					break;
-				case 3:
-					tilePiece = new Texture("Image3.png", a, b, tileSize, tileSize);
-					break;
-				case 4:
-					tilePiece = new Texture("Image4.png", a, b, tileSize, tileSize);
-					break;
-				case 5:
-					tilePiece = new Texture("Image5.png", a, b, tileSize, tileSize);
-					break;
-				case 6:
-					tilePiece = new Texture("Image6.png", a, b, tileSize, tileSize);
-					break;
+				switch (PictureSelectScreen::GetSelectedPicture()) 
+				{
+					case 1:
+						tilePiece = new Texture("Image1.png", static_cast<int>(a), b, tileSize, tileSize);
+						break;
+					case 2:
+						tilePiece = new Texture("Image2.png", static_cast<int>(a), b, tileSize, tileSize);
+						break;
+					case 3:
+						tilePiece = new Texture("Image3.png", static_cast<int>(a), b, tileSize, tileSize);
+						break;
+					case 4:
+						tilePiece = new Texture("Image4.png", static_cast<int>(a), b, tileSize, tileSize);
+						break;
+					case 5:
+						tilePiece = new Texture("Image5.png", static_cast<int>(a), b, tileSize, tileSize);
+						break;
+					case 6:
+						tilePiece = new Texture("Image6.png", static_cast<int>(a), b, tileSize, tileSize);
+						break;
 				}
 				tilePiece->SetParent(boardHolder);
 				tilePiece->SetPosition((-tiles[j].position().y - tileSize/2)-47, (-tiles[j].position().x - tileSize / 2)+80);
@@ -170,10 +168,10 @@ namespace SDLFramework {
 			}
 	}
 
-	void Board::CreateBoard(/*Take in tile size*/)
+	void Board::CreateBoard()
 	{
 		SetChallange(DifficultyScreen::GetDifficulty());
-		//draw board to be 700 by 700
+
 		switch (challenge)
 		{
 		case 1:
