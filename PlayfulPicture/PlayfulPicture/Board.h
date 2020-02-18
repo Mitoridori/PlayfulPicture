@@ -4,6 +4,7 @@
 #include "DifficultyScreen.h"
 #include "PictureSelectScreen.h"
 #include "Tile.h"
+#include "RandomNumber.h"
 
 namespace SDLFramework {
 	class Board : public GameEntity{
@@ -12,6 +13,7 @@ namespace SDLFramework {
 
 		Graphics* graphics;
 		InputManager* input;
+		RandomNumber* random;
 
 		bool didCreateBoard = false;
 		bool firstPicture = true;

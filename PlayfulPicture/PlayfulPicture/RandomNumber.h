@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
+#include <random>
 
 namespace SDLFramework {
 
@@ -26,6 +27,7 @@ namespace SDLFramework {
 		int GetCurrentPiece();
 
 		void SetCurrentPiece();
+		int RandomTiles(int NumTiles);
 
 	};
 }
