@@ -20,8 +20,6 @@ namespace SDLFramework {
 
 		bool haveCreatedBoard = false;
 
-		//std::vector<GameEntity*> gameEntityList;
-
 	public:
 		PlayScreen();
 		~PlayScreen();

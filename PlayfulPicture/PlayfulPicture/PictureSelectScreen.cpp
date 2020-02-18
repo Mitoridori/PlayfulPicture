@@ -5,10 +5,13 @@
 #include "PictureSelectScreen.h"
 
 PictureSelectScreen::Pictures PictureSelectScreen::selectedPicture = none;
-PictureSelectScreen::PictureSelectScreen()
+
+/*John Gotts optimization changes:
+	- stored all local textures to a vector in the parent class, this follows the O(1) as accessing the array is a constant time for compile time
+	- the render and update were changed to follow the O(n) format as they now access the elements of the individual array index to render them*/
+
+PictureSelectScreen::PictureSelectScreen() : Screens()
 {
-	input = InputManager::Instance();
-	button = new Buttons();
 
 	topBar = new GameEntity(Graphics::SCREEN_WIDTH, 50.0f);
 	screenLabel = new Texture("Picture Selection", "emulogic.ttf", 32, { 255, 0, 111 });
@@ -43,47 +46,37 @@ PictureSelectScreen::PictureSelectScreen()
 	thumbnail6->SetPosition(-Graphics::SCREEN_WIDTH * 0.2f, -Graphics::SCREEN_HEIGHT * 0.25f);
 
 	backgroundImage->SetPosition(-Graphics::SCREEN_WIDTH * 0.5f, -Graphics::SCREEN_HEIGHT * 0.5f);
+
+	gameEntityList.push_back(screenLabel);
+	gameEntityList.push_back(thumbnail1);
+	gameEntityList.push_back(thumbnail2);
+	gameEntityList.push_back(thumbnail3);
+	gameEntityList.push_back(thumbnail4);
+	gameEntityList.push_back(thumbnail5);
+	gameEntityList.push_back(thumbnail6);
+	gameEntityList.push_back(backgroundImage);
 }
 
 PictureSelectScreen::~PictureSelectScreen()
 {
 	delete topBar;
 	topBar = nullptr;
-	delete screenLabel;
-	screenLabel = nullptr;
-
 	delete pictureHolder;
 	pictureHolder = nullptr;
 
-	delete thumbnail1;
-	thumbnail1 = nullptr;
-	delete thumbnail2;
-	thumbnail2 = nullptr;
-	delete thumbnail3;
-	thumbnail3 = nullptr;
-	delete thumbnail4;
-	thumbnail4 = nullptr;
-	delete thumbnail5;
-	thumbnail5 = nullptr;
-	delete thumbnail6;
-	thumbnail6 = nullptr;
-	delete backgroundImage;
-	backgroundImage = nullptr;
-
-	delete button;
-	button = nullptr;
+	for (int i = 0; i < gameEntityList.size(); i++)
+	{
+		delete gameEntityList[i];
+		gameEntityList[i] = nullptr;
+	}
 }
 
 void PictureSelectScreen::Render()
 {
-	backgroundImage->Render();
-	screenLabel->Render();
-	thumbnail1->Render();
-	thumbnail2->Render();
-	thumbnail3->Render();
-	thumbnail4->Render();;
-	thumbnail5->Render();
-	thumbnail6->Render();
+	for (int i = 0; i < gameEntityList.size(); i++)
+	{
+		gameEntityList[i]->Render();
+	}
 }
 
 void PictureSelectScreen::Update()

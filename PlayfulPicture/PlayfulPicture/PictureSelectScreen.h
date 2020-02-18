@@ -3,21 +3,15 @@
 //PROGRAMMER: John Gotts
 //FIRST VERSION: 02/06/2020
 #pragma once
-#include "GameEntity.h"
-#include "InputManager.h"
+#include "Screens.h"
 #include "Texture.h"
-#include "Buttons.h"
-
 using namespace SDLFramework;
 
-class PictureSelectScreen : public GameEntity {
+class PictureSelectScreen : public Screens {
 
 private:
 	static enum Pictures {none, one, two, three, four, five, six};
 	static Pictures selectedPicture;
-
-	InputManager* input;
-	Buttons* button;
 
 	GameEntity* topBar;
 	Texture* screenLabel;
