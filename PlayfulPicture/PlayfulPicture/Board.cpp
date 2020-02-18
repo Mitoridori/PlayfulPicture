@@ -10,10 +10,6 @@ namespace SDLFramework {
 		random = RandomNumber::Instance();
 
 		boardHolder = new GameEntity(Graphics::SCREEN_WIDTH, Graphics::SCREEN_HEIGHT);
-
-		challenge = 1;
-
-
 	}
 
 	Board::~Board()
@@ -24,18 +20,14 @@ namespace SDLFramework {
 
 		delete tilePiece;
 		tilePiece = nullptr;
-
 	}
 
 	void Board::Update()
 	{
-
 		if (input->MouseButtonPressed(input->Left)) {
-
 			int x; int y;
 			SDL_GetMouseState(&x, &y);
 			activeTile = getActiveTile(x, y); // retreives clicked tile number or -1
-
 		}
 
 		if (isSolved()) {
@@ -48,14 +40,11 @@ namespace SDLFramework {
 				shadowTiles[activeTile].swap(shadowTiles[shadowTiles.size() - 1]);
 				activeTile = -1; // reset to default
 			}
-
 		}
-
 	}
 
 	void Board::Render()
-	{
-		
+	{		
 		drawBoard(shadowTiles);
 		drawBoard(tiles);
 		if (didCreateBoard == false) {
@@ -67,8 +56,7 @@ namespace SDLFramework {
 		{
 			scrambleTiles(tiles, shadowTiles);
 			tilesSwapped = false;
-		}
-		
+		}	
 	}
 
 	void Board::drawBoard(const std::vector<Tile>& t) {
@@ -89,8 +77,6 @@ namespace SDLFramework {
 	}
 
 	void Board::createPositions(std::vector<SDL_Rect>& positions, const int& gridsize) {
-		int startY = 98;
-		int startX = 166;
 		int x = startY;
 		int y = startX;
 
@@ -118,7 +104,7 @@ namespace SDLFramework {
 	{
 		for (int i = t.size() - 1; i >= 0; --i) {
 			int n = random->RandomTiles(pieceAmount);
-			std::cout << n;
+			//std::cout << n << std::endl;
 			t[i].swap(t[n]);
 			tshadow[i].swap(tshadow[n]);
 		}
@@ -162,7 +148,6 @@ namespace SDLFramework {
 		GetPicture();
 			for (int j = tiles.size() - 1; j >=1; --j) {
 				k = w - j;
-
 				a = k/row * tileSize;
 				b = z * tileSize;
 				if (z > (row-2))
@@ -172,7 +157,7 @@ namespace SDLFramework {
 
 				tilePiece = new Texture(ImageName, static_cast<int>(a), b, tileSize, tileSize);
 				tilePiece->SetParent(boardHolder);
-				tilePiece->SetPosition((-tiles[j].position().y - tileSize/2)-47, (-tiles[j].position().x - tileSize / 2)+80);
+				tilePiece->SetPosition((-tiles[j].position().y - tileSize/2)-(startY/2), (-tiles[j].position().x - tileSize / 2)+(startX/2));
 				tilePiece->Render();
 			}
 	}
@@ -180,7 +165,6 @@ namespace SDLFramework {
 	void Board::CreateBoard()
 	{
 		SetChallange(DifficultyScreen::GetDifficulty());
-
 		switch (challenge)
 		{
 		case 1:
@@ -201,7 +185,6 @@ namespace SDLFramework {
 		}
 
 		tileSize = boardSize;
-
 		// Fill vector<SDL_Rect> 'positions' with possible positions of n*n tiles & make shadow positions
 		createPositions(positions, row);
 		createPositions(shadowPositions, row);
@@ -225,6 +208,7 @@ namespace SDLFramework {
 				y < tiles[i].position().y || y > tiles[i].position().y + tileSize))
 				tilenum = i;
 		}
+		std::cout << tilenum << std::endl;
 		return tilenum;
 	}
 
