@@ -115,7 +115,7 @@ namespace SDLFramework {
 		switch (PictureSelectScreen::GetSelectedPicture())
 		{
 		case 1:
-			ImageName = "Image1.png";
+			ImageName = "number2.png";
 			break;
 		case 2:
 			ImageName = "Image2.png";
