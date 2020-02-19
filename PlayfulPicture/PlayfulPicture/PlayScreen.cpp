@@ -29,7 +29,7 @@ SDLFramework::PlayScreen::~PlayScreen()
 	input = nullptr;
 
 	//clearing the objects from the vector and calling their deconstructors
-	for (unsigned int i = 0; i < gameEntityList.size(); i++)
+	for (int i = gameEntityList.size(); i >= 0; i--)
 	{
 		delete gameEntityList[i];
 		gameEntityList[i] = nullptr;

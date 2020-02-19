@@ -80,7 +80,7 @@ PictureSelectScreen::~PictureSelectScreen()
 		"delete[] &gameEntityList;" to remove the entire array at the end of the function.
 	
 	*/
-	for (int i = 0; i < gameEntityList.size(); i++)
+	for (int i = gameEntityList.size(); i >= 0; i--)
 	{
 		delete gameEntityList[i];
 		gameEntityList[i] = nullptr;
