@@ -2,7 +2,7 @@
 
 MusicScreen* MusicScreen::sInstance = nullptr;
 
-MusicScreen::MusicScreen()
+MusicScreen::MusicScreen() : Screens()
 {
 	mTimer = Timer::Instance();
 	mInput = InputManager::Instance();
@@ -30,6 +30,12 @@ MusicScreen::MusicScreen()
 	music2ButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.5f, -Graphics::SCREEN_HEIGHT * 0.5f);
 	music3ButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.25f, -Graphics::SCREEN_HEIGHT * 0.5f);
 	backButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.9f, -Graphics::SCREEN_HEIGHT * 0.1f);
+
+	gameEntityList.push_back(backgroundTexture);
+	gameEntityList.push_back(music1ButtonTexture);
+	gameEntityList.push_back(music2ButtonTexture);
+	gameEntityList.push_back(music3ButtonTexture); 
+	gameEntityList.push_back(backButtonTexture);
 }
 
 MusicScreen::~MusicScreen()
@@ -37,23 +43,14 @@ MusicScreen::~MusicScreen()
 	mTimer = nullptr;
 	mInput = nullptr;
 
+	for (int i = gameEntityList.size(); i >= 0; i--)
+	{
+		delete gameEntityList[i];
+		gameEntityList[i] = nullptr;
+	}
+
 	delete iconHolder;
 	iconHolder = nullptr;
-
-	delete backgroundTexture;
-	backgroundTexture = nullptr;
-
-	delete music1ButtonTexture;
-	music1ButtonTexture = nullptr;
-
-	delete music2ButtonTexture;
-	music2ButtonTexture = nullptr;
-
-	delete music3ButtonTexture;
-	music3ButtonTexture = nullptr;
-
-	delete backButtonTexture;
-	backButtonTexture = nullptr;
 
 	delete button;
 	button = nullptr;
@@ -70,11 +67,10 @@ MusicScreen* MusicScreen::Instance()
 
 void MusicScreen::Render()
 {
-	backgroundTexture->Render();
-	music1ButtonTexture->Render();
-	music2ButtonTexture->Render();
-	music3ButtonTexture->Render();
-	backButtonTexture->Render();
+	for (int i = 0; i < gameEntityList.size(); i++)
+	{
+		gameEntityList[i]->Render();
+	}
 }
 
 void MusicScreen::Update()
@@ -85,19 +81,9 @@ void MusicScreen::Update()
 		{
 			mAudio->CurrentMusic = 0;
 
-			/*ToggleButton(music1ButtonTexture, "Buttons.png", 344, 85, 172, 85, 0.75f, 0.5f);
+			ToggleButton(music1ButtonTexture, "Buttons.png", 344, 85, 172, 85, 0.75f, 0.5f);
 			ToggleButton(music2ButtonTexture, "Buttons.png", 516, 0, 172, 85, 0.5f, 0.5f);
-			ToggleButton(music3ButtonTexture, "Buttons.png", 688, 0, 172, 85, 0.25f, 0.5f);*/
-
-			music1ButtonTexture = new Texture("Buttons.png", 344, 85, 172, 85);
-			music2ButtonTexture = new Texture("Buttons.png", 516, 0, 172, 85);
-			music3ButtonTexture = new Texture("Buttons.png", 688, 0, 172, 85);
-			music1ButtonTexture->SetParent(iconHolder);
-			music2ButtonTexture->SetParent(iconHolder);
-			music3ButtonTexture->SetParent(iconHolder);
-			music1ButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.75f, -Graphics::SCREEN_HEIGHT * 0.5f);
-			music2ButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.5f, -Graphics::SCREEN_HEIGHT * 0.5f);
-			music3ButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.25f, -Graphics::SCREEN_HEIGHT * 0.5f);
+			ToggleButton(music3ButtonTexture, "Buttons.png", 688, 0, 172, 85, 0.25f, 0.5f);
 
 			std::cout << "1\n";
 		}
@@ -105,20 +91,9 @@ void MusicScreen::Update()
 		{
 			mAudio->CurrentMusic = 1;
 
-		/*	ToggleButton(music1ButtonTexture, "Buttons.png", 344, 0, 172, 85, 0.75f, 0.5f);
+			ToggleButton(music1ButtonTexture, "Buttons.png", 344, 0, 172, 85, 0.75f, 0.5f);
 			ToggleButton(music2ButtonTexture, "Buttons.png", 516, 85, 172, 85, 0.5f, 0.5f);
-			ToggleButton(music3ButtonTexture, "Buttons.png", 688, 0, 172, 85, 0.25f, 0.5f);*/
-
-			//Steve checked and couldn't figure it out
-			music1ButtonTexture = new Texture("Buttons.png", 344, 0, 172, 85);
-			music2ButtonTexture = new Texture("Buttons.png", 516, 85, 172, 85);
-			music3ButtonTexture = new Texture("Buttons.png", 688, 0, 172, 85);
-			music1ButtonTexture->SetParent(iconHolder);
-			music2ButtonTexture->SetParent(iconHolder);
-			music3ButtonTexture->SetParent(iconHolder);
-			music1ButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.75f, -Graphics::SCREEN_HEIGHT * 0.5f);
-			music2ButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.5f, -Graphics::SCREEN_HEIGHT * 0.5f);
-			music3ButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.25f, -Graphics::SCREEN_HEIGHT * 0.5f);
+			ToggleButton(music3ButtonTexture, "Buttons.png", 688, 0, 172, 85, 0.25f, 0.5f);
 
 			std::cout << "2\n";
 		}
@@ -126,15 +101,9 @@ void MusicScreen::Update()
 		{
 			mAudio->CurrentMusic = 2;
 
-			music1ButtonTexture = new Texture("Buttons.png", 344, 0, 172, 85);
-			music2ButtonTexture = new Texture("Buttons.png", 516, 0, 172, 85);
-			music3ButtonTexture = new Texture("Buttons.png", 688, 85, 172, 85);
-			music1ButtonTexture->SetParent(iconHolder);
-			music2ButtonTexture->SetParent(iconHolder);
-			music3ButtonTexture->SetParent(iconHolder);
-			music1ButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.75f, -Graphics::SCREEN_HEIGHT * 0.5f);
-			music2ButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.5f, -Graphics::SCREEN_HEIGHT * 0.5f);
-			music3ButtonTexture->SetPosition(-Graphics::SCREEN_WIDTH * 0.25f, -Graphics::SCREEN_HEIGHT * 0.5f);;
+			ToggleButton(music1ButtonTexture, "Buttons.png", 344, 0, 172, 85, 0.75f, 0.5f);
+			ToggleButton(music2ButtonTexture, "Buttons.png", 516, 0, 172, 85, 0.5f, 0.5f);
+			ToggleButton(music3ButtonTexture, "Buttons.png", 688, 85, 172, 85, 0.25f, 0.5f);
 
 			std::cout << "3\n";
 		}
@@ -147,10 +116,10 @@ void MusicScreen::Update()
 	}
 }
 
-//Steve checked and couldn't figure it out
 void MusicScreen::ToggleButton(Texture * texture, std::string fileName, int x, int y, int w, int h, float xMod, float yMod) 
 {
 	texture = new Texture(fileName, x, y, w, h);
 	texture->SetParent(iconHolder);
 	texture->SetPosition(-Graphics::SCREEN_WIDTH * xMod, -Graphics::SCREEN_HEIGHT * yMod);
+	gameEntityList.push_back(texture);
 }

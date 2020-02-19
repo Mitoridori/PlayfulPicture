@@ -1,15 +1,12 @@
 #pragma once
-#include "GameEntity.h"
-#include "Timer.h"
+#include "Screens.h"
 #include "Texture.h"
-#include "InputManager.h"
 #include "AudioManager.h"
-#include "Buttons.h"
 #include <string>
 
 using namespace SDLFramework;
 
-class MusicScreen : public GameEntity{
+class MusicScreen : public Screens{
 
 private:
 	static MusicScreen* sInstance;
