@@ -116,7 +116,7 @@ void PictureSelectScreen::Update()
 		cut down on amount of invokes for the mouse position, now only does the 2 to find the x and y position, uses the vector for the texture now as well, still O(n), 
 		but with far less invokes now, loop only runs one time per click*/
 	if (input->MouseButtonPressed(input->Left)) {
-		for (int i = 0; i < gameEntityList.size(); i++)
+		for (int i = 2; i < gameEntityList.size(); i++)
 		{
 			switch (button->ContainsPoint((Texture*)gameEntityList[i], input->MousePosition().x, input->MousePosition().y))
 			{
@@ -139,9 +139,9 @@ void PictureSelectScreen::Update()
 				else if (gameEntityList[i] == thumbnail6) {
 					selectedPicture = six;
 				}
-				else {
-					i = gameEntityList.size();
-				}
+				break;
+			case false:
+				i = gameEntityList.size();
 				break;
 			default:
 				break;
