@@ -68,23 +68,15 @@ namespace SDLFramework {
 
 		if (CurrentMusic == 0 && Playing == false)
 		{
-			PlayMusic("SFX/Title.wav", -1);
+			PlayMusic("Music/Intoleranzen.mp3", -1);
 		}
 		else if (CurrentMusic == 1 && Playing == false)
 		{
-			PlayMusic("SFX/Music0.wav", -1);
+			PlayMusic("Music/reCreation.mp3", -1);
 		}
 		else if (CurrentMusic == 2 && Playing == false)
 		{
-			PlayMusic("SFX/Music1.wav", -1);
-		}
-		else if (CurrentMusic == 3 && Playing == false)
-		{
-			PlayMusic("SFX/Music2.wav", -1);
-		}
-		else if (CurrentMusic == 4 && Playing == false)
-		{
-			PauseMusic();
+			PlayMusic("Music/The_Mellotron.mp3", -1);
 		}
 	}
 
