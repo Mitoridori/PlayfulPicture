@@ -11,8 +11,6 @@ namespace SDLFramework {
 
 	private:
 		static int totalMoves;
-		Timer* timer;
-		InputManager* input;
 
 		InGameUI* playerUI;
 

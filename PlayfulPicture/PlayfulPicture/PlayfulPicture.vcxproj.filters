@@ -43,6 +43,12 @@
     <Filter Include="Source Files\Game Elements\Buttons">
       <UniqueIdentifier>{779fe914-60aa-4976-b85b-b88a96214fdc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\States">
+      <UniqueIdentifier>{ddad7c26-6cd7-45e1-b058-9cbfed069e7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\States">
+      <UniqueIdentifier>{550a581f-c494-455a-961f-845c2c536338}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -117,6 +123,9 @@
     <ClCompile Include="Screens.cpp">
       <Filter>Source Files\Screens</Filter>
     </ClCompile>
+    <ClCompile Include="ScreensStates.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -190,6 +199,12 @@
     </ClInclude>
     <ClInclude Include="Screens.h">
       <Filter>Header Files\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreensStates.h">
+      <Filter>Header Files\States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

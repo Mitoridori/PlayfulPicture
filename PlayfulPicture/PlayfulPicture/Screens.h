@@ -5,6 +5,7 @@
 #include "Buttons.h"
 #include <vector>
 
+class State;
 using namespace SDLFramework;
 using namespace std;
 
@@ -17,9 +18,15 @@ protected:
 
 	vector<GameEntity*> gameEntityList;
 
+	//State* currentScreenState;
+
+public:
+	State* currentScreenState;
+
 public:
 	Screens();
 	~Screens();
 
+	//void ChangeScreenState(State* newState);
 
 };

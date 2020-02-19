@@ -12,6 +12,8 @@
 #include "WinScreen.h"
 #include "PlayScreen.h"
 
+class State;
+
 using namespace SDLFramework;
 
 class ScreenManager {
@@ -21,6 +23,7 @@ private:
 
 	static enum Screens { start, menuScreen, musicScreen, difficulty, picture, play, congratulations };
 	static Screens currentScreen;
+
 	InputManager* input;
 	MenuScreen* mMenuScreen;
 	MusicScreen* mMusicScreen;

@@ -1,10 +1,7 @@
 #include "MenuScreen.h"
 
-MenuScreen::MenuScreen()
+MenuScreen::MenuScreen() : Screens()
 {
-	input = InputManager::Instance();
-	button = new Buttons();
-
 	game = false;
 	music = false;
 	quit = false;
@@ -61,8 +58,6 @@ MenuScreen::MenuScreen()
 
 MenuScreen::~MenuScreen()
 {
-	//Delete Input Manager
-	input = nullptr;
 
 	//Delete the Game Entities
 	delete GreaterScreen;
@@ -91,10 +86,6 @@ MenuScreen::~MenuScreen()
 	//Delete Animated Texture
 	delete AnimatedHeader;
 	AnimatedHeader = nullptr;
-
-	//Delete Buttons
-	delete button;
-	button = nullptr;
 }
 
 void MenuScreen::Update()
