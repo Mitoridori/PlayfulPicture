@@ -51,6 +51,7 @@ PictureSelectScreen::PictureSelectScreen() : Screens()
 
 	backgroundImage->SetPosition(-Graphics::SCREEN_WIDTH * 0.5f, -Graphics::SCREEN_HEIGHT * 0.5f);
 
+	gameEntityList.push_back(backgroundImage);
 	gameEntityList.push_back(screenLabel);
 	gameEntityList.push_back(thumbnail1);
 	gameEntityList.push_back(thumbnail2);
@@ -58,7 +59,6 @@ PictureSelectScreen::PictureSelectScreen() : Screens()
 	gameEntityList.push_back(thumbnail4);
 	gameEntityList.push_back(thumbnail5);
 	gameEntityList.push_back(thumbnail6);
-	gameEntityList.push_back(backgroundImage);
 }
 
 PictureSelectScreen::~PictureSelectScreen()
@@ -85,6 +85,7 @@ PictureSelectScreen::~PictureSelectScreen()
 		delete gameEntityList[i];
 		gameEntityList[i] = nullptr;
 	}
+	delete[] & gameEntityList;
 }
 
 void PictureSelectScreen::Render()
