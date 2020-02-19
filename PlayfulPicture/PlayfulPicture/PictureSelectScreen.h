@@ -25,6 +25,8 @@ private:
 	Texture* thumbnail6;
 	Texture* backgroundImage;
 
+	int textureClicked;
+
 public:
 	PictureSelectScreen();
 	~PictureSelectScreen();

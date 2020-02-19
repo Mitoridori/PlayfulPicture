@@ -111,27 +111,41 @@ void PictureSelectScreen::Update()
 		however the best approach would be to use a binary search, which could search for the closest position to our mouse x and y position, which would be a super amazing optimization especially if we added
 		a 1,000,000 thumbnails, current implementation would stall if I selected the last one. you'll need to add these to a vector or array that is organized.
 	*/
+
+	/*John Gotts:
+		cut down on amount of invokes for the mouse position, now only does the 2 to find the x and y position, uses the vector for the texture now as well, still O(n), 
+		but with far less invokes now, loop only runs one time per click*/
 	if (input->MouseButtonPressed(input->Left)) {
-		if (button->ContainsPoint(thumbnail1, input->MousePosition().x, input->MousePosition().y)) {
-			selectedPicture = one;
-		}
-		else if (button->ContainsPoint(thumbnail2, input->MousePosition().x, input->MousePosition().y)) {
-			selectedPicture = two;
-		}
-		else if (button->ContainsPoint(thumbnail3, input->MousePosition().x, input->MousePosition().y)) {
-			selectedPicture = three;
-		}
-		else if (button->ContainsPoint(thumbnail4, input->MousePosition().x, input->MousePosition().y)) {
-			selectedPicture = four;
-		}
-		else if (button->ContainsPoint(thumbnail5, input->MousePosition().x, input->MousePosition().y)) {
-			selectedPicture = five;
-		}
-		else if (button->ContainsPoint(thumbnail6, input->MousePosition().x, input->MousePosition().y)) {
-			selectedPicture = six;
-		}
-		else {
-			selectedPicture = none;
+		for (int i = 0; i < gameEntityList.size(); i++)
+		{
+			switch (button->ContainsPoint((Texture*)gameEntityList[i], input->MousePosition().x, input->MousePosition().y))
+			{
+			case true:
+				if (gameEntityList[i] == thumbnail1) {
+					selectedPicture = one;
+				}
+				else if (gameEntityList[i] == thumbnail2) {
+					selectedPicture = two;
+				}
+				else if (gameEntityList[i] == thumbnail3) {
+					selectedPicture = three;
+				}
+				else if (gameEntityList[i] == thumbnail4) {
+					selectedPicture = four;
+				}
+				else if (gameEntityList[i] == thumbnail5) {
+					selectedPicture = five;
+				}
+				else if (gameEntityList[i] == thumbnail6) {
+					selectedPicture = six;
+				}
+				else {
+					i = gameEntityList.size();
+				}
+				break;
+			default:
+				break;
+			}
 		}
 	}
 }
