@@ -231,10 +231,25 @@ namespace SDLFramework {
 	}
 
 	bool Board::isBeside(const Tile& a, const Tile& b) {
-		if (a.posNumber() == b.posNumber() - 1 ||
-			a.posNumber() == b.posNumber() + 1 ||
-			a.posNumber() == b.posNumber() + row ||
-			a.posNumber() == b.posNumber() - row)
+
+		bool move = false;
+		float Apos = a.posNumber();
+		float Bpos = b.posNumber();
+
+		if (Apos / row == static_cast<int>(Apos / row) && Bpos < Apos)
+			move = true;
+		else if (Apos / row == static_cast<int>(Apos / row) && Bpos > Apos)
+			move = false;
+		if (Bpos / row == static_cast<int>(Bpos / row) && Bpos > Apos)
+			move = true;
+		else if (Bpos / row == static_cast<int>(Bpos / row) && Bpos < Apos)
+			move = false;
+		if (Apos / row != static_cast<int>(Apos / row) && Bpos / row != static_cast<int>(Bpos / row))
+			move = true;
+		else if (Apos / row == static_cast<int>(Apos / row) && Bpos / row == static_cast<int>(Bpos / row))
+			move = true;
+
+		if (move && (Apos == Bpos - 1 || Apos == Bpos + 1 || Apos == Bpos + row || Apos == Bpos - row))
 			return true;
 		return false;
 	}
