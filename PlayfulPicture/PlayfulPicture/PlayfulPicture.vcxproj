@@ -38,6 +38,7 @@
     <ClCompile Include="RandomNumber.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="Screens.cpp" />
+    <ClCompile Include="ScreensStates.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Timer.cpp" />
@@ -64,6 +65,8 @@
     <ClInclude Include="RandomNumber.h" />
     <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="Screens.h" />
+    <ClInclude Include="ScreensStates.h" />
+    <ClInclude Include="State.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Timer.h" />

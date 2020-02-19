@@ -1,18 +1,14 @@
 #ifndef __TITLESCREEN_H
 #define __TITLESCREEN_H
 #include "AnimatedTexture.h"
-#include "InputManager.h"
 #include "AudioManager.h"
+#include "Screens.h"
 
 namespace SDLFramework
 {
-	class TitleScreen : public GameEntity
+	class TitleScreen : public Screens
 	{
 	private:
-
-		//timer and input
-		Timer* mTimer;
-		InputManager* mInput;
 		AudioManager* audioManager;
 
 		//logo

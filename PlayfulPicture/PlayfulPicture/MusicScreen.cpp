@@ -2,13 +2,9 @@
 
 MusicScreen* MusicScreen::sInstance = nullptr;
 
-MusicScreen::MusicScreen()
+MusicScreen::MusicScreen() : Screens()
 {
-	mTimer = Timer::Instance();
-	mInput = InputManager::Instance();
 	mAudio = AudioManager::Instance();
-
-	button = new Buttons();
 
 	backgroundTexture = new Texture("Background.jpg", 0, 0, 1760, 1200);
 
@@ -34,8 +30,6 @@ MusicScreen::MusicScreen()
 
 MusicScreen::~MusicScreen()
 {
-	mTimer = nullptr;
-	mInput = nullptr;
 
 	delete iconHolder;
 	iconHolder = nullptr;
@@ -79,9 +73,9 @@ void MusicScreen::Render()
 
 void MusicScreen::Update()
 {
-	if (mInput->MouseButtonPressed(mInput->Left)) {
+	if (input->MouseButtonPressed(input->Left)) {
 
-		if (button->ContainsPoint(music1ButtonTexture, mInput->MousePosition().x, mInput->MousePosition().y))
+		if (button->ContainsPoint(music1ButtonTexture, input->MousePosition().x, input->MousePosition().y))
 		{
 			mAudio->PlayMusic("Music/Intoleranzen.mp3", -1);
 
@@ -101,7 +95,7 @@ void MusicScreen::Update()
 
 			std::cout << "1\n";
 		}
-		else if (button->ContainsPoint(music2ButtonTexture, mInput->MousePosition().x, mInput->MousePosition().y))
+		else if (button->ContainsPoint(music2ButtonTexture, input->MousePosition().x, input->MousePosition().y))
 		{
 			mAudio->PlayMusic("Music/reCreation.mp3",-1);
 
@@ -122,7 +116,7 @@ void MusicScreen::Update()
 
 			std::cout << "2\n";
 		}
-		else if (button->ContainsPoint(music3ButtonTexture, mInput->MousePosition().x, mInput->MousePosition().y))
+		else if (button->ContainsPoint(music3ButtonTexture, input->MousePosition().x, input->MousePosition().y))
 		{
 			mAudio->PlayMusic("Music/The_Mellotron.mp3", -1);
 
@@ -138,7 +132,7 @@ void MusicScreen::Update()
 
 			std::cout << "3\n";
 		}
-		else if (button->ContainsPoint(backButtonTexture, mInput->MousePosition().x, mInput->MousePosition().y))
+		else if (button->ContainsPoint(backButtonTexture, input->MousePosition().x, input->MousePosition().y))
 		{
 			std::cout << "4\n";
 			//send back to main screen

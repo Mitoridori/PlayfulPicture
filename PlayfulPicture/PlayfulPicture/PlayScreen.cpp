@@ -10,9 +10,6 @@ int SDLFramework::PlayScreen::totalMoves = 0;
 
 SDLFramework::PlayScreen::PlayScreen() : Screens()
 {
-	timer = Timer::Instance();
-	input = InputManager::Instance();
-
 	playerUI = new InGameUI();
 
 	board = new Board();
@@ -24,9 +21,6 @@ SDLFramework::PlayScreen::PlayScreen() : Screens()
 
 SDLFramework::PlayScreen::~PlayScreen()
 {
-
-	timer = nullptr;
-	input = nullptr;
 
 	//clearing the objects from the vector and calling their deconstructors
 	for (int i = gameEntityList.size(); i >= 0; i--)

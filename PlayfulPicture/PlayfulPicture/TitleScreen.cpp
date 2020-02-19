@@ -1,12 +1,10 @@
 #include "TitleScreen.h"
+#include "ScreensStates.h"
 
 namespace SDLFramework
 {
-	TitleScreen::TitleScreen()
+	TitleScreen::TitleScreen() : Screens()
 	{
-		//timer and input
-		mTimer = Timer::Instance();
-		mInput = InputManager::Instance();
 		audioManager = AudioManager::Instance();
 
 		// logo entities
@@ -50,8 +48,6 @@ namespace SDLFramework
 
 	TitleScreen::~TitleScreen()
 	{
-		mTimer = nullptr;
-		mInput = nullptr;
 
 		delete mLogo;
 		mLogo = nullptr;
@@ -84,7 +80,7 @@ namespace SDLFramework
 	void TitleScreen::Update()
 	{
 		if (!mAnimationDone) {
-			mAnimationTimer += mTimer->GetDeltaTime();
+			mAnimationTimer += timer->GetDeltaTime();
 			Position(Lerp(mAnimationStartPos, mAnimationEndPos, mAnimationTimer / mAnimationTotalTime));
 
 			if (mAnimationTimer >= mAnimationTotalTime) {
@@ -97,10 +93,9 @@ namespace SDLFramework
 		}
 		else {
 			mAnimatedLogo->Update();
-			//if (mInput->KeyPressed(SDL_SCANCODE_RETURN))
-			//{
-			//	ChangeSelectedMode(1);
-			//}
+			if (input->MouseButtonPressed(input->Left)) {
+				//ChangeScreenState(MainMenuState::Instance());
+			}
 
 		}
 

@@ -1,21 +1,15 @@
 #pragma once
 #ifndef __MENUSCREEN_H
 #define __MENUSCREEN_H
-#include "Timer.h"
 #include "Texture.h"
-#include "InputManager.h"
-#include "Buttons.h"
 #include "AnimatedTexture.h"
+#include "Screens.h"
 
 using namespace SDLFramework;
 
-class MenuScreen : public GameEntity{
+class MenuScreen : public Screens{
 
 private:
-	Timer* timer;
-	InputManager* input;
-
-	Buttons* button;
 
 	GameEntity* GreaterScreen;
 	GameEntity* SelectOptions;
