@@ -55,6 +55,7 @@ WinScreen::~WinScreen()
 		delete gameEntityList[i];
 		gameEntityList[i] = nullptr;
 	}
+	delete[] &gameEntityList;
 }
 
 void WinScreen::Render()

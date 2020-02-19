@@ -34,6 +34,7 @@ SDLFramework::PlayScreen::~PlayScreen()
 		delete gameEntityList[i];
 		gameEntityList[i] = nullptr;
 	}
+	delete[] & gameEntityList;
 }
 
 InGameUI* SDLFramework::PlayScreen::GetPlayerUI()
