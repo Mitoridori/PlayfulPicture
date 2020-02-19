@@ -140,9 +140,6 @@ void PictureSelectScreen::Update()
 					selectedPicture = six;
 				}
 				break;
-			case false:
-				i = gameEntityList.size();
-				break;
 			default:
 				break;
 			}
