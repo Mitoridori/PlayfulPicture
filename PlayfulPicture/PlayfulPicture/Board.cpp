@@ -24,18 +24,21 @@ namespace SDLFramework {
 
 	void Board::Update()
 	{
-		if (input->MouseButtonPressed(input->Left)) {
+		//Ryan
+		//Only checks to see if the picture is solved or if the mouse button is pressed on update instead of those plus which tile is active. 
+		//Instead it waits for the click to check which tile is active. 
+
+		if (isSolved())
+		{
+			gameOver = true;
+		}
+		else if (input->MouseButtonPressed(input->Left))
+		{
 			int x; int y;
 			SDL_GetMouseState(&x, &y);
 			activeTile = getActiveTile(x, y); // retreives clicked tile number or -1
-		}
-
-		if (isSolved()) {
-			gameOver = true;
-		}
-
-		else if (activeTile >= 0) { // if mouse clicked on a tile
-			if (isBeside(tiles[activeTile], tiles[tiles.size() - 1])) {
+			if (activeTile >= 0 && isBeside(tiles[activeTile], tiles[tiles.size() - 1]))
+			{
 				tiles[activeTile].swap(tiles[tiles.size() - 1]);
 				shadowTiles[activeTile].swap(shadowTiles[shadowTiles.size() - 1]);
 				activeTile = -1; // reset to default
@@ -44,7 +47,7 @@ namespace SDLFramework {
 	}
 
 	void Board::Render()
-	{		
+	{
 		drawBoard(shadowTiles);
 		drawBoard(tiles);
 		if (didCreateBoard == false) {
@@ -56,7 +59,7 @@ namespace SDLFramework {
 		{
 			scrambleTiles(tiles, shadowTiles);
 			tilesSwapped = false;
-		}	
+		}
 	}
 
 	void Board::drawBoard(const std::vector<Tile>& t) {
@@ -95,7 +98,7 @@ namespace SDLFramework {
 		}
 		tiles[tiles.size() - 1].setTileType(Tile::type::invisible); // last tile should be invisible
 	}
-	
+
 	//Rebecca:
 	//When this function had the random select information it was having to run it each time it ran the function O(n)
 	//now by removing it and putting it in its own function in the RandomNumber it is only run when called. 
@@ -151,20 +154,20 @@ namespace SDLFramework {
 		int w = tiles.size() - 1;
 		int k;
 		GetPicture();
-			for (int j = tiles.size() - 1; j >=1; --j) {
-				k = w - j;
-				a = k/row * tileSize;
-				b = z * tileSize;
-				if (z > (row-2))
-					z = 0;
-				else
-					z++;
+		for (int j = tiles.size() - 1; j >= 1; --j) {
+			k = w - j;
+			a = k / row * tileSize;
+			b = z * tileSize;
+			if (z > (row - 2))
+				z = 0;
+			else
+				z++;
 
-				tilePiece = new Texture(ImageName, static_cast<int>(a), b, tileSize, tileSize);
-				tilePiece->SetParent(boardHolder);
-				tilePiece->SetPosition((-tiles[j].position().y - tileSize/2)-(startY/2), (-tiles[j].position().x - tileSize / 2)+(startX/2));
-				tilePiece->Render();
-			}
+			tilePiece = new Texture(ImageName, static_cast<int>(a), b, tileSize, tileSize);
+			tilePiece->SetParent(boardHolder);
+			tilePiece->SetPosition((-tiles[j].position().y - tileSize / 2) - (startY / 2), (-tiles[j].position().x - tileSize / 2) + (startX / 2));
+			tilePiece->Render();
+		}
 	}
 
 	void Board::CreateBoard()
@@ -211,9 +214,9 @@ namespace SDLFramework {
 	 Searching each tile isn't the best idea. perhaps we could have a multi-dimensional array for x and y - this would allow us to visit the exact spot in the array
 	 then check our neighbors e.g up, right, down and left.
 
-	 This function executes from update, perhaps we could also hold that information per click? so every time we click we can just store the neighboring tiles until 
+	 This function executes from update, perhaps we could also hold that information per click? so every time we click we can just store the neighboring tiles until
 	 a new tile is selected
-	
+
 	I know Rebecca made this function, however if she isn't planning on editing this guy you can john.
 	*/
 	int Board::getActiveTile(const int& x, const int& y) {
