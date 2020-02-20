@@ -26,7 +26,7 @@ namespace SDLFramework {
 	{
 		//Ryan
 		//Only checks to see if the picture is solved or if the mouse button is pressed on update instead of those plus which tile is active. 
-		//Instead it waits for the click to check which tile is active. 
+		//Instead it waits for the click to check which tile is active. This is still an O(1), but slightly more optimized.
 
 		if (isSolved())
 		{
@@ -222,8 +222,7 @@ namespace SDLFramework {
 	int Board::getActiveTile(const int& x, const int& y) {
 		int tilenum = -1;
 		for (int i = 0; i < tiles.size(); ++i) {
-			if (!(x < tiles[i].position().x || x > tiles[i].position().x + tileSize ||
-				y < tiles[i].position().y || y > tiles[i].position().y + tileSize))
+			if (!(x < tiles[i].position().x || x > tiles[i].position().x + tileSize || y < tiles[i].position().y || y > tiles[i].position().y + tileSize))
 				tilenum = i;
 		}
 		std::cout << tilenum << std::endl;
