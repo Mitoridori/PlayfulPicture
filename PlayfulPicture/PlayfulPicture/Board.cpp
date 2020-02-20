@@ -25,8 +25,9 @@ namespace SDLFramework {
 	void Board::Update()
 	{
 		//Ryan
-		//Only checks to see if the picture is solved or if the mouse button is pressed on update instead of those plus which tile is active. 
-		//Instead it waits for the click to check which tile is active. This is still an O(1), but slightly more optimized.
+		// Only checks to see if the picture is solved or if the mouse button is pressed on update instead of those plus which tile is active. 
+		// Instead it waits for the click to check which tile is active. This is still an O(1), but slightly more optimized by only checking the
+		// active tile when the mouse button is clicked, instead of on every update.
 
 		if (isSolved())
 		{
