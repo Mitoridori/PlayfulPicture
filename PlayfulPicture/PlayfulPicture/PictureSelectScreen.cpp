@@ -143,6 +143,11 @@ void PictureSelectScreen::Update()
 			default:
 				break;
 			}
+			/*GameEntity Item = button->ContainsPoint((Texture*)gameEntityList[i], input->MousePosition().x, input->MousePosition().y);
+			Binary_Search<GameEntity>(gameEntityList, Item, Item.Position().x, Item.Position().y);
+			if (Binary_Search<GameEntity>(gameEntityList, Item, Item.Position().x, Item.Position().y) != -1) {
+				cout << "object found" << endl;
+			}*/
 		}
 	}
 }

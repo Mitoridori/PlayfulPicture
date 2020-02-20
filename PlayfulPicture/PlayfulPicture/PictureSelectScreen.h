@@ -5,6 +5,7 @@
 #pragma once
 #include "Screens.h"
 #include "Texture.h"
+#include <algorithm>
 using namespace SDLFramework;
 
 class PictureSelectScreen : public Screens {
@@ -25,8 +26,6 @@ private:
 	Texture* thumbnail6;
 	Texture* backgroundImage;
 
-	int textureClicked;
-
 public:
 	PictureSelectScreen();
 	~PictureSelectScreen();
@@ -34,4 +33,25 @@ public:
 	void Update() override;
 
 	static Pictures GetSelectedPicture();
+
+private:
+	template<typename T>
+	int Binary_Search(const vector<T*> &v, const T &value, const int xPos, const int yPos)
+	{
+		int low = 0;
+		int high = (int)v.size() - 1;
+
+
+		while (low <= high) {
+			int mid = (low + high) / 2;
+			if (v[mid] > value)
+				high = mid - 1;
+			else if (v[mid] < value)
+				low = mid + 1;
+			else
+				return mid;  // found
+		}
+		return -1;  // not found
+	}
 };
+
