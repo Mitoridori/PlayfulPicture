@@ -12,4 +12,11 @@ void Tile::swap(Tile& t) {
 	tempNum = currentNumber;
 	currentNumber = t.currentNumber;
 	t.currentNumber = tempNum;
+
+
+
+
+
+	//Something to swap tile[] in the array gridlocation[pos][tileX]
+
 }

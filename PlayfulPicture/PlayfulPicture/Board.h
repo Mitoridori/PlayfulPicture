@@ -6,6 +6,8 @@
 #include "Tile.h"
 #include "RandomNumber.h"
 
+
+
 namespace SDLFramework {
 	class Board : public GameEntity{
 
@@ -36,6 +38,14 @@ namespace SDLFramework {
 		int row;
 		int startY = 98;
 		int startX = 166;
+		int tilenum;
+		int gridSize = 700;
+		//array
+		int **gridLocation;
+		int tempX;
+		int tempY;
+		int lastTileX;
+		int lastTileY;
 
 		GameEntity* boardHolder;
 
@@ -79,6 +89,10 @@ namespace SDLFramework {
 		void renderPicture(const std::vector<Tile>& tiles, const std::vector<SDL_Rect>& positions);
 
 		void CreateBoard();
+		void createArray();
+
+		void swapArray(Tile& t,Tile& t2, Tile& tS, Tile& tS2);
+
 		void SetChallange(int difficulty);
 
 		int getActiveTile(const int& x, const int& y);

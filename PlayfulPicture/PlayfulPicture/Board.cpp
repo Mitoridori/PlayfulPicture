@@ -109,8 +109,10 @@ namespace SDLFramework {
 		for (int i = t.size() - 1; i >= 0; --i) {
 			int n = random->RandomTiles(pieceAmount);
 			//std::cout << n << std::endl;
-			t[i].swap(t[n]);
-			tshadow[i].swap(tshadow[n]);
+
+
+			//t[i].swap(t[n]);
+			//tshadow[i].swap(tshadow[n]);
 		}
 	}
 
@@ -138,33 +140,7 @@ namespace SDLFramework {
 			break;
 		}
 	}
-	/* Steven
 
-		More so a good code cleanup.
-		however for optimization you defiantly improved your Invoke calls +1.
-
-		Tile based movement
-		Using the mouse x and y position you'll use Multiplication rounding and division to get the tile.
-
-		say the grid size was 200 you would need to divide the mouse positions x and y by 200. then round that value to the nearest decimal.
-		Next you will want to multiply the result by 200.
-
-		*** Pseudo code ***
-		
-		float GridSize = 100.0f;
-
-		// Get mouse position
-		vector2 position = mousePosition();
-
-		// Calculate Grid Position
-		vector2 tempPosition = vector2(Position / GridSize);
-		vector2 pointInGrid = vector2(round(tempPosition.X), round(tempPosition.Y)) * GridSize;
-
-		//New location in cell -> pointInGrid;
-
-		The last step would be to figure out which index the pointInGrid is located in - using division. (Note: Don't forget to include the offset!)
-
-	*/
 
 	//Rebecca
 	//By removing the switch in the for loop to be always picking the picture into its own function, the picture is
@@ -222,9 +198,43 @@ namespace SDLFramework {
 		// Assign these starting positions to n*n tiles in vector<Tile> 'tiles' & make tile shadows
 		makeTiles(tiles, positions, Tile::type::button);
 		makeTiles(shadowTiles, shadowPositions, Tile::type::shadow);
+		createArray();
 		//scrambleTiles(tiles, shadowTiles);
 		didCreateBoard = true;
 	}
+
+	void Board::createArray()
+	{
+		int n = row;
+		gridLocation = new int*[n];
+		
+		for (int i = 0; i < row; i++)
+		{
+			gridLocation[i] = new int[n];
+		}
+
+		int k = 0;
+		for (int i = 0; i < row; i++)
+		{
+			for (int j = 0; j < row; j++)
+			{
+				gridLocation[i][j] = k;
+				k++;
+			}
+		}
+	}
+
+	void Board::swapArray(Tile& t, Tile& t2, Tile& tS, Tile& tS2)
+	{		
+		Tile temptile = t;
+		t = t2;
+		t2 = temptile;
+
+		t.swap(t2);
+		tS.swap(tS2);
+	}
+
+
 
 	void Board::SetChallange(int difficulty)
 	{
@@ -243,21 +253,50 @@ namespace SDLFramework {
 	I know Rebecca made this function, however if she isn't planning on editing this guy you can john.
 	*/
 	int Board::getActiveTile(const int& x, const int& y) {
+
+
+		//find tile location
+		tempX = floor(((x - startX) / tileSize));
+		tempY = floor(((y - startY) / tileSize));
+		//remove out of board clicks
+		if (tempX < 0 || tempX > row - 1 || tempY < 0 || tempY > row - 1)
+			return tilenum = -1;
+		//find the information at that point in the array
+		int a = gridLocation[tempX][tempY];
+		//give tile[number]
+		tilenum = a;
+
 		int tilenum = -1;
-		for (int i = 0; i < tiles.size(); ++i) {
+		int i;
+		for (i = 0; i < tiles.size(); ++i) {
 			if (!(x < tiles[i].position().x || x > tiles[i].position().x + tileSize || y < tiles[i].position().y || y > tiles[i].position().y + tileSize))
 				tilenum = i;
 		}
-		std::cout << tilenum << std::endl;
+
 		return tilenum;
 	}
 
 	bool Board::isBeside(const Tile& a, const Tile& b) {
 
+	//In array
+		//if (!(tilenum - row < 0) && tile[tilenum - row].isBlank)
+		//	Bpos = tilenum - row;
+		//else if (!(tilenum + row > tiles.size()) && tile[tilenum + row].isBlank)
+		//	Bpos = tilenum + row;
+		//else if (!( tilenum -1 < 0) && tile[tilenum - 1].isBlank)
+		//	Bpos = tilenum -1;
+		//else if (!(tilenum +1 > tile.size()) && tile[tilenum + 1].isBlank)
+		//	Bpos = tilenum +1;
+		//else
+		//	 foundBlank = false;
+	//Run rest of function if foundBlank != false else return false
+
+
 		bool move = false;
 		float Apos = a.posNumber();
 		float Bpos = b.posNumber();
 
+		//tiles at edge of the board
 		if (Apos / row == static_cast<int>(Apos / row) && Bpos < Apos)
 			move = true;
 		else if (Apos / row == static_cast<int>(Apos / row) && Bpos > Apos)
@@ -271,6 +310,7 @@ namespace SDLFramework {
 		else if (Apos / row == static_cast<int>(Apos / row) && Bpos / row == static_cast<int>(Bpos / row))
 			move = true;
 
+		//moves in the middle of the board
 		if (move && (Apos == Bpos - 1 || Apos == Bpos + 1 || Apos == Bpos + row || Apos == Bpos - row))
 			return true;
 		return false;
